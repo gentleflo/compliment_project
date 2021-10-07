@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+#wrap {
+	width:1200px;
+	margin:auto;
+}
+
+header {
+	height:120px;
+}
+
+section {
+	height:520px;
+}
+
+.signup-box {
+	width:400px;
+}
+
+.input-box {
+	width:300px;
+}
+
+.welcomeHead {
+	font-size: 23px;
+	font-weight: bold;
+}
+.welcomeBody {
+	font-size: 14px;
+}
+
+.signUp-Btn {
+	border-top-left-radius: 17px;
+	border-bottom-left-radius: 17px;
+	border-top-right-radius: 17px;
+	border-bottom-right-radius: 17px;
+	background-color: #00BF92;
+}
+
+.starloginbtn {
+	border-top-left-radius: 17px;
+	border-bottom-left-radius: 17px;
+	border-top-right-radius: 17px;
+	border-bottom-right-radius: 17px;
+}
+
