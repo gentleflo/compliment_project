@@ -15,15 +15,26 @@ public class UserBO {
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
+	// 회원가입
 	public int signUp(String email, String loginId, String userName, String password) {
 		// password 암호화
 		String encryptPassword = EncryptUtils.md5(password);
-		
+	
 		if(encryptPassword.equals("")) {
 			logger.error("[UserBO signUp] 암호화 실패!!!!!");
 			return 0;
 		}
 		
 		return userDAO.insertUser(email, loginId, userName, encryptPassword);
+	}
+	
+	// 아이디 중복확인
+	public boolean isDuplicatedId(String loginId) {
+		int count = userDAO.selectByLoginId(loginId);
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

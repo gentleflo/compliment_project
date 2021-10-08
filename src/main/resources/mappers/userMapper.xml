@@ -17,13 +17,22 @@
  			, `updatedAt`
  		) VALUES (
  			#{email }
- 			, {#loginId }
- 			, {#userName }
- 			, {#password }
+ 			, #{loginId }
+ 			, #{userName }
+ 			, #{password }
  			, now()
  			, now()
  		)
  	</insert>
+ 	
+ 	<select id="selectByLoginId" parameterType="String" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM 
+ 			`user`
+ 		WHERE 
+ 			`loginId` = #{loginId }
+ 	</select>
  
  
  </mapper>
