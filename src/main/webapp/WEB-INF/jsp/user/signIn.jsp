@@ -19,14 +19,14 @@
 </head>
 <body>
 	<div id="wrap">
-		<header></header>
+		<div class="like-header"></div>
 		
 		<section class="d-flex justify-content-center">
 			<div class="signin-box">
 				<div class="welcomeHead text-center mb-1">환영합니다!</div>
 				<div class="welcomeBody text-center text-secondary mb-4">이곳에 들어온 당신에게 칭찬을 드립니다</div>
 				
-				<form id="signUpForm">
+				<form id="loginForm">
 					<div class="d-flex justify-content-center">
 						<div class="input-box">
 							<input type="text" class="form-control mb-2 border-top-0 border-right-0 border-left-0 rounded-0" 
@@ -41,12 +41,12 @@
 					</div>
 				</form>
 				
-				<div class="mt-4 d-flex justify-content-center">
+				<div class="mt-5 d-flex justify-content-center">
 					<a href="#" class="text-secondary"><small>아이디 찾기</small></a>
 					<div class="ml-2 mr-2">/</div>
 					<a href="#" class="text-secondary"><small>비밀번호 찾기</small></a>
 					<div class="ml-2 mr-2">/</div>
-					<a href="#" class="text-secondary"><small>비밀번호 찾기</small></a>			
+					<a href="#" class="text-success"><small><b>회원가입</b></small></a>			
 				</div>
 				
 				<div class="d-flex justify-content-center mt-4">
@@ -55,12 +55,46 @@
 				</div>
 				
 				<div class="d-flex justify-content-center">
-					<button type="button" class="btn starloginbtn btn-outline-secondary btn-sm mt-3">스타계정으로 로그인하기</button>
+					<button type="button" class="btn starloginbtn btn-outline-secondary btn-sm mt-4">스타계정으로 로그인하기</button>
 				</div>
 			</div>
 		</section>	
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$("#loginForm").on("submit", function(){
+				var loginId = $("#loginIdInput").val();
+				var password = $("#passwordInput").val();
+				
+				if(loginId == null || loginId == "") {
+					alert("아이디를 입력하세요.");
+					return;
+				}
+				
+				if(password == null || password == "") {
+					alert("비밀번호를 입력하세요.");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/user/sign_in",
+					data:{"loginId":loginId, "password":password},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("로그인 성공");
+						} else {
+							alert("아이디, 비밀번호를 확인해주세요");
+						}
+					}, error:function(e) {
+						alert("error");
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

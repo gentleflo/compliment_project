@@ -34,5 +34,19 @@
  			`loginId` = #{loginId }
  	</select>
  
- 
+ 	<select id="selectByLoginIdPassword" parameterType="map" resultType="com.gentleflo.complimentSticker.user.model.User">
+ 		SELECT 
+ 			`id`
+ 			, `email`
+ 			, `loginId`
+ 			, `userName`
+ 			, `password`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`loginId` = #{loginId }
+ 			AND `password` = #{password }
+ 	</select>
  </mapper>

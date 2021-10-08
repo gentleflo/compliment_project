@@ -3,6 +3,8 @@ package com.gentleflo.complimentSticker.user.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.gentleflo.complimentSticker.user.model.User;
+
 @Repository
 public interface UserDAO {
 	
@@ -16,4 +18,10 @@ public interface UserDAO {
 	
 	// 아이디 중복확인
 	public int selectByLoginId(@Param("loginId") String loginId);
+	
+	
+	// 로그인
+	public User selectByLoginIdPassword(
+			@Param("loginId") String loginId
+			, @Param("password") String password);
 }

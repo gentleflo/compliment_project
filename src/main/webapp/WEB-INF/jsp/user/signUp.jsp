@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<header></header>
+		<div class="like-header"></div>
 		
 		<section class="d-flex justify-content-center">
 			<div class="signup-box">
@@ -75,6 +75,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			
+			// 이 두가지 변수는 일종의 흰종이에 미리 써놓는 체크박스와도 같은 것이다
 			var isIdCheck = false;
 			var isDuplicatedId = true;
 			
@@ -83,7 +84,7 @@
 				$("#duplicateDiv").addClass("d-none");
 				$("#noneDuplicateDiv").addClass("d-none");
 				var isIdCheck = false;
-				var isDuplicateId = true;  // 진행이 안되는 상황으로 셋팅(기본이 통과 안되는 형태로)
+				var isDuplicateId = true;  // 진행이 안되는 상황으로 셋팅(통과가 안되는 형태를 기본으로-)
 			});
 			
 			
@@ -144,9 +145,9 @@
 					data:{"email":email, "loginId":loginId, "userName":userName, "password":password},
 					success:function(data) {
 						if(data.result == "success") {
-							alert("회원가입 성공");
+							location.href="/user/signin_view";
 						} else {
-							alert("회원가입 실패")
+							alert("회원가입을 다시 시도해주세요.")
 						}
 					}, error:function(e) {
 						alert("error");

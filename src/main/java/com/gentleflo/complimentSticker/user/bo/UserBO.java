@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gentleflo.complimentSticker.common.EncryptUtils;
 import com.gentleflo.complimentSticker.user.dao.UserDAO;
+import com.gentleflo.complimentSticker.user.model.User;
 
 @Service
 public class UserBO {
@@ -28,6 +29,7 @@ public class UserBO {
 		return userDAO.insertUser(email, loginId, userName, encryptPassword);
 	}
 	
+	
 	// 아이디 중복확인
 	public boolean isDuplicatedId(String loginId) {
 		int count = userDAO.selectByLoginId(loginId);
@@ -36,5 +38,12 @@ public class UserBO {
 		} else {
 			return true;
 		}
+	}
+	
+	
+	// 로그인
+	public User getUser(String loginId, String password) {
+		String encryptPassword = EncryptUtils.md5(password);
+		return userDAO.selectByLoginIdPassword(loginId, encryptPassword);
 	}
 }
