@@ -11,16 +11,117 @@ header {
 }
 
 .header-slogan {
-	font-size: 16px;
+	font-size: 18px;
 	font-family: Lucida Console, Courier, monospace;
 }
 
 section {
-	width: 800px;
+	width: 840px;
+	height: 1020px;
 	margin: auto;
 }
 
+.profile {
+	height: 120px;
+}
 .profile-icon {
-	font-size:50px;
+	font-size:58px;
+}
+.userName-box {
+	width: 88px;
+    height: 25px;
+    background-color: white; 
+    box-shadow: inset 0 -22px #BAF0D5;
 }
 
+.plan-section {
+	width: 800px;
+	margin: auto;
+}
+.plan-section-nav {
+	width: 300px;
+}
+
+.calendar-icon {
+	font-size:50px;
+}
+.date-box {
+	font-family: Helvetica, Arial, sans-serif;
+	width: 70px;
+    height: 22px;
+    background-color: white; 
+    box-shadow: inset 0 -8px #BAF0D5; 
+}
+.startDate {
+	width: 50px;
+}
+.endDate {
+	width: 50px;
+}
+.start-date-input {
+	height: 43px;
+	width: 220px;
+}
+.end-date-input {
+	height: 43px;
+	width: 219px;
+}
+
+.compliment-list-icon {
+	font-size: 52px;
+}
+.compliment-list-box {
+	font-family: Helvetica, Arial, sans-serif;
+	width: 107px;
+    height: 22px;
+    background-color: white; 
+    box-shadow: inset 0 -8px #BAF0D5; 
+}
+.input-class {
+	height: 43px;
+	width: 440px;
+}
+
+
+.award-icon {
+	font-size:52px;
+}
+.award-list-box {
+	font-family: Helvetica, Arial, sans-serif;
+	width: 126px;
+    height: 22px;
+    background-color: white; 
+    box-shadow: inset 0 -8px #BAF0D5; 
+}
+
+
+.stickerBoard-icon {
+	font-size:47px;
+}
+.sticker-board-box {
+	font-family: Helvetica, Arial, sans-serif;
+	width: 177px;
+    height: 22px;
+    background-color: white; 
+    box-shadow: inset 0 -8px #BAF0D5; 
+}
+
+
+.share-icon {
+	font-size:45px;
+}
+.share-box {
+	font-family: Helvetica, Arial, sans-serif;
+	width: 112px;
+    height: 22px;
+    background-color: white; 
+    box-shadow: inset 0 -8px #BAF0D5; 
+}
+
+.btn-box {
+	font-family: Helvetica, Arial, sans-serif;
+	width: 65px;
+    height: 60px;
+    background-color: white; 
+    box-shadow: inset 0 -8px #BAF0D5; 
+}

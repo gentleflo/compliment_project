@@ -21,69 +21,113 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section class="mt-5">
-			<div></div>
-			
-			<form>
-				<div>
-				</div>
-			</form>
-			
-			
+		<section class="mt-4">
 			<!-- 프로필 -->
-			<div class="d-flex">
-				<i class="bi bi-person-circle profile-icon"></i>
-				<i class="bi bi-person-square profile-icon"></i>
-				<i class="bi bi-person-badge profile-icon"></i>
-				
-				<div>
+			<div class="profile d-flex">
+				<i class="bi bi-person-square profile-icon"></i> 
+				<!--<i class="bi bi-person-badge profile-icon"></i>-->
+				<div class="ml-2 mt-4">
 					<!-- userName -->
 					<c:if test="${not empty loginId }">
-						<h5>${loginId }</h5>
+						<h5 class="userName-box">${loginId }</h5>
 					</c:if>
 					<!-- 팔로우, 팔로잉 정보 -->
-					<div>칭찬친구 11명</div>
+					<div><small>칭찬친구 11명</small></div>
 				</div>
 			</div>
 			
 			
+			<!-- 플랜 입력 부분 -->
+			<div class="plan-section">
+				
+				<!-- 기간 설정 -->
+				<div class="d-flex">
+					<div class="plan-section-nav d-flex">
+						<i class="bi bi-calendar2-date calendar-icon"></i>
+						<div class="date-box ml-2 my-5 mr-5">기간 설정</div>
+					</div>
+					<div class="d-flex ml-5">
+						<div class="startDate mt-5 ml-1"><small>시작일</small></div>
+						<input type="text" id="startDateInput" class="start-date-input form-control mr-4 mt-4" placeholder="시작일을 선택하세요">
+						<div class="endDate mt-5"><small>종료일</small></div>
+						<input type="text" id="endDateInput" class="end-date-input form-control mt-4" placeholder="종료일을 선택하세요">
+					</div>
+				</div>
+				
+				
+				<!-- 무엇을 했을때 나에게 칭찬하실 건가요? -->
+				<div class="d-flex">
+					<div class="d-flex">
+						<i class="bi bi-clipboard-check compliment-list-icon"></i>
+						<div class="plan-section-nav ml-2 my-4">
+							<div class="compliment-list-box">무엇을 했을때</div>
+							<div>나에게 칭찬하실건가요?</div>
+						</div>
+					</div>
+					
+					<div class="mt-3">
+						<input type="text" id="wishListInput" class="input-class form-control" placeholder="내용을 입력해주세요">
+						<div class="d-flex justify-content-right">
+							<div class="text-secondary"><small>내용은 ' / '로 구분해주세요:)</small></div>
+						</div>
+					</div>
+				</div>
 			
-			<!-- 기간 설정 -->
-			<i class="bi bi-calendar-date"></i>
-			<i class="bi bi-calendar2-date"></i>
+				
+				
+				<!-- 스티커를 다 모았을때 나에게 줄 보상 -->
+				<div class="d-flex mt-3">
+					<i class="bi bi-award award-icon"></i>
+					<div class="plan-section-nav ml-2 my-4">
+						<div>스티커를 다 모았을때</div>
+						<div class="award-list-box">나에게 줄 보상!:)</div>
+					</div>
+					
+					<div class="mt-3">
+						<input type="text" id="awardInput" class="input-class form-control" placeholder="언제나 즐거운 위시리스트 작성!">
+						<div class="text-secondary"><small>내용은 ' / '로 구분해주세요:)</small></div>
+					</div>
+				</div>
 			
+				
+				
+				<!-- 스티커 판을 골라보아요  -->
+				<div class="d-flex mt-2">
+					<i class="bi bi-plus-square-dotted stickerBoard-icon ml-1"></i>
+					<div class="plan-section-nav my-2">
+						<div class="sticker-board-box ml-2 my-4">스티커 판을 골라보아요!</div>
+					</div>
+				</div>
+				<div class="d-flex justify-content-center">
+					<div class="text-center mr-4">
+						<img src="/static/image/board_tem_img.png" class="d-block" alt="스티커 보드 임시 이미지"><input type="radio" name="stickerBoard">
+					</div>
+					<div class="text-center mr-4">
+						<img src="/static/image/board_tem_img.png" class="d-block" alt="스티커 보드 임시 이미지"><input type="radio" name="stickerBoard">
+					</div>
+					<div class="text-center mr-4">
+						<img src="/static/image/board_tem_img.png" class="d-block" alt="스티커 보드 임시 이미지"><input type="radio" name="stickerBoard">
+					</div>
+				</div>
 			
-			<!-- 무엇을 했을때 나에게 칭찬하실 건가요? -->
-			<i class="bi bi-pencil-square"></i>
-			<i class="bi bi-clipboard-check"></i>
-			<i class="bi bi-card-checklist"></i>
-			<i class="bi bi-list-stars"></i>
-			
-			
-			<!-- 스티커를 다 모았을때 나에게 줄 보상 -->
-			<i class="bi bi-award"></i>
-			<i class="bi bi-cart4"></i>
-			<i class="bi bi-cash-coin"></i>
-			<i class="bi bi-piggy-bank"></i>
-			<i class="bi bi-shop"></i>
-			
-			
-			
-			<!-- 스티커 판을 골라보아요 -->
-			<i class="bi bi-images"></i>
-			<i class="bi bi-plus-square-dotted"></i>
-			<img>
-			<img>
-			
-			
-			<!-- 공유 여부 선택 -->
-			<i class="bi bi-gear"></i>
-			<i class="bi bi-share"></i>
-			
-			
-			<!-- 저장 버튼 -->
-		
-		
+				
+				<!-- 공유 여부 선택 -->
+				<div class="d-flex mt-3">
+					<i class="bi bi-share share-icon"></i>
+					<div class="plan-section-nav">
+						<div class="share-box ml-3 my-4">공유 여부 선택</div>
+					</div>
+					<div class="ml-3 my-4">
+						<input type="radio" class="mr-1"><label class="mr-5">공유</label>
+						<input type="radio" class="mr-1"><label>비공개</label>
+					</div>
+				</div>
+				
+				<!-- 저장 버튼 -->
+				<div class="text-right">
+					<button type="button" class="btn btn-outline-success save-btn text-dark"><span class="btn-box">저장</span></button>
+				</div>
+			</div>
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
