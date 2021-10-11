@@ -39,7 +39,7 @@
 			
 			<!-- 플랜 입력 부분 -->
 			<div class="plan-section">
-				
+				<form id="complimentEditForm">
 				<!-- 기간 설정 -->
 				<div class="d-flex">
 					<div class="plan-section-nav d-flex">
@@ -48,9 +48,9 @@
 					</div>
 					<div class="d-flex ml-5">
 						<div class="startDate mt-5 ml-1"><small>시작일</small></div>
-						<input type="text" id="startDateInput" class="start-date-input form-control mr-4 mt-4" placeholder="시작일을 선택하세요">
+						<input type="date" id="startDateInput" class="start-date-input form-control mr-4 mt-4" placeholder="시작일을 선택하세요">
 						<div class="endDate mt-5"><small>종료일</small></div>
-						<input type="text" id="endDateInput" class="end-date-input form-control mt-4" placeholder="종료일을 선택하세요">
+						<input type="date" id="endDateInput" class="end-date-input form-control mt-4" placeholder="종료일을 선택하세요">
 					</div>
 				</div>
 				
@@ -64,11 +64,10 @@
 							<div>나에게 칭찬하실건가요?</div>
 						</div>
 					</div>
-					
 					<div class="mt-3">
-						<input type="text" id="wishListInput" class="input-class form-control" placeholder="내용을 입력해주세요">
+						<input type="text" id="complimentListInput" class="input-class form-control" placeholder="내용을 입력해주세요">
 						<div class="d-flex justify-content-right">
-							<div class="text-secondary"><small>내용은 ' / '로 구분해주세요:)</small></div>
+							<div class="text-secondary"><small>내용은 ' / '로 구분해주세요 :)</small></div>
 						</div>
 					</div>
 				</div>
@@ -84,8 +83,8 @@
 					</div>
 					
 					<div class="mt-3">
-						<input type="text" id="awardInput" class="input-class form-control" placeholder="언제나 즐거운 위시리스트 작성!">
-						<div class="text-secondary"><small>내용은 ' / '로 구분해주세요:)</small></div>
+						<input type="text" id="wishListInput" class="input-class form-control" placeholder="언제나 즐거운 위시리스트 작성!">
+						<div class="text-secondary"><small>내용은 ' / '로 구분해주세요 :)</small></div>
 					</div>
 				</div>
 			
@@ -125,12 +124,48 @@
 				
 				<!-- 저장 버튼 -->
 				<div class="text-right">
-					<button type="button" class="btn btn-outline-success save-btn text-dark"><span class="btn-box">저장</span></button>
+					<button type="submit" class="btn btn-outline-success save-btn text-dark"><span class="btn-box">저장</span></button>
 				</div>
+				</form>
 			</div>
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$("#complimentEditForm").on("submit", function(e){
+				e.preventDefault();
+				
+				var startDate = $("#startDateInput").val();
+				var endDate = $("#endDateInput").val();
+				var complimentList = $("#complimentListInput").val();
+				var wishList = $("#wishListInput").val();
+				
+				if(starDate == null || startDate == "") {
+					alert("시작일을 선택하세요.");
+					return;
+				}
+				
+				if(endDate == null || endDate == "") {
+					alert("종료일을 선택하세요.");
+					return;
+				}
+				
+				if(complimentList == null || complimentList == "") {
+					alert("칭찬 받을 리스트를 작성해주세요~!");
+					return;
+				}
+				
+				if(wishList == null || wishList == "") {
+					alert("위시리스트를 입력해주세요");
+					return;
+				}
+				
+				
+			});
+		});
+	</script>
 </body>
 </html>
