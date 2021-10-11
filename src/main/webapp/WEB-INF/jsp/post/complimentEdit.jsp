@@ -21,7 +21,69 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section>
+		<section class="mt-5">
+			<div></div>
+			
+			<form>
+				<div>
+				</div>
+			</form>
+			
+			
+			<!-- 프로필 -->
+			<div class="d-flex">
+				<i class="bi bi-person-circle profile-icon"></i>
+				<i class="bi bi-person-square profile-icon"></i>
+				<i class="bi bi-person-badge profile-icon"></i>
+				
+				<div>
+					<!-- userName -->
+					<c:if test="${not empty loginId }">
+						<h5>${loginId }</h5>
+					</c:if>
+					<!-- 팔로우, 팔로잉 정보 -->
+					<div>칭찬친구 11명</div>
+				</div>
+			</div>
+			
+			
+			
+			<!-- 기간 설정 -->
+			<i class="bi bi-calendar-date"></i>
+			<i class="bi bi-calendar2-date"></i>
+			
+			
+			<!-- 무엇을 했을때 나에게 칭찬하실 건가요? -->
+			<i class="bi bi-pencil-square"></i>
+			<i class="bi bi-clipboard-check"></i>
+			<i class="bi bi-card-checklist"></i>
+			<i class="bi bi-list-stars"></i>
+			
+			
+			<!-- 스티커를 다 모았을때 나에게 줄 보상 -->
+			<i class="bi bi-award"></i>
+			<i class="bi bi-cart4"></i>
+			<i class="bi bi-cash-coin"></i>
+			<i class="bi bi-piggy-bank"></i>
+			<i class="bi bi-shop"></i>
+			
+			
+			
+			<!-- 스티커 판을 골라보아요 -->
+			<i class="bi bi-images"></i>
+			<i class="bi bi-plus-square-dotted"></i>
+			<img>
+			<img>
+			
+			
+			<!-- 공유 여부 선택 -->
+			<i class="bi bi-gear"></i>
+			<i class="bi bi-share"></i>
+			
+			
+			<!-- 저장 버튼 -->
+		
+		
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />

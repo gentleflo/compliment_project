@@ -6,11 +6,21 @@
 }
 
 header {
-	height: 80px;
-	background-color: #A3EFE0;
+	height: 82px;
+	background-color: #BAECE2;
 }
-.award-icon {
-	font-size: 50px;
-	color: #3A3A3A;
+
+.header-slogan {
+	font-size: 16px;
+	font-family: Lucida Console, Courier, monospace;
+}
+
+section {
+	width: 800px;
+	margin: auto;
+}
+
+.profile-icon {
+	font-size:50px;
 }
 
