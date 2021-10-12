@@ -12,6 +12,31 @@
  		FROM 
  			`stickerBoard`
  	</select>
+ 	
+ 	<!-- postId(pk)가 필요해서 id를 얻기 위한 insert -->
+ 	<insert id="insertPost" parameterType="com.gentleflo.complimentSticker.post.model.Post" 
+ 	useGeneratedKeys="true" keyProperty="id">
+ 		INSERT INTO `post`
+ 		(
+ 			`userId`
+ 			, `loginId`
+ 			, `startDate`
+ 			, `endDate`
+ 			, `stickerBoardId`
+ 			, `share`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		) VALUES (
+ 			#{userId }
+ 			, #{loginId }
+ 			, #{startDate }
+ 			, #{endDate }
+ 			, #{stickerBoardId }
+ 			, #{share }
+ 			, now()
+ 			, now()
+ 		)
+ 	</insert>
  
  </mapper>
  

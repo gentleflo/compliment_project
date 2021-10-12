@@ -96,7 +96,7 @@
 				<div class="d-flex justify-content-center mt-1">
 					<c:forEach var="stickerBoardPreview" items="${stickerBoardImgPathList }">
 						<div class="stickerBoardImgBox text-center mr-3">
-							<img src="${stickerBoardPreview.imagePath }" class="stickerBoardImgPreview d-block" alt="스티커 보드 임시 이미지">
+							<img src="${stickerBoardPreview.imagePath }" data-stickerBoard-id ="${stickerBoardPreview.id }" class="stickerBoardImgPreview d-block" alt="스티커 보드 임시 이미지">
 							<input type="radio" value="" name="stickerBoard">
 						</div>
 					</c:forEach>
@@ -130,6 +130,52 @@
 	</div>
 	
 	<script>
+	$(document).ready(function(){
+		$("#complimentEditForm").on("submit", function(e){
+			e.preventDefault();
+			
+			var startDate = $("#startDateInput").val();
+			var endDate = $("#endDateInput").val();
+			var complimentList = $("#complimentListInput").val();
+			var wishList = $("#wishListInput").val();
+			var stickerBoardCheck = $("input[name=stickerBoard]").val();
+			var shareCheck = $("input[name=share]").val();
+			
+			if(startDate == null || startDate == "") {
+				alert("시작일을 선택하세요.");
+				return;
+			}
+			
+			if(endDate == null || endDate == "") {
+				alert("종료일을 선택하세요.");
+				return;
+			}
+			
+			if(complimentList == null || complimentList == "") {
+				alert("칭찬 받을 리스트를 작성해주세요~!");
+				return;
+			}
+			
+			if(wishList == null || wishList == "") {
+				alert("위시리스트를 입력해주세요");
+				return;
+			}
+			
+			if(stickerBoardCheck == null || stickerBoardCheck == "") {
+				alert("스티커보드 이미지를 선택해주세요");
+				return;
+			}
+			
+			if(shareCheck == null || shareCheck == "") {
+				alert("공유 여부를 체크해주세요");
+				return;
+			}
+			
+			
+		});
+	});
+
+
 		
 	</script>
 </body>
