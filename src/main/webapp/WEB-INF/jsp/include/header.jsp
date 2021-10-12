@@ -4,6 +4,6 @@
 <header>
 	<div class="d-flex align-items-end mt-3">
 		<img src="/static/image/award_icon_22.png" width="45px" class="header-img mt-3 ml-4" alt="상단 칭찬 아이콘">
-		<div class="header-slogan ml-1">compliment yourself!</div>
+		<div class="header-slogan ml-1">give compliments on yourself!</div>
 	</div>
 </header>

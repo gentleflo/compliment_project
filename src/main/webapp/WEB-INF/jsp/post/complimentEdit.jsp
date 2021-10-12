@@ -44,7 +44,7 @@
 				<div class="d-flex">
 					<div class="plan-section-nav d-flex">
 						<i class="bi bi-calendar2-date calendar-icon"></i>
-						<div class="date-box ml-2 my-5 mr-5">기간 설정</div>
+						<div class="date-box ml-3 my-5 mr-5">기간 설정</div>
 					</div>
 					<div class="d-flex ml-5">
 						<div class="startDate mt-5 ml-1"><small>시작일</small></div>
@@ -59,45 +59,41 @@
 				<div class="d-flex">
 					<div class="d-flex">
 						<i class="bi bi-clipboard-check compliment-list-icon"></i>
-						<div class="plan-section-nav ml-2 my-4">
-							<div class="compliment-list-box">무엇을 했을때</div>
-							<div>나에게 칭찬하실건가요?</div>
+						<div class="plan-section-nav my-4 ml-2">
+							<div class="compliment-list-box ml-2">무엇을 했을때</div>
+							<div class="ml-2">나에게 칭찬하실건가요?</div>
 						</div>
 					</div>
 					<div class="mt-3">
 						<input type="text" id="complimentListInput" class="input-class form-control" placeholder="내용을 입력해주세요">
-						<div class="d-flex justify-content-right">
-							<div class="text-secondary"><small>내용은 ' / '로 구분해주세요 :)</small></div>
-						</div>
+						<div class="text-secondary text-right"><small>내용은 ' / '로 구분해주세요 :)</small></div>
 					</div>
 				</div>
 			
 				
-				
 				<!-- 스티커를 다 모았을때 나에게 줄 보상 -->
 				<div class="d-flex mt-3">
 					<i class="bi bi-award award-icon"></i>
-					<div class="plan-section-nav ml-2 my-4">
+					<div class="plan-section-nav ml-3 my-4">
 						<div>스티커를 다 모았을때</div>
 						<div class="award-list-box">나에게 줄 보상!:)</div>
 					</div>
 					
 					<div class="mt-3">
 						<input type="text" id="wishListInput" class="input-class form-control" placeholder="언제나 즐거운 위시리스트 작성!">
-						<div class="text-secondary"><small>내용은 ' / '로 구분해주세요 :)</small></div>
+						<div class="text-secondary text-right"><small>내용은 ' / '로 구분해주세요 :)</small></div>
 					</div>
 				</div>
 			
-				
 				
 				<!-- 스티커 판을 골라보아요  -->
 				<div class="d-flex mt-2">
 					<i class="bi bi-plus-square-dotted stickerBoard-icon ml-1"></i>
 					<div class="plan-section-nav my-2">
-						<div class="sticker-board-box ml-2 my-4">스티커 판을 골라보아요!</div>
+						<div class="sticker-board-box ml-3 my-4">스티커 판을 골라보아요!</div>
 					</div>
 				</div>
-				<div class="d-flex justify-content-center">
+				<div class="d-flex justify-content-center mt-1">
 					<div class="text-center mr-4">
 						<img src="/static/image/board_tem_img.png" class="d-block" alt="스티커 보드 임시 이미지"><input type="radio" name="stickerBoard">
 					</div>
@@ -117,10 +113,13 @@
 						<div class="share-box ml-3 my-4">공유 여부 선택</div>
 					</div>
 					<div class="ml-3 my-4">
-						<input type="radio" class="mr-1"><label class="mr-5">공유</label>
-						<input type="radio" class="mr-1"><label>비공개</label>
+						<input type="radio" name="share" value="share" checked id="shareChecked" class="mr-1">
+							<label for="shareChecked" class="mr-5">공유</label>
+						<input type="radio" name="share" value="nonShare" id="nonShareChecked" class="mr-1">
+							<label for="nonShareChecked">비공개</label>
 					</div>
 				</div>
+				
 				
 				<!-- 저장 버튼 -->
 				<div class="text-right">
@@ -142,8 +141,9 @@
 				var endDate = $("#endDateInput").val();
 				var complimentList = $("#complimentListInput").val();
 				var wishList = $("#wishListInput").val();
+				var shareCheck = $("input[name=share]").val();
 				
-				if(starDate == null || startDate == "") {
+				if(startDate == null || startDate == "") {
 					alert("시작일을 선택하세요.");
 					return;
 				}
@@ -160,6 +160,11 @@
 				
 				if(wishList == null || wishList == "") {
 					alert("위시리스트를 입력해주세요");
+					return;
+				}
+				
+				if(shareCheck == null || shareCheck == "") {
+					alert("공유 여부를 체크해주세요");
 					return;
 				}
 				
