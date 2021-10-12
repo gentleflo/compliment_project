@@ -94,26 +94,23 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center mt-1">
-					<div class="text-center mr-4">
-						<img src="/static/image/board_tem_img.png" class="d-block" alt="스티커 보드 임시 이미지"><input type="radio" name="stickerBoard">
-					</div>
-					<div class="text-center mr-4">
-						<img src="/static/image/board_tem_img.png" class="d-block" alt="스티커 보드 임시 이미지"><input type="radio" name="stickerBoard">
-					</div>
-					<div class="text-center mr-4">
-						<img src="/static/image/board_tem_img.png" class="d-block" alt="스티커 보드 임시 이미지"><input type="radio" name="stickerBoard">
-					</div>
+					<c:forEach var="stickerBoardPreview" items="${stickerBoardImgPathList }">
+						<div class="stickerBoardImgBox text-center mr-3">
+							<img src="${stickerBoardPreview.imagePath }" class="stickerBoardImgPreview d-block" alt="스티커 보드 임시 이미지">
+							<input type="radio" value="" name="stickerBoard">
+						</div>
+					</c:forEach>
 				</div>
 			
 				
 				<!-- 공유 여부 선택 -->
-				<div class="d-flex mt-3">
+				<div class="d-flex mt-4">
 					<i class="bi bi-share share-icon"></i>
 					<div class="plan-section-nav">
 						<div class="share-box ml-3 my-4">공유 여부 선택</div>
 					</div>
 					<div class="ml-3 my-4">
-						<input type="radio" name="share" value="share" checked id="shareChecked" class="mr-1">
+						<input type="radio" name="share" value="share" id="shareChecked" class="mr-1" checked>
 							<label for="shareChecked" class="mr-5">공유</label>
 						<input type="radio" name="share" value="nonShare" id="nonShareChecked" class="mr-1">
 							<label for="nonShareChecked">비공개</label>
@@ -133,44 +130,7 @@
 	</div>
 	
 	<script>
-		$(document).ready(function(){
-			$("#complimentEditForm").on("submit", function(e){
-				e.preventDefault();
-				
-				var startDate = $("#startDateInput").val();
-				var endDate = $("#endDateInput").val();
-				var complimentList = $("#complimentListInput").val();
-				var wishList = $("#wishListInput").val();
-				var shareCheck = $("input[name=share]").val();
-				
-				if(startDate == null || startDate == "") {
-					alert("시작일을 선택하세요.");
-					return;
-				}
-				
-				if(endDate == null || endDate == "") {
-					alert("종료일을 선택하세요.");
-					return;
-				}
-				
-				if(complimentList == null || complimentList == "") {
-					alert("칭찬 받을 리스트를 작성해주세요~!");
-					return;
-				}
-				
-				if(wishList == null || wishList == "") {
-					alert("위시리스트를 입력해주세요");
-					return;
-				}
-				
-				if(shareCheck == null || shareCheck == "") {
-					alert("공유 여부를 체크해주세요");
-					return;
-				}
-				
-				
-			});
-		});
+		
 	</script>
 </body>
 </html>
