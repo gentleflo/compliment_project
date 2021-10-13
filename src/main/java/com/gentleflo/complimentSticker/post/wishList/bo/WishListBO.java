@@ -1,4 +1,4 @@
-package com.gentleflo.complimentSticker.wishList.bo;
+package com.gentleflo.complimentSticker.post.wishList.bo;
 
 import org.springframework.stereotype.Service;
 

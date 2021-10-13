@@ -22,14 +22,8 @@ public class PostBO {
 	}
 
 	// bo에서 post model 객체를 생성해서 파라미터로 전달된 값들을 다 셋한다
-	public int addPost(String startDate
-			,String endDate
-			,String compliment
-			,String wishList
-			,int stickerBoardId
-			,boolean share
-			,int userId
-			,String loginId) {
+	public int addPost(String startDate, String endDate ,String compliment ,String wishList
+			,int stickerBoardId ,boolean share ,int userId ,String loginId) {
 		
 		Post post = new Post();
 		post.setStartDate(startDate);
@@ -40,7 +34,7 @@ public class PostBO {
 		post.setLoginId(loginId);
 		
 		postDAO.insertPost(post);
-		int postId = post.getId();
+		int postId = post.getId();   // postId 얻음
 		
 		// complimentBO.addCompliment(compliment, userId, loginId, postId);
 		
