@@ -1,5 +1,6 @@
 package com.gentleflo.complimentSticker.post;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gentleflo.complimentSticker.post.bo.PostBO;
-import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
+
 
 
 @RestController
@@ -20,8 +21,7 @@ import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
 public class PostRestController {
 	@Autowired
 	private PostBO postBO;
-	@Autowired
-	private ComplimentBO complimentBO;
+
 	
 	@PostMapping("/create_post")
 	public Map<String, String> createPost(
@@ -36,8 +36,16 @@ public class PostRestController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		String loginId = (String)session.getAttribute("loginId");
-
 		
+		boolean post = postBO.addPost(startDate, endDate, compliment, wishList, stickerBoardId, share, userId, loginId);
+		Map<String, String> result = new HashMap<>();
+		if(post) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		
+		return result;
 	}
 	
 }

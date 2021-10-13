@@ -96,8 +96,8 @@
 				<div class="d-flex justify-content-center mt-1">
 					<c:forEach var="stickerBoardPreview" items="${stickerBoardImgPathList }">
 						<div class="stickerBoardImgBox text-center mr-3">
-							<img src="${stickerBoardPreview.imagePath }" data-stickerBoard-id ="${stickerBoardPreview.id }" class="stickerBoardImgPreview d-block" alt="스티커 보드 임시 이미지">
-							<input type="radio" value="" name="stickerBoard">
+							<img src="${stickerBoardPreview.imagePath }" class="stickerBoardImgPreview d-block" alt="스티커 보드 임시 이미지">
+							<input type="radio" value="${stickerBoardPreview.id }" name="stickerBoard">
 						</div>
 					</c:forEach>
 				</div>
@@ -110,9 +110,9 @@
 						<div class="share-box ml-3 my-4">공유 여부 선택</div>
 					</div>
 					<div class="ml-3 my-4">
-						<input type="radio" name="share" value="share" id="shareChecked" class="mr-1" checked>
+						<input type="radio" name="share" value="true" id="shareChecked" class="mr-1" checked>
 							<label for="shareChecked" class="mr-5">공유</label>
-						<input type="radio" name="share" value="nonShare" id="nonShareChecked" class="mr-1">
+						<input type="radio" name="share" value="false" id="nonShareChecked" class="mr-1">
 							<label for="nonShareChecked">비공개</label>
 					</div>
 				</div>
@@ -138,8 +138,8 @@
 			var endDate = $("#endDateInput").val();
 			var complimentList = $("#complimentListInput").val();
 			var wishList = $("#wishListInput").val();
-			var stickerBoardCheck = $("input[name=stickerBoard]").val();
-			var shareCheck = $("input[name=share]").val();
+			var stickerBoardCheck = $("input[name=stickerBoard]:checked").val();
+			var shareCheck = $("input[name=share]:checked").val();
 			
 			if(startDate == null || startDate == "") {
 				alert("시작일을 선택하세요.");
@@ -171,7 +171,21 @@
 				return;
 			}
 			
-			
+			$.ajax({
+				type:"post",
+				url:"/post/create_post",
+				data:{"startDate":startDate, "endDate":endDate, "compliment":complimentList, 
+					"wishList":wishList, "stickerBoardId":stickerBoardCheck, "share":shareCheck},
+				success:function(data) {
+					if(data.result == "success") {
+						alert("칭찬 리스트 등록 성공!");
+					} else {
+						alert("저장 실패..........");
+					}
+				}, error:function(e) {
+					alert("error......");
+				}
+			});
 		});
 	});
 

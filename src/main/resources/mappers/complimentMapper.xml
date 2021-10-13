@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>mati
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.gentleflo.complimentSticker.post.compliment.dao.ComplimentDAO">
- 	<insert id="insertCompliment" parameterType="map">
+ 	<insert id="insertCompliment" parameterType="com.gentleflo.complimentSticker.post.compliment.model.Compliment">
  		INSERT INTO
  			`compliment`
  		(
@@ -14,15 +14,23 @@
  			, `compliment`
  			, `createdAt`
  			, `updatedAt`
- 		) VALUES (
- 			#{userId }
- 			, #{loginId }
- 			, #{postId }
- 			, #{compliment }
- 			, now()
- 			, now()
- 		), ()
+ 		) VALUES 
+ 			<foreach collection="compliment" item="complimentList" separator=" , ">
+ 				(	
+ 					#{complimentList.userId }
+ 					, #{complimentList.loginId }
+ 					, #{complimentList.postId }
+ 					, #{complimentList.compliment }
+ 					, now()
+ 					, now()
+ 				)
+ 			</foreach>
  	</insert>
  </mapper>
  
+ 
+ <!--  <foreach> 태그 속성 설명
+	   collection : parameterType으로 넘어온 map안에 list(map에 key값)
+	   item : collection을 사용할 변수 명
+	   seperator : 반복 문자열을 구분할 문자 -->
  

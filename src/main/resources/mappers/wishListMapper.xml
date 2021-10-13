@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.gentleflo.complimentSticker.post.wishList.dao.WishListDAO">
+ 	<insert id="insertWishList" parameterType="com.gentleflo.complimentSticker.post.wishList.model.WishList">
+ 		INSERT INTO
+ 			`wishList`
+ 			(
+	 			`userId`
+	 			, `loginId`
+	 			, `postId`
+	 			, `wishList`
+	 			, `url`
+	 			, `createdAt`
+	 			, `updatedAt`
+ 			) VALUES 
+ 				<foreach collection="wishList" item="listOfWishList" separator=" , ">
+ 					(
+ 						#{listOfWishList.userId }
+ 						, #{listOfWishList.loginId }
+ 						, #{listOfWishList.postId }
+ 						, #{listOfWishList.wishList }
+ 						, #{listOfWishList.url }
+ 						, now()
+ 						, now()
+ 					)
+ 				</foreach>
+ 	</insert>
+ 
+ </mapper>
