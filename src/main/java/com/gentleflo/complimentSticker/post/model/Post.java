@@ -8,7 +8,7 @@ public class Post {
 	private String loginId;
 	private String startDate;
 	private String endDate;
-	private int stickerBoardId;
+	private String stickerBoardImgUrl;
 	private boolean share;
 	private Date createdAt;
 	private Date updatedAt;
@@ -43,11 +43,11 @@ public class Post {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public int getStickerBoardId() {
-		return stickerBoardId;
+	public String getStickerBoardImgUrl() {
+		return stickerBoardImgUrl;
 	}
-	public void setStickerBoardId(int stickerBoardId) {
-		this.stickerBoardId = stickerBoardId;
+	public void setStickerBoardImgUrl(String stickerBoardImgUrl) {
+		this.stickerBoardImgUrl = stickerBoardImgUrl;
 	}
 	public boolean isShare() {
 		return share;
@@ -66,6 +66,5 @@ public class Post {
 	}
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-	
+	}	
 }

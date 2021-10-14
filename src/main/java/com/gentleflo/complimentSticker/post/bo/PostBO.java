@@ -27,12 +27,12 @@ public class PostBO {
 	// post insert
 	// bo에서 post model 객체를 생성해서 파라미터로 전달된 값들을 다 셋한다
 	public boolean addPost(String startDate, String endDate, String compliment, String wishList, 
-			int stickerBoardId, boolean share, int userId, String loginId) {
+			String stickerBoardImgUrl, boolean share, int userId, String loginId) {
 		
 		Post post = new Post();
 		post.setStartDate(startDate);
 		post.setEndDate(endDate);
-		post.setStickerBoardId(stickerBoardId);
+		post.setStickerBoardImgUrl(stickerBoardImgUrl);
 		post.setShare(share);
 		post.setUserId(userId);
 		post.setLoginId(loginId);
@@ -50,5 +50,10 @@ public class PostBO {
 			return false;
 		}
 		return true;
+	}
+	
+	// compliment_preview 페이지에서 user가 선택해서 진행중이거나 종료한 스티커판 이미지를 보여주기 위해
+	public List<Post> getStickerBoardImgUrl(int userId, String loginId) {
+		return postDAO.selectStickerBoardImgByUserIdLoginId(userId, loginId);
 	}
 }

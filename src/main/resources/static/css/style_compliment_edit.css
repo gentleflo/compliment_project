@@ -108,9 +108,7 @@ section {
 
 .stickerBoardImgBox {
 	width: 210px;
-	height: 280px;
-	border: solid 2px rgb(148, 148, 148);
-	border-radius: 10px;
+	height: 280px
 }
 
 .stickerBoardImgPreview {

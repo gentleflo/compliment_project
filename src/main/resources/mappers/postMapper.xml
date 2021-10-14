@@ -22,7 +22,7 @@
  			, `loginId`
  			, `startDate`
  			, `endDate`
- 			, `stickerBoardId`
+ 			, `stickerBoardImgUrl`
  			, `share`
  			, `createdAt`
  			, `updatedAt`
@@ -31,12 +31,32 @@
  			, #{loginId }
  			, #{startDate }
  			, #{endDate }
- 			, #{stickerBoardId }
+ 			, #{stickerBoardImgUrl }
  			, #{share }
  			, now()
  			, now()
  		)
  	</insert>
+ 	
+ 	<select id="selectStickerBoardImgByUserIdLoginId" resultType="com.gentleflo.complimentSticker.post.model.Post">
+ 		SELECT
+ 			`id`
+ 			,`userId`
+ 			, `loginId`
+ 			, `startDate`
+ 			, `endDate`
+ 			, `stickerBoardImgUrl`
+ 			, `share`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`post`
+ 		WHERE
+ 			`userId` = #{userId }
+ 			AND `loginId` = #{loginId } 
+ 		ORDER BY
+ 			`id` DESC			
+ 	</select>
  
  </mapper>
  

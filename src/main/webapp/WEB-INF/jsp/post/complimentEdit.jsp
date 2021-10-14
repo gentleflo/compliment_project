@@ -96,8 +96,8 @@
 				<div class="d-flex justify-content-center mt-1">
 					<c:forEach var="stickerBoardPreview" items="${stickerBoardImgPathList }">
 						<div class="stickerBoardImgBox text-center mr-3">
-							<img src="${stickerBoardPreview.imagePath }" class="stickerBoardImgPreview d-block" alt="스티커 보드 임시 이미지">
-							<input type="radio" value="${stickerBoardPreview.id }" name="stickerBoard">
+							<img src="${stickerBoardPreview.imagePath }" class="stickerBoardImgPreview d-block" alt="스티커 보드 옵션 이미지">
+							<input type="radio" value="${stickerBoardPreview.imagePath }" name="stickerBoard">
 						</div>
 					</c:forEach>
 				</div>
@@ -175,10 +175,11 @@
 				type:"post",
 				url:"/post/create_post",
 				data:{"startDate":startDate, "endDate":endDate, "compliment":complimentList, 
-					"wishList":wishList, "stickerBoardId":stickerBoardCheck, "share":shareCheck},
+					"wishList":wishList, "stickerBoardImgUrl":stickerBoardCheck, "share":shareCheck},
 				success:function(data) {
 					if(data.result == "success") {
 						alert("칭찬 리스트 등록 성공!");
+						location.href="/post/compliment_preview";
 					} else {
 						alert("저장 실패..........");
 					}
