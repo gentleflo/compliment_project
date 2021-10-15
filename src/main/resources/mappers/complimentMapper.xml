@@ -26,6 +26,22 @@
  				)
  			</foreach>
  	</insert>
+ 	
+ 	<select id="selectComplimentByUserIdPostId" resultType="com.gentleflo.complimentSticker.post.compliment.model.Compliment">
+ 		SELECT 
+ 			`id`
+ 			, `userId`
+ 			, `loginId`
+ 			, `postId`
+ 			, `compliment`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`compliment`
+ 		WHERE 
+ 			`userId` = #{userId }
+ 			AND `postId` = #{postId }
+ 	</select>
  </mapper>
  
  

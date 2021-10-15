@@ -57,6 +57,24 @@
  		ORDER BY
  			`id` DESC			
  	</select>
+ 	
+ 	<select id="selectPostByUserIdPostId" resultType="com.gentleflo.complimentSticker.post.model.Post">
+ 		SELECT 
+ 			`id`
+ 			,`userId`
+ 			, `loginId`
+ 			, `startDate`
+ 			, `endDate`
+ 			, `stickerBoardImgUrl`
+ 			, `share`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`post`
+ 		WHERE
+ 			`userId` = #{userId }
+ 			AND `id` = #{postId } 
+ 	</select>
  
  </mapper>
  

@@ -11,4 +11,8 @@ import com.gentleflo.complimentSticker.post.compliment.model.Compliment;
 public interface ComplimentDAO {
 	
 	public int insertCompliment(@Param("compliment") List<Compliment> complimentList);
+	
+	public List<Compliment> selectComplimentByUserIdPostId(
+			@Param("userId") int userId
+			, @Param("postId") int postId);
 }

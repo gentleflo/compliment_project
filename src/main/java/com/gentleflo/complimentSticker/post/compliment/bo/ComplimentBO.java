@@ -39,4 +39,8 @@ public class ComplimentBO {
 		}
 			return complimentDAO.insertCompliment(complimentList);
 	}
+	
+	public List<Compliment> getCompliment(int userId, int postId) {
+		return complimentDAO.selectComplimentByUserIdPostId(userId, postId);
+	}
 }

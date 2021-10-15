@@ -42,14 +42,14 @@ section {
 .preview-main {
 	width: 230px;
 	height: 370px;
-	border: solid 1px rgb(148, 148, 148);
+	border: solid 1px #E5E5E5;
 	border-radius: 10px;
 }
 .preview-aside {
 	width: 150px;
 	height: 200px;
-	border: solid 1px rgb(148, 148, 148);
-	border-radius: 10px;
+	border: solid 1px #E5E5E5;
+	border-radius: 12px;
 }
 .stickerBoardImgPreview {
 	object-fit: cover;

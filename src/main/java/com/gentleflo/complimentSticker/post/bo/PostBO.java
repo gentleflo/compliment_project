@@ -56,4 +56,9 @@ public class PostBO {
 	public List<Post> getStickerBoardImgUrl(int userId, String loginId) {
 		return postDAO.selectStickerBoardImgByUserIdLoginId(userId, loginId);
 	}
+	
+	// compliment_detail_view 페이지
+	public Post getPost(int userId, int postId) {
+		return postDAO.selectPostByUserIdPostId(userId, postId);
+	}
 }

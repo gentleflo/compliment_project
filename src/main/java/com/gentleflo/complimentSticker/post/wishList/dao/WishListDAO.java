@@ -12,4 +12,8 @@ public interface WishListDAO {
 	
 	public int insertWishList(
 			@Param("wishList") List<WishList> wishList);
+	
+	public List<WishList> selectWishListByUserIdPostId(
+			@Param("userId") int userId
+			, @Param("postId") int postId);
 }

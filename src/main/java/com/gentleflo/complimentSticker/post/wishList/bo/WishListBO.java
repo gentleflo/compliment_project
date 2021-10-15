@@ -32,9 +32,10 @@ public class WishListBO {
 			element.setUrl(url);
 			wishListContentList.add(element);
 		}
-		
 		return wishListDAO.insertWishList(wishListContentList);
-		
 	}
 	
+	public List<WishList> getWishList(int userId, int postId) {
+		return wishListDAO.selectWishListByUserIdPostId(userId, postId);
+	}
 }

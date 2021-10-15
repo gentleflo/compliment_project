@@ -28,5 +28,22 @@
  					)
  				</foreach>
  	</insert>
+ 	
+ 	<select id="selectWishListByUserIdPostId" resultType="com.gentleflo.complimentSticker.post.wishList.model.WishList">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+	 		, `loginId`
+	 		, `postId`
+	 		, `wishList`
+	 		, `url`
+	 		, `createdAt`
+	 		, `updatedAt`
+	 	FROM 
+	 		`wishList`
+	 	WHERE 
+	 		`userId` = #{userId }
+	 		AND `postId` = #{postId }
+ 	</select>
  
  </mapper>

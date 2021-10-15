@@ -10,15 +10,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gentleflo.complimentSticker.post.bo.PostBO;
+import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
+import com.gentleflo.complimentSticker.post.compliment.model.Compliment;
 import com.gentleflo.complimentSticker.post.model.Post;
+import com.gentleflo.complimentSticker.post.wishList.bo.WishListBO;
+import com.gentleflo.complimentSticker.post.wishList.model.WishList;
 
 @Controller
 @RequestMapping("/post")
 public class PostController {
 	@Autowired 
 	private PostBO postBO;
+	@Autowired
+	private ComplimentBO complimentBO;
+	@Autowired
+	private WishListBO wishListBO;
 
 	
 	@GetMapping("/compliment_edit_view")
@@ -41,5 +50,25 @@ public class PostController {
 		List<Post> stickerBoardImgPathForPreview = postBO.getStickerBoardImgUrl(userId, loginId);
 		model.addAttribute("stickerBoardImgPathForPreview", stickerBoardImgPathForPreview);
 		return "post/complimentPreview";
+	}
+	
+	
+	@GetMapping("/compliment_detail_view")
+	public String complimentDetailView(
+			HttpServletRequest request
+			, @RequestParam("postId") int postId
+			, Model model) {
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		Post post = postBO.getPost(userId, postId);
+		List<Compliment> compliment = complimentBO.getCompliment(userId, postId);
+		List<WishList> wishList = wishListBO.getWishList(userId, postId);
+		
+		model.addAttribute("post", post);
+		model.addAttribute("compliment", compliment);
+		model.addAttribute("wishList", wishList);
+		
+		return "post/complimentDetailView";
 	}
 }

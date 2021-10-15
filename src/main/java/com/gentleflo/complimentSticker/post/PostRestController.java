@@ -44,8 +44,8 @@ public class PostRestController {
 		} else {
 			result.put("result", "fail");
 		}
-		
 		return result;
 	}
+	
 	
 }

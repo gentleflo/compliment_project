@@ -22,4 +22,8 @@ public interface PostDAO {
 			@Param("userId") int userId
 			, @Param("loginId") String loginId);
 	
+	// compliment_detail_view 페이지 - post 내용 싹 긁어오기
+	public Post selectPostByUserIdPostId(
+			@Param("userId") int userId
+			, @Param("postId") int postId);
 }
