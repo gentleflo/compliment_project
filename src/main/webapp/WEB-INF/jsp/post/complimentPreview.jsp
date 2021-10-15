@@ -46,7 +46,10 @@
 				<div class="preview-main mt-3 ml-5">
 					<c:choose>
 						<c:when test="${not empty stickerBoardImgPathForPreview[0]}">
+							<!-- 디테일뷰로 넘어갈 수 있게 해주는 a태그 -->
+							<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[0].id }">
 							<img src="${stickerBoardImgPathForPreview[0].stickerBoardImgUrl }" alt="스티커보드 이미지 미리보기" class="stickerBoardImgPreview">
+							</a>
 						</c:when>
 						<c:otherwise>
 							<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
@@ -59,7 +62,9 @@
 					<div class="preview-aside ml-3">
 						<c:choose>
 							<c:when test="${not empty stickerBoardImgPathForPreview[1]}">
+								<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[1].id }">
 								<img src="${stickerBoardImgPathForPreview[1].stickerBoardImgUrl }" class="stickerBoardImgPreview">
+								</a>
 							</c:when>
 							<c:otherwise>
 								<div class="preview-aside ml-3"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
@@ -71,7 +76,9 @@
 					<div class="preview-aside ml-3 mt-3">
 						<c:choose>
 							<c:when test="${not empty stickerBoardImgPathForPreview[2] }">
+								<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[2].id }">
 								<img src="${stickerBoardImgPathForPreview[2].stickerBoardImgUrl }" class="stickerBoardImgPreview">
+								</a>
 							</c:when>
 							<c:otherwise>
 								<div class="preview-aside ml-3 mt-3"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
@@ -85,7 +92,9 @@
 					<div class="preview-aside ml-3">
 						<c:choose>
 							<c:when test="${not empty stickerBoardImgPathForPreview[3] }">
+								<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[3].id }">
 								<img src="${stickerBoardImgPathForPreview[3].stickerBoardImgUrl }" class="stickerBoardImgPreview">
+								</a>
 							</c:when>
 							<c:otherwise>
 								<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
@@ -97,7 +106,9 @@
 					<div class="preview-aside ml-3 mt-3">
 						<c:choose>
 							<c:when test ="${not empty stickerBoardImgPathForPreview[4] }">
+								<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[4].id }">
 								<img src="${stickerBoardImgPathForPreview[4].stickerBoardImgUrl }" class="stickerBoardImgPreview">
+								</a>
 							</c:when>
 							<c:otherwise>
 								<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
@@ -118,5 +129,6 @@
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
 </body>
 </html>
