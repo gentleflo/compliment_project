@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<footer class="d-flex justify-content-center">
+<footer class="d-flex justify-content-center mt-5">
 	<span class="text-secondary"><small>Copyrightⓒ .2021. gentleflo. All rights reserved.</small></span>
 </footer>
 	

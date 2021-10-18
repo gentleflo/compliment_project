@@ -17,7 +17,6 @@ header {
 
 section {
 	width: 1000px;
-	height: 700px;
 	margin: auto;
 }
 .profile-wishList-section {
@@ -27,9 +26,13 @@ section {
 .profile-icon {
 	font-size:60px;
 }
-.loginId {
-	font-size: 20px;
+.loginId-box {	
+	width: 100px;
+    height: 30px;
+    background-color: white; 
+    box-shadow: inset 0 -27px #BAF0D5; 
 }
+
 .compliment-friend {
 	font-size: 12px;
 }
@@ -37,7 +40,13 @@ section {
 
 
 .wishList-icon {
-	font-size:30px;
+	font-size:35px;
+}
+.wishList-box {
+	width: 100px;
+    height: 30px;
+    background-color: white; 
+    box-shadow: inset 0 -6px #BAF0D5; 
 }
 .wishList-content {
 	font-size:14px;
@@ -67,10 +76,10 @@ section {
 	font-size:22px;
 }
 .compliment-count {
-	font-size: 15px;
+	font-size: 14px;
 }
 .number-box {
-	width: 14px;
+	width: 16px;
     height: 30px;
     background-color: white; 
     box-shadow: inset 0 -10px #BAF0D5; 
@@ -78,4 +87,15 @@ section {
 .line-box {
 	width: 730px;
 	border: solid 1px #E5E5E5;
+}
+
+.comment-input {
+	height: 33px;
+	font-size: 14px;
+}
+.comment-loginId {
+	font-size: 14px;
+}
+.comment-content {
+	font-size: 13px;
 }

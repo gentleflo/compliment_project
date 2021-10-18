@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gentleflo.complimentSticker.post.bo.PostBO;
+import com.gentleflo.complimentSticker.post.comment.bo.CommentBO;
+import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
+import com.gentleflo.complimentSticker.post.compliment.model.Compliment;
+
 
 
 
@@ -21,6 +25,11 @@ import com.gentleflo.complimentSticker.post.bo.PostBO;
 public class PostRestController {
 	@Autowired
 	private PostBO postBO;
+	@Autowired
+	private CommentBO commentBO;
+	@Autowired
+	private ComplimentBO compliemtBO;
+
 
 	
 	@PostMapping("/create_post")
@@ -45,6 +54,20 @@ public class PostRestController {
 			result.put("result", "fail");
 		}
 		return result;
+	}
+	
+	
+	@PostMapping("/create_comment")
+	public Map<String, String> createComment(
+			@RequestParam("complimentListId") int complimentListId
+			, @RequestParam("comment") String comment
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		String loginId = (String)session.getAttribute("loginId");
+		
+		
 	}
 	
 	

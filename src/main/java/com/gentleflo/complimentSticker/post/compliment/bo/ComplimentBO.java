@@ -43,4 +43,8 @@ public class ComplimentBO {
 	public List<Compliment> getCompliment(int userId, int postId) {
 		return complimentDAO.selectComplimentByUserIdPostId(userId, postId);
 	}
+	
+	public Compliment getComplimentListId(int postId, int complimentListId) {
+		return complimentDAO.selectComplimentByComplimentListIdPostId(postId, complimentListId);
+	}
 }
