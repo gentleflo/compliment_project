@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gentleflo.complimentSticker.post.bo.PostBO;
 import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
-import com.gentleflo.complimentSticker.post.compliment.model.Compliment;
+import com.gentleflo.complimentSticker.post.compliment.model.ComplimentDetail;
 import com.gentleflo.complimentSticker.post.model.Post;
 import com.gentleflo.complimentSticker.post.wishList.bo.WishListBO;
 import com.gentleflo.complimentSticker.post.wishList.model.WishList;
@@ -28,6 +28,7 @@ public class PostController {
 	private ComplimentBO complimentBO;
 	@Autowired
 	private WishListBO wishListBO;
+
 
 	
 	@GetMapping("/compliment_edit_view")
@@ -62,12 +63,14 @@ public class PostController {
 		int userId = (Integer)session.getAttribute("userId");
 		
 		Post post = postBO.getPost(userId, postId);
-		List<Compliment> compliment = complimentBO.getCompliment(userId, postId);
+		List<ComplimentDetail> ComplimentDetailList = complimentBO.getCompliment(userId, postId);
 		List<WishList> wishList = wishListBO.getWishList(userId, postId);
 		
+		
 		model.addAttribute("post", post);
-		model.addAttribute("compliment", compliment);
+		model.addAttribute("compliment", ComplimentDetailList);
 		model.addAttribute("wishList", wishList);
+		
 		
 		return "post/complimentDetailView";
 	}

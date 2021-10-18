@@ -43,22 +43,6 @@
  			AND `postId` = #{postId }
  	</select>
  	
- 	<select id="selectComplimentByUserIdComplimentListId"
- 	resultType="com.gentleflo.complimentSticker.post.compliment.model.Compliment">
- 		SELECT 
- 			`id`
- 			, `userId`
- 			, `loginId`
- 			, `postId`
- 			, `compliment`
- 			, `createdAt`
- 			, `updatedAt`
- 		FROM
- 			`compliment`
- 		WHERE
-			`id` = #{complimentListId }
-			AND `postId` = #{postId }
- 	</select>
  </mapper>
  
  

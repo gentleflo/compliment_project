@@ -8,14 +8,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gentleflo.complimentSticker.post.comment.bo.CommentBO;
+import com.gentleflo.complimentSticker.post.comment.model.Comment;
 import com.gentleflo.complimentSticker.post.compliment.dao.ComplimentDAO;
 import com.gentleflo.complimentSticker.post.compliment.model.Compliment;
+import com.gentleflo.complimentSticker.post.compliment.model.ComplimentDetail;
 
 
 @Service
 public class ComplimentBO {
 	@Autowired
 	private ComplimentDAO complimentDAO;
+	@Autowired
+	private CommentBO commentBO;
 	
 	public int addCompliment(int userId, String loginId, int postId, String compliment) {
 		
@@ -40,11 +45,26 @@ public class ComplimentBO {
 			return complimentDAO.insertCompliment(complimentList);
 	}
 	
-	public List<Compliment> getCompliment(int userId, int postId) {
-		return complimentDAO.selectComplimentByUserIdPostId(userId, postId);
+	
+	// 칭찬리스트들과 댓글리스트를 가공해서 가져오기
+	public List<ComplimentDetail> getCompliment(int userId, int postId) {
+		List<Compliment> complimentList = complimentDAO.selectComplimentByUserIdPostId(userId, postId);
+		
+		List<ComplimentDetail> complimentDetailList = new ArrayList<>();
+		
+		// 칭찬리스트 한개당 댓글 가져오기
+		for(Compliment compliment : complimentList) {
+			// 해당하는 칭찬리스트의 댓글 가져오기
+			List<Comment> commenList = commentBO.getCommentList(compliment.getId());
+			
+			// 칭찬리스트와 댓글 매칭
+			ComplimentDetail complimentDetail = new ComplimentDetail();
+			complimentDetail.setCompliment(compliment);
+			complimentDetail.setCommentList(commenList);
+			
+			complimentDetailList.add(complimentDetail);
+		}
+		return complimentDetailList;
 	}
 	
-	public Compliment getComplimentListId(int postId, int complimentListId) {
-		return complimentDAO.selectComplimentByComplimentListIdPostId(postId, complimentListId);
-	}
 }

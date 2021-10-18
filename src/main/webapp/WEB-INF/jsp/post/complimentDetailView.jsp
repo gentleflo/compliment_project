@@ -69,21 +69,26 @@
 						<div class="d-flex justify-content-between">
 							<div class="d-flex">
 								<div class="number-box"><h3>${status.count }</h3></div>
-								<div class="ml-3 mt-2">${complimentContent.compliment }</div>
+								<div class="ml-3 mt-2">${complimentContent.compliment.compliment }</div>
 							</div>
-							<div class="mt-2"><a href="#" class="text-secondary"><small>칭찬 펼치기</small></a></div>
+							<div class="mt-2"><a href="#" class="commentOpenBtn text-secondary" data-compliment-id="${complimentContent.compliment.id }" data-status="close"><small>칭찬 펼치기</small></a></div>
 						</div>
 						<div class="line-box mt-2"></div>
+				
+						
 						<!-- 댓글 -->
-						<div class="ml-5">
+						<div class="d-none ml-5" id="comment-box-${complimentContent.compliment.id }">
 							<div class="d-flex">
-								<input type="text" placeholder="친구의 계획을 칭찬해주세요 :)" id="commentInput-${complimentContent.id }" class="comment-input form-control col-8 mt-2">
-								<a href="#" class="commentBtn text-secondary mt-3 ml-1" data-compliment-id="${complimentContent.id }"><small>게시</small></a>
+								<input type="text" placeholder="친구의 계획을 칭찬해주세요 :)" id="commentInput-${complimentContent.compliment.id }" class="comment-input col-8 form-control mt-2">
+								<a href="#" class="commentBtn text-secondary mt-3 ml-1" data-compliment-id="${complimentContent.compliment.id }"><small>게시</small></a>
 							</div>
-							<div class="d-flex mt-1">
-								<div class="mr-4 comment-loginId"><i class="bi bi-emoji-wink mr-1"></i>gentleflo</div>
-								<div class="comment-content">오 맞아! 스트레칭 중요하징! 나도 한번 해봐야게따</div>
-							</div>
+								
+							<c:forEach var="commentList" items="${complimentContent.commentList }">
+								<div class="d-flex mt-1">
+									<div class="mr-4 comment-loginId"><i class="bi bi-emoji-wink mr-1"></i>${commentList.loginId }</div>
+									<div class="comment-content">${commentList.comment }</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</c:forEach>
@@ -96,6 +101,24 @@
 	
 	<script>
 		$(document).ready(function(){
+			
+			$(".commentOpenBtn").on("click", function(e){
+				e.preventDefault();
+				var complimentId = $(this).data("compliment-id");
+				var status = $(this).data("status");
+				if(status == "close") {
+					$("#comment-box-" + complimentId).removeClass("d-none");
+					$(this).html("<small>칭찬 닫기</small>");
+					$(this).data("status", "open");
+				} else {
+					$("#comment-box-" + complimentId).addClass("d-none");
+					$(this).html("<small>칭찬 펼치기</small>");
+					$(this).data("status", "close");
+				}
+			});
+			
+			
+			
 			$(".commentBtn").on("click", function(e){
 				e.preventDefault();	
 				
@@ -109,7 +132,7 @@
 				
 				$.ajax({
 					type:"post",
-					url:"/post/comment_create",
+					url:"/post/create_comment",
 					data:{"complimentListId":complimentListId, "comment":commentContent},
 					success:function(data) {
 						if(data.result == "success") {
@@ -122,8 +145,6 @@
 					}
 				});
 			});
-			
-			
 		});
 	</script>
 </body>
