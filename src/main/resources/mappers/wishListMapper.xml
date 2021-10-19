@@ -45,5 +45,15 @@
 	 		`userId` = #{userId }
 	 		AND `postId` = #{postId }
  	</select>
+ 	
+ 	<update id="updateUrl" >
+ 		UPDATE
+ 			`wishList`
+ 		SET
+ 			`url` = #{url }
+ 		WHERE
+ 			`userId` = #{userId }
+ 			AND `id` = #{wishListId }
+ 	</update>
  
  </mapper>

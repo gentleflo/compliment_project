@@ -48,11 +48,35 @@
 						<input class="form-check-input" type="checkbox" value="" id="wishListCheck">
 							<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList }</label><br>	
 						<!-- 선물하기 링크 일단 숨겨놓음!  -->
-						<div><a href="#" class="gift-link text-info text-right d-none"><small>선물하기</small></a></div>
-						<a href="#" class="gift-link text-secondary text-right"><small>구매 좌표 추가!</small></a>
+						<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
+							data-wishList-id="${wishListContent.id }"><small>구매 좌표 추가!</small></a>
+						<a href="#" class="gift-link text-info text-right d-none"><small>선물하기</small></a>
 					</div>
 					</c:forEach>
 				</div>
+				
+			<!-- Modal -->
+			<div class="modal fade" id="updateUrl" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <div class="modal-title" id="exampleModalLongTitle"><i class="wink-icon bi bi-emoji-wink mr-1"></i>구매 좌표 추가</div>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <textarea class="form-control" id="urlAddressInput"></textarea>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal"><b>닫기</b></button>
+			        <button type="button" class="addUrlBtn btn btn-outline-info btn-sm"><b>저장하기</b></button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+				
+				
 			</div>
 			
 			<!-- 우측 스티커보드와 칭찬리스트, 좋아요, 댓글 섹션 -->
@@ -68,7 +92,7 @@
 					<div class="compliment-list mt-4">
 						<div class="d-flex justify-content-between">
 							<div class="d-flex">
-								<div class="number-box"><h3>${status.count }</h3></div>
+								<div class="number-box text-center"><h3>${status.count }</h3></div>
 								<div class="ml-3 mt-2">${complimentContent.compliment.compliment }</div>
 							</div>
 							<div class="mt-2"><a href="#" class="commentOpenBtn text-secondary" data-compliment-id="${complimentContent.compliment.id }" data-status="close"><small>칭찬 펼치기</small></a></div>
@@ -145,6 +169,31 @@
 					}
 				});
 			});
+		
+			
+			$(".addUrlBtn").on("click", function(){
+				var wishListId = $(this).data("wishList-id");
+				var url = $("#urlAddressInput").val();
+				
+				if(url != null || url != "") {
+					$.ajax({
+						type:"post",
+						url:"/post/update_url",
+						data:{"wishListId":wishListId, "url":url},
+						success:function(data) {
+							if(data.result == "success") {
+								location.reload();	
+							} else {
+								alert("url 저장 실패");
+							}
+						}, error:function(e) {
+							alert("error");
+						}
+						
+					});
+				}
+			});
+		
 		});
 	</script>
 </body>

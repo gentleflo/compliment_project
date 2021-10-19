@@ -54,6 +54,15 @@ section {
 .gift-link {
 	font-size:13px;
 }
+.add-url {
+	font-size:13px;
+}
+.modal-title {
+	font-size:17px;
+}
+.wink-icon {
+	font-size:20px;
+}
 
 
 
@@ -81,7 +90,7 @@ section {
 	font-size: 14px;
 }
 .number-box {
-	width: 16px;
+	width: 18px;
     height: 30px;
     background-color: white; 
     box-shadow: inset 0 -10px #BAF0D5; 

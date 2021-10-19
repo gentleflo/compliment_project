@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gentleflo.complimentSticker.post.bo.PostBO;
 import com.gentleflo.complimentSticker.post.comment.bo.CommentBO;
+import com.gentleflo.complimentSticker.post.wishList.bo.WishListBO;
 
 
 
@@ -25,7 +26,8 @@ public class PostRestController {
 	private PostBO postBO;
 	@Autowired
 	private CommentBO commentBO;
-
+	@Autowired
+	private WishListBO wishListBO;
 
 	
 	@PostMapping("/create_post")
@@ -64,6 +66,27 @@ public class PostRestController {
 		String loginId = (String)session.getAttribute("loginId");
 		
 		int count = commentBO.addComment(userId, loginId, complimentListId, comment);
+		Map<String, String> result = new HashMap<>();
+		if(count == 0) {
+			result.put("result", "fail");
+		} else {
+			result.put("result", "success");
+		}
+		return result;
+	}
+	
+	
+	@PostMapping("/update_url")
+	public Map<String, String> updateUrl(
+			@RequestParam("wishListId") int id
+			, @RequestParam("url") String url
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = wishListBO.addUrl(id, userId, url);
+		
 		Map<String, String> result = new HashMap<>();
 		if(count == 0) {
 			result.put("result", "fail");

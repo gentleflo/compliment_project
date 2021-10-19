@@ -16,7 +16,6 @@ public class WishListBO {
 	private WishListDAO wishListDAO;
 	
 	public int addwishList(int userId, String loginId, int postId, String wishList, String url) {
-		
 		String[] wishListSplit = wishList.split("/");
 		
 		List<String> wishListList = Arrays.asList(wishListSplit);
@@ -35,7 +34,14 @@ public class WishListBO {
 		return wishListDAO.insertWishList(wishListContentList);
 	}
 	
+	
 	public List<WishList> getWishList(int userId, int postId) {
 		return wishListDAO.selectWishListByUserIdPostId(userId, postId);
+	}
+	
+	
+	// url 업데이트
+	public int addUrl(int id, int userId, String url) {
+		return wishListDAO.updateUrl(id, userId, url);
 	}
 }
