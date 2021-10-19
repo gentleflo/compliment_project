@@ -49,7 +49,7 @@
 							<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList }</label><br>	
 						<!-- 선물하기 링크 일단 숨겨놓음!  -->
 						<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
-							data-wishList-id="${wishListContent.id }"><small>구매 좌표 추가!</small></a>
+							data-wishlist-id="${wishListContent.id }"><small>구매 좌표 추가!</small></a>
 						<a href="#" class="gift-link text-info text-right d-none"><small>선물하기</small></a>
 					</div>
 					</c:forEach>
@@ -70,7 +70,7 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal"><b>닫기</b></button>
-			        <button type="button" class="addUrlBtn btn btn-outline-info btn-sm"><b>저장하기</b></button>
+			        <button type="button" class="btn btn-outline-info btn-sm" id="addUrlBtn"><b>저장하기</b></button>
 			      </div>
 			    </div>
 			  </div>
@@ -83,7 +83,7 @@
 			<div class="stickerBoard-complimentList-section">
 				<!-- 스티커 보드 -->
 				<div class="d-flex align-items-end">
-					<div class="sticker-board mt-3"><img src="${post.stickerBoardImgUrl }" width="680px" class="stickerBoard-img"></div>
+					<div class="sticker-board mt-3"><img src="${post.stickerBoardImgUrl }" id="stickerBoardImg" width="680px" class="stickerBoard-img"></div>
 					<i class="bi bi-hand-thumbs-up like-icon ml-1"></i>
 				</div>
 				<div class="text-right mr-2 compliment-count"><b>칭찬 11개</b></div>
@@ -125,6 +125,58 @@
 	
 	<script>
 		$(document).ready(function(){
+			
+			var stickerClicked = [
+			<c:forEach var="sticker" items="${stickerNumber }">
+				${sticker.stickerNumber}, 
+			</c:forEach> ];
+			
+			var leftPositions = [40, 100, 160, 230, 330, 410, 480, 545, 615, 475, 30, 90, 160, 220, 265, 430, 490, 120, 620, 550, 30, 90, 160, 220, 265, 430, 485, 550, 615, 560];
+			var topPositions = [45, 110, 75, 40, 45, 85, 110, 50, 70, 35, 130, 185, 225, 135, 210, 240, 200, 300, 195, 145, 280, 365, 395, 285, 360, 365, 315, 385, 340, 270];
+			for(var i = 0; i < 30; i++) {
+				var obj = $("<img>");
+				obj.text(i);
+				obj.css("display", "block");
+				obj.attr("src", "https://cdn.pixabay.com/photo/2016/03/29/20/56/label-1289350_960_720.png");
+				obj.css("width","25px");
+				obj.css("height", "25px");
+				obj.css("position", "absolute");
+				obj.css("left", (leftPositions[i]) + "px");
+				obj.css("top", (topPositions[i]) + "px");
+				$("#stickerBoardImg").after(obj);
+				obj.data("stickernumber", i + 1);
+				
+				for(var j = 0; j < stickerClicked.length; j++) {
+					if(i + 1 == stickerClicked[j]) {
+						obj.attr("src", "https://cdn.pixabay.com/photo/2016/02/13/04/44/label-1197365_960_720.png");
+						stickerClicked.splice(j, 1);
+						break;
+					}
+				}
+				
+				
+				obj.on("click", function(){
+					$(this).attr("src", "https://cdn.pixabay.com/photo/2016/02/13/04/44/label-1197365_960_720.png");
+					var postId = ${post.id };
+					var stickerId = $(this).data("stickernumber");
+					
+					$.ajax({
+						type:"post",
+						url:"/post/sticker_count",
+						data:{"postId":postId, "stickerNumber":stickerId},
+						success:function(data) {
+							if(data.result == "success") {
+							} else {
+								location.reload();
+							}
+						}, error:function(e) {
+							alert("error");
+						}
+					});
+				});
+			}
+			
+			
 			
 			$(".commentOpenBtn").on("click", function(e){
 				e.preventDefault();
@@ -169,29 +221,41 @@
 					}
 				});
 			});
-		
 			
-			$(".addUrlBtn").on("click", function(){
-				var wishListId = $(this).data("wishList-id");
+		
+		
+			$(".add-url").on("click", function(){
+				var wishListId = $(this).data("wishlist-id");
+				$("#addUrlBtn").data("wishlist-id", wishListId);
+			});
+			
+			
+			
+			$("#addUrlBtn").on("click", function(){
+				var wishListId = $(this).data("wishlist-id");
 				var url = $("#urlAddressInput").val();
-				
-				if(url != null || url != "") {
-					$.ajax({
-						type:"post",
-						url:"/post/update_url",
-						data:{"wishListId":wishListId, "url":url},
-						success:function(data) {
-							if(data.result == "success") {
-								location.reload();	
-							} else {
-								alert("url 저장 실패");
-							}
-						}, error:function(e) {
-							alert("error");
-						}
-						
-					});
+				alert(wishListId);
+				alert(url);
+				if(url == null || url == "") {
+				 	alert("");
+				 	return;
 				}
+				
+				$.ajax({
+					type:"post",
+					url:"/post/update_url",
+					data:{"wishListId":wishListId, "url":url},
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();	
+						} else {
+							alert("url 저장 실패");
+						}
+					}, error:function(e) {
+						alert("error");
+					}
+					
+				});
 			});
 		
 		});

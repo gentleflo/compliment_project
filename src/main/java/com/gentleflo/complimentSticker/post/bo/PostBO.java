@@ -33,6 +33,7 @@ public class PostBO {
 		post.setStartDate(startDate);
 		post.setEndDate(endDate);
 		post.setStickerBoardImgUrl(stickerBoardImgUrl);
+		// id에 있는 url 정보들을 넣어준다.
 		post.setShare(share);
 		post.setUserId(userId);
 		post.setLoginId(loginId);

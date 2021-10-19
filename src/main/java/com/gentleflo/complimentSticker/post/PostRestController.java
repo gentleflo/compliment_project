@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gentleflo.complimentSticker.post.bo.PostBO;
 import com.gentleflo.complimentSticker.post.comment.bo.CommentBO;
+import com.gentleflo.complimentSticker.post.stickerNumber.bo.StickerNumberBO;
 import com.gentleflo.complimentSticker.post.wishList.bo.WishListBO;
 
 
@@ -28,6 +29,8 @@ public class PostRestController {
 	private CommentBO commentBO;
 	@Autowired
 	private WishListBO wishListBO;
+	@Autowired
+	private StickerNumberBO stickerNumberBO;
 
 	
 	@PostMapping("/create_post")
@@ -36,7 +39,7 @@ public class PostRestController {
 			, @RequestParam("endDate") String endDate
 			, @RequestParam("compliment") String compliment
 			, @RequestParam("wishList") String wishList
-			, @RequestParam("stickerBoardImgUrl") String stickerBoardImgUrl
+			, @RequestParam("stickerBoardImgUrl") String stickerBoardImgUrl // id 받아야함
 			, @RequestParam("share") boolean share
 			, HttpServletRequest request) {
 		
@@ -95,6 +98,23 @@ public class PostRestController {
 		}
 		return result;
 	}
+	
+	@PostMapping("/sticker_count")
+	public Map<String, String> addStickerNumber(
+			@RequestParam("postId") int postId
+			, @RequestParam("stickerNumber") int stickerNumber){
+		 int count = stickerNumberBO.addStickerNumber(postId, stickerNumber);
+		
+		 Map<String, String> result = new HashMap<>();
+		 if(count == 0) {
+			 result.put("result", "fail");
+		 } else {
+			 result.put("result", "success");
+		 }
+		 return result;
+	}
+	
+	
 	
 	
 }

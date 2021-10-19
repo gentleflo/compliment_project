@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.gentleflo.complimentSticker.post.stickerNumber.dao.StickerNumberDAO">
+ 	<insert id="insertStickerNumber" parameterType="map">
+ 		INSERT INTO
+ 			`stickerNumber`
+ 		(
+ 			`postId`
+ 			, `stickerNumber`
+ 			, `createdAt`
+ 		) VALUES (
+ 			#{postId }
+ 			, #{stickerNumber }
+ 			, now()
+ 		)
+ 	</insert>
+ 	
+ 	<select id="selectStickerNumberByPostId" resultType="com.gentleflo.complimentSticker.post.stickerNumber.model.StickerNumber">
+ 		SELECT 
+ 			`id`
+ 			, `postId`
+ 			, `stickerNumber`
+ 			, `createdAt`
+ 		FROM
+ 			`stickerNumber`
+ 		WHERE
+ 			`postId` = #{postId }
+ 	</select>
+ </mapper>

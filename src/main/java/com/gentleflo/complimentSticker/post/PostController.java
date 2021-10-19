@@ -16,6 +16,8 @@ import com.gentleflo.complimentSticker.post.bo.PostBO;
 import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
 import com.gentleflo.complimentSticker.post.compliment.model.ComplimentDetail;
 import com.gentleflo.complimentSticker.post.model.Post;
+import com.gentleflo.complimentSticker.post.stickerNumber.bo.StickerNumberBO;
+import com.gentleflo.complimentSticker.post.stickerNumber.model.StickerNumber;
 import com.gentleflo.complimentSticker.post.wishList.bo.WishListBO;
 import com.gentleflo.complimentSticker.post.wishList.model.WishList;
 
@@ -28,6 +30,8 @@ public class PostController {
 	private ComplimentBO complimentBO;
 	@Autowired
 	private WishListBO wishListBO;
+	@Autowired
+	private StickerNumberBO stickerNumberBO;
 
 
 	
@@ -63,14 +67,15 @@ public class PostController {
 		int userId = (Integer)session.getAttribute("userId");
 		
 		Post post = postBO.getPost(userId, postId);
-		List<ComplimentDetail> ComplimentDetailList = complimentBO.getCompliment(userId, postId);
+		List<ComplimentDetail> complimentDetailList = complimentBO.getCompliment(userId, postId);
 		List<WishList> wishList = wishListBO.getWishList(userId, postId);
+		List<StickerNumber> stickerNumber = stickerNumberBO.getStickerNumber(postId);
 		
-		
+		// 스티커 보드, 스티커 이미지들 select해와서 모델에 저장
 		model.addAttribute("post", post);
-		model.addAttribute("compliment", ComplimentDetailList);
+		model.addAttribute("compliment", complimentDetailList);
 		model.addAttribute("wishList", wishList);
-		
+		model.addAttribute("stickerNumber",stickerNumber);
 		
 		return "post/complimentDetailView";
 	}
