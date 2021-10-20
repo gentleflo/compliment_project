@@ -13,8 +13,12 @@ public class StickerBoardBO {
 	@Autowired
 	private StickerBoardDAO stickerBoardDAO;
 	
-	public List<StickerBoard> getBoardImgStickerImg() {
-		return stickerBoardDAO.selectBoardImgStickerImgById();
+	public List<StickerBoard> getBoardImgStickerImg() {  // 행이 여러개이니까 리스트
+		return stickerBoardDAO.selectBoardImgStickerImg();
+	}
+	
+	public StickerBoard getBoardImgIdStickerImgId(int id) {
+		return stickerBoardDAO.selectBoardImgStickerImgById(id);
 	}
 
 }

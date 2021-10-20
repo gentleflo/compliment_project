@@ -5,13 +5,6 @@
  
  
  <mapper namespace="com.gentleflo.complimentSticker.post.dao.PostDAO">
- 	<select id="selectStickerBoardImgPath" resultType="map">
- 		SELECT 
- 			`id`
- 			, `imagePath`
- 		FROM 
- 			`stickerBoard`
- 	</select>
  	
  	<!-- postId(pk)가 필요해서 id를 얻기 위한 insert -->
  	<insert id="insertPost" parameterType="com.gentleflo.complimentSticker.post.model.Post" 
@@ -38,22 +31,22 @@
  		)
  	</insert>
  	
- 	<select id="selectStickerBoardImgByUserIdLoginId" resultType="com.gentleflo.complimentSticker.post.model.Post">
+ 	<select id="selectPostList" resultType="com.gentleflo.complimentSticker.post.model.Post">
  		SELECT
  			`id`
  			,`userId`
  			, `loginId`
  			, `startDate`
  			, `endDate`
- 			, `stickerBoardImgUrl`
+ 			, `stickerBoardId`
  			, `share`
  			, `createdAt`
  			, `updatedAt`
  		FROM
  			`post`
  		WHERE
- 			`userId` = #{userId }
- 			AND `loginId` = #{loginId } 
+ 			`loginId` = #{loginId }
+ 			
  		ORDER BY
  			`id` DESC			
  	</select>
@@ -65,7 +58,7 @@
  			, `loginId`
  			, `startDate`
  			, `endDate`
- 			, `stickerBoardImgUrl`
+ 			, `stickerBoardId`
  			, `share`
  			, `createdAt`
  			, `updatedAt`

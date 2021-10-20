@@ -45,10 +45,10 @@
 				<!-- 스티커판 메인 이미지 -->
 				<div class="preview-main mt-3 ml-5">
 					<c:choose>
-						<c:when test="${not empty stickerBoardImgPathForPreview[0]}">
+						<c:when test="${not empty stickerBoardImgForPreview[0]}">
 							<!-- 디테일뷰로 넘어갈 수 있게 해주는 a태그 -->
-							<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[0].id }">
-							<img src="${stickerBoardImgPathForPreview[0].stickerBoardImgUrl }" alt="스티커보드 이미지 미리보기" class="stickerBoardImgPreview">
+							<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[0].post.id }">
+							<img src="${stickerBoardImgForPreview[0].stickerBoard.stickerBoardImgUrl }" alt="스티커보드 이미지 미리보기" class="stickerBoardImgPreview">
 							</a>
 						</c:when>
 						<c:otherwise>
@@ -61,9 +61,9 @@
 					<!-- 스티커판 왼쪽 상단 작은 이미지 -->	
 					<div class="preview-aside ml-3">
 						<c:choose>
-							<c:when test="${not empty stickerBoardImgPathForPreview[1]}">
-								<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[1].id }">
-								<img src="${stickerBoardImgPathForPreview[1].stickerBoardImgUrl }" class="stickerBoardImgPreview">
+							<c:when test="${not empty stickerBoardImgForPreview[1]}">
+								<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[1].post.id }">
+								<img src="${stickerBoardImgForPreview[1].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
 							</c:when>
 							<c:otherwise>
@@ -75,9 +75,9 @@
 					<!-- 스티커판 왼쪽 하단 작은 이미지 -->
 					<div class="preview-aside ml-3 mt-3">
 						<c:choose>
-							<c:when test="${not empty stickerBoardImgPathForPreview[2] }">
-								<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[2].id }">
-								<img src="${stickerBoardImgPathForPreview[2].stickerBoardImgUrl }" class="stickerBoardImgPreview">
+							<c:when test="${not empty stickerBoardImgForPreview[2] }">
+								<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[2].post.id }">
+								<img src="${stickerBoardImgForPreview[2].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
 							</c:when>
 							<c:otherwise>
@@ -91,9 +91,9 @@
 					<!-- 스티커판 오른쪽 상단 작은 이미지 -->
 					<div class="preview-aside ml-3">
 						<c:choose>
-							<c:when test="${not empty stickerBoardImgPathForPreview[3] }">
-								<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[3].id }">
-								<img src="${stickerBoardImgPathForPreview[3].stickerBoardImgUrl }" class="stickerBoardImgPreview">
+							<c:when test="${not empty stickerBoardImgForPreview[3] }">
+								<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[3].post.id }">
+								<img src="${stickerBoardImgForPreview[3].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
 							</c:when>
 							<c:otherwise>
@@ -105,9 +105,9 @@
 					<!-- 스티커판 오른쪽 하단 작은 이미지 -->
 					<div class="preview-aside ml-3 mt-3">
 						<c:choose>
-							<c:when test ="${not empty stickerBoardImgPathForPreview[4] }">
-								<a href="/post/compliment_detail_view?postId=${stickerBoardImgPathForPreview[4].id }">
-								<img src="${stickerBoardImgPathForPreview[4].stickerBoardImgUrl }" class="stickerBoardImgPreview">
+							<c:when test ="${not empty stickerBoardImgForPreview[4] }">
+								<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[4].post.id }">
+								<img src="${stickerBoardImgForPreview[4].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
 							</c:when>
 							<c:otherwise>

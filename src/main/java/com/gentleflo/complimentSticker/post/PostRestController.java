@@ -18,8 +18,6 @@ import com.gentleflo.complimentSticker.post.stickerNumber.bo.StickerNumberBO;
 import com.gentleflo.complimentSticker.post.wishList.bo.WishListBO;
 
 
-
-
 @RestController
 @RequestMapping("/post")
 public class PostRestController {

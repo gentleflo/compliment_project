@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class StickerBoard {
 	private int id;
-	private String imagePath;
+	private String stickerBoardImgUrl;
 	private String beforeClickStickerUrl;
 	private String afterClickStickerUrl;
 	private Date createdAt;
@@ -16,11 +16,11 @@ public class StickerBoard {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getImagePath() {
-		return imagePath;
+	public String getStickerBoardImgUrl() {
+		return stickerBoardImgUrl;
 	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setStickerBoardImgUrl(String stickerBoardImgUrl) {
+		this.stickerBoardImgUrl = stickerBoardImgUrl;
 	}
 	public String getBeforeClickStickerUrl() {
 		return beforeClickStickerUrl;
@@ -46,6 +46,5 @@ public class StickerBoard {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
-	
+
 }

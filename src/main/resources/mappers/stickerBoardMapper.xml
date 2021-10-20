@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.gentleflo.complimentSticker.post.stickerBoard.dao.StickerBoardDAO">
+ 	<select id="selectBoardImgStickerImg" resultType="com.gentleflo.complimentSticker.post.stickerBoard.model.StickerBoard">
+ 		SELECT
+ 			`id`
+ 			, `stickerBoardImgUrl`
+ 			, `beforeClickStickerUrl`
+ 			, `afterClickStickerUrl`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`stickerBoard`
+ 	</select>
+ 	
+ 	<select id="selectBoardImgStickerImgById" resultType="com.gentleflo.complimentSticker.post.stickerBoard.model.StickerBoard">
+ 		SELECT
+ 			`id`
+ 			, `stickerBoardImgUrl`
+ 			, `beforeClickStickerUrl`
+ 			, `afterClickStickerUrl`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`stickerBoard`
+ 		WHERE
+ 			`id` = #{id }
+ 	</select>
+ 
+ </mapper>
