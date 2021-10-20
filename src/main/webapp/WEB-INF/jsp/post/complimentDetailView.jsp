@@ -48,14 +48,21 @@
 						<input class="form-check-input" type="checkbox" value="" id="wishListCheck">
 							<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList }</label><br>	
 						<!-- 선물하기 링크 일단 숨겨놓음!  -->
-						<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
-							data-wishlist-id="${wishListContent.id }"><small>구매 좌표 추가!</small></a>
-						<a href="#" class="gift-link text-info text-right d-none"><small>선물하기</small></a>
+						<c:choose>
+							<c:when test="${empty wishListContent.url }" >
+								<a href="#" class="add-url text-secondary text-right ml-2" data-toggle="modal" data-target="#updateUrl" 
+									data-wishlist-id="${wishListContent.id }"><small>구매 좌표 추가!</small></a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" class="gift-link text-info text-right ml-2" data-toggle="modal" data-target="#giftUrl"
+									data-wishlist-id="${wishListContent.id }" data-wishlist-url="${wishListContent.url }"><small>친구에게 선물하기!</small></a>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					</c:forEach>
 				</div>
 				
-			<!-- Modal -->
+			<!-- 구매 좌표 추가용 Modal -->
 			<div class="modal fade" id="updateUrl" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-centered" role="document">
 			    <div class="modal-content">
@@ -75,6 +82,28 @@
 			    </div>
 			  </div>
 			</div>
+			
+			<!-- 선물하기용 Modal -->
+			<div class="modal fade" id="giftUrl" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <div class="modal-title" id="exampleModalLongTitle"><i class="heart-eyes bi bi-emoji-heart-eyes mr-1"></i>친구에게 선물하기!</div>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <a href="#" id="showGiftUrl" target="_blank" class="text-success">선물사러가기</a>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal"><b>닫기</b></button>
+			        <button type="button" class="btn btn-outline-info btn-sm" id="sendGiftBtn"><b>선물 알림 :)</b></button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+				
 				
 				
 			</div>
@@ -83,7 +112,7 @@
 			<div class="stickerBoard-complimentList-section">
 				<!-- 스티커 보드 -->
 				<div class="d-flex align-items-end">
-					<div class="sticker-board mt-3"><img src="${post.stickerBoardImgUrl }" id="stickerBoardImg" width="680px" class="stickerBoard-img"></div>
+					<div class="sticker-board mt-3"><img src="${stickerBoard.stickerBoardImgUrl }" id="stickerBoardImg" width="680px" class="stickerBoard-img"></div>
 					<i class="bi bi-hand-thumbs-up like-icon ml-1"></i>
 				</div>
 				<div class="text-right mr-2 compliment-count"><b>칭찬 11개</b></div>
@@ -137,9 +166,9 @@
 				var obj = $("<img>");
 				obj.text(i);
 				obj.css("display", "block");
-				obj.attr("src", "/static/image/board_img1_beforeClick.png");
-				obj.css("width","25px");
-				obj.css("height", "25px");
+				obj.attr("src", "${stickerBoard.beforeClickStickerUrl }");
+				obj.css("width","27px");
+				obj.css("height", "32px");
 				obj.css("position", "absolute");
 				obj.css("left", (leftPositions[i]) + "px");
 				obj.css("top", (topPositions[i]) + "px");
@@ -148,7 +177,7 @@
 				
 				for(var j = 0; j < stickerClicked.length; j++) {
 					if(i + 1 == stickerClicked[j]) {
-						obj.attr("src", "/static/image/board_img1_afterClick.png");
+						obj.attr("src", "${stickerBoard.afterClickStickerUrl }");
 						stickerClicked.splice(j, 1);
 						break;
 					}
@@ -156,7 +185,7 @@
 				
 				
 				obj.on("click", function(){
-					$(this).attr("src", "/static/image/board_img1_afterClick.png");
+					$(this).attr("src", "${stickerBoard.afterClickStickerUrl }");
 					var postId = ${post.id };
 					var stickerId = $(this).data("stickernumber");
 					
@@ -223,19 +252,18 @@
 			});
 			
 		
-		
+			// url 주소 '저장하기' 버튼이 실행될때 필요한 wishListId를 부여해주기 위한 클릭 이벤트
 			$(".add-url").on("click", function(){
 				var wishListId = $(this).data("wishlist-id");
 				$("#addUrlBtn").data("wishlist-id", wishListId);
+				alert(wishListId);
 			});
-			
 			
 			
 			$("#addUrlBtn").on("click", function(){
 				var wishListId = $(this).data("wishlist-id");
 				var url = $("#urlAddressInput").val();
-				alert(wishListId);
-				alert(url);
+				
 				if(url == null || url == "") {
 				 	alert("");
 				 	return;
@@ -247,15 +275,23 @@
 					data:{"wishListId":wishListId, "url":url},
 					success:function(data) {
 						if(data.result == "success") {
-							location.reload();	
+							location.reload();
 						} else {
 							alert("url 저장 실패");
 						}
 					}, error:function(e) {
 						alert("error");
 					}
-					
 				});
+			});
+			
+			
+			// 디테일뷰에서 '선물하기' 링크가 클릭되었을때 wishListId를 부여해주기 위한 클릭 이벤트
+			$(".gift-link").on("click", function(){
+				var wishListId = $(this).data("wishlist-id");
+				var wishListUrl = $(this).data("wishlist-url")
+				$("#showGiftUrl").data("wishlist-id", wishListId);
+				$("#showGiftUrl").attr("href", wishListUrl);
 			});
 		
 		});
