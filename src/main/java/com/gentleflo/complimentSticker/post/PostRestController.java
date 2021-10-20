@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gentleflo.complimentSticker.post.bo.PostBO;
 import com.gentleflo.complimentSticker.post.comment.bo.CommentBO;
+import com.gentleflo.complimentSticker.post.gift.bo.GiftBO;
 import com.gentleflo.complimentSticker.post.stickerNumber.bo.StickerNumberBO;
 import com.gentleflo.complimentSticker.post.wishList.bo.WishListBO;
 
@@ -29,6 +30,8 @@ public class PostRestController {
 	private WishListBO wishListBO;
 	@Autowired
 	private StickerNumberBO stickerNumberBO;
+	@Autowired
+	private GiftBO giftBO;
 
 	
 	@PostMapping("/create_post")
@@ -97,6 +100,7 @@ public class PostRestController {
 		return result;
 	}
 	
+	
 	@PostMapping("/sticker_count")
 	public Map<String, String> addStickerNumber(
 			@RequestParam("postId") int postId
@@ -110,6 +114,27 @@ public class PostRestController {
 			 result.put("result", "success");
 		 }
 		 return result;
+	}
+	
+	
+	@PostMapping("/create_gift")
+	public Map<String, String> createGift(
+			@RequestParam("wishListId") int wishListId
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		String loginId = (String)session.getAttribute("loginId");
+		
+		int count = giftBO.addGift(userId, loginId, wishListId);
+		
+		Map<String, String> result = new HashMap<>();
+		if(count == 0) {
+			result.put("result", "fail");
+		} else {
+			result.put("result", "success");
+		}
+		return result;
 	}
 	
 	

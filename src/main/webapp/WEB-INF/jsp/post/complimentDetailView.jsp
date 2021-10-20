@@ -50,11 +50,11 @@
 						<!-- 선물하기 링크 일단 숨겨놓음!  -->
 						<c:choose>
 							<c:when test="${empty wishListContent.url }" >
-								<a href="#" class="add-url text-secondary text-right ml-2" data-toggle="modal" data-target="#updateUrl" 
+								<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
 									data-wishlist-id="${wishListContent.id }"><small>구매 좌표 추가!</small></a>
 							</c:when>
 							<c:otherwise>
-								<a href="#" class="gift-link text-info text-right ml-2" data-toggle="modal" data-target="#giftUrl"
+								<a href="#" class="gift-link text-info text-right" data-toggle="modal" data-target="#giftUrl"
 									data-wishlist-id="${wishListContent.id }" data-wishlist-url="${wishListContent.url }"><small>친구에게 선물하기!</small></a>
 							</c:otherwise>
 						</c:choose>
@@ -256,7 +256,6 @@
 			$(".add-url").on("click", function(){
 				var wishListId = $(this).data("wishlist-id");
 				$("#addUrlBtn").data("wishlist-id", wishListId);
-				alert(wishListId);
 			});
 			
 			
@@ -292,6 +291,30 @@
 				var wishListUrl = $(this).data("wishlist-url")
 				$("#showGiftUrl").data("wishlist-id", wishListId);
 				$("#showGiftUrl").attr("href", wishListUrl);
+				
+				$("#sendGiftBtn").data("wishlist-id", wishListId);
+			});
+			
+			
+			// 친구에게 선물하기! modal에서 '선물 알림:)' 클릭시 insert 되는 클릭 이벤트
+			$("#sendGiftBtn").on("click", function(){
+				var wishListId = $("#sendGiftBtn").data("wishlist-id");
+				
+				$.ajax({
+					type:"post",
+					url:"/post/create_gift",
+					data:{"wishListId":wishListId},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("친구에게 선물 알림을 보냈어요~!:)")
+							location.reload();
+						} else {
+							alert("선물알림 실패");
+						}
+					}, error:function(e) {
+						alert(error);
+					}
+				});
 			});
 		
 		});
