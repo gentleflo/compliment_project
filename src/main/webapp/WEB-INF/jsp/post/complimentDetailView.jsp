@@ -131,13 +131,13 @@
 				${sticker.stickerNumber}, 
 			</c:forEach> ];
 			
-			var leftPositions = [40, 100, 160, 230, 330, 410, 480, 545, 615, 475, 30, 90, 160, 220, 265, 430, 490, 120, 620, 550, 30, 90, 160, 220, 265, 430, 485, 550, 615, 560];
-			var topPositions = [45, 110, 75, 40, 45, 85, 110, 50, 70, 35, 130, 185, 225, 135, 210, 240, 200, 300, 195, 145, 280, 365, 395, 285, 360, 365, 315, 385, 340, 270];
-			for(var i = 0; i < 30; i++) {
+			var leftPositions = [65, 135, 210, 365, 445, 530, 615, 520, 30, 90, 175, 220, 440, 465, 620, 540, 45, 130, 225, 595];
+			var topPositions = [65, 135, 45, 35, 125, 170, 100, 55, 170, 235, 275, 175, 230, 340, 235, 280, 310, 355, 375, 375];
+			for(var i = 0; i < 20; i++) {
 				var obj = $("<img>");
 				obj.text(i);
 				obj.css("display", "block");
-				obj.attr("src", "https://cdn.pixabay.com/photo/2016/03/29/20/56/label-1289350_960_720.png");
+				obj.attr("src", "/static/image/board_img1_beforeClick.png");
 				obj.css("width","25px");
 				obj.css("height", "25px");
 				obj.css("position", "absolute");
@@ -148,7 +148,7 @@
 				
 				for(var j = 0; j < stickerClicked.length; j++) {
 					if(i + 1 == stickerClicked[j]) {
-						obj.attr("src", "https://cdn.pixabay.com/photo/2016/02/13/04/44/label-1197365_960_720.png");
+						obj.attr("src", "/static/image/board_img1_afterClick.png");
 						stickerClicked.splice(j, 1);
 						break;
 					}
@@ -156,7 +156,7 @@
 				
 				
 				obj.on("click", function(){
-					$(this).attr("src", "https://cdn.pixabay.com/photo/2016/02/13/04/44/label-1197365_960_720.png");
+					$(this).attr("src", "/static/image/board_img1_afterClick.png");
 					var postId = ${post.id };
 					var stickerId = $(this).data("stickernumber");
 					

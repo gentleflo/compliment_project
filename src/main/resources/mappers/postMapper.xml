@@ -22,7 +22,7 @@
  			, `loginId`
  			, `startDate`
  			, `endDate`
- 			, `stickerBoardImgUrl`
+ 			, `stickerBoardId`
  			, `share`
  			, `createdAt`
  			, `updatedAt`
@@ -31,7 +31,7 @@
  			, #{loginId }
  			, #{startDate }
  			, #{endDate }
- 			, #{stickerBoardImgUrl }
+ 			, #{stickerBoardId }
  			, #{share }
  			, now()
  			, now()

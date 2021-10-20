@@ -39,7 +39,7 @@ public class PostRestController {
 			, @RequestParam("endDate") String endDate
 			, @RequestParam("compliment") String compliment
 			, @RequestParam("wishList") String wishList
-			, @RequestParam("stickerBoardImgUrl") String stickerBoardImgUrl // id 받아야함
+			, @RequestParam("stickerBoardId") int stickerBoardId // id 받아야함
 			, @RequestParam("share") boolean share
 			, HttpServletRequest request) {
 		
@@ -47,7 +47,7 @@ public class PostRestController {
 		int userId = (Integer)session.getAttribute("userId");
 		String loginId = (String)session.getAttribute("loginId");
 		
-		boolean post = postBO.addPost(startDate, endDate, compliment, wishList, stickerBoardImgUrl, share, userId, loginId);
+		boolean post = postBO.addPost(startDate, endDate, compliment, wishList, stickerBoardId, share, userId, loginId);
 		Map<String, String> result = new HashMap<>();
 		if(post) {
 			result.put("result", "success");
