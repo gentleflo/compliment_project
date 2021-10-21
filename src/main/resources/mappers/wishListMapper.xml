@@ -42,8 +42,7 @@
 	 	FROM 
 	 		`wishList`
 	 	WHERE 
-	 		`userId` = #{userId }
-	 		AND `postId` = #{postId }
+	 		`postId` = #{postId }
  	</select>
  	
  	<update id="updateUrl" >

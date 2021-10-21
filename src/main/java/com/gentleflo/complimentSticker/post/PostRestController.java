@@ -119,15 +119,15 @@ public class PostRestController {
 	
 	@PostMapping("/create_gift")
 	public Map<String, String> createGift(
-			@RequestParam("wishListId") int wishListId
+			@RequestParam("postId") int postId
+			, @RequestParam("wishListId") int wishListId
 			, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		String loginId = (String)session.getAttribute("loginId");
 		
-		int count = giftBO.addGift(userId, loginId, wishListId);
-		
+		int count = giftBO.addGift(userId, postId, loginId, wishListId);
 		Map<String, String> result = new HashMap<>();
 		if(count == 0) {
 			result.put("result", "fail");
@@ -138,6 +138,23 @@ public class PostRestController {
 	}
 	
 	
+	@PostMapping("/update_gift_alarmStatus")
+	public Map<String, String> updateGiftAlarmStatus(
+			@RequestParam("giftId") int giftId
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = giftBO.updateAlarmStatus(giftId, userId);
+		Map<String, String> result = new HashMap<>();
+		if(count == 0) {
+			result.put("result", "fail");
+		} else {
+			result.put("result", "success");
+		}
+		return result;
+	}
 	
 	
 }

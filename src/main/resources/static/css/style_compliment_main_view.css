@@ -2,5 +2,7 @@
 
 #wrap {
 	width: 1200px;
+	height: 900px;
 	margin: auto;
+	background-color: green;
 }

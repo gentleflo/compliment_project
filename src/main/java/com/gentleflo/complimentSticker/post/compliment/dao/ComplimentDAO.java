@@ -12,8 +12,6 @@ public interface ComplimentDAO {
 	
 	public int insertCompliment(@Param("compliment") List<Compliment> complimentList);
 	
-	public List<Compliment> selectComplimentByUserIdPostId(
-			@Param("userId") int userId
-			, @Param("postId") int postId);
+	public List<Compliment> selectComplimentByUserIdPostId(@Param("postId") int postId);
 
 }

@@ -35,4 +35,10 @@ public class UserController {
 		
 		return "redirect:/user/signin_view";
 	}
+	
+	// 서비스 메인화면 + 서비스 사용자 리스트 뷰 화면 
+	@GetMapping("/complimentsticker_main_view")
+	public String mainView() {
+		return "user/complimentMainView";
+	}
 }

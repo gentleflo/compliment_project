@@ -9,14 +9,38 @@
  			`gift`
  		(
  			`userId`
+ 			, `postId`
  			, `loginId`
  			, `wishListId`
+ 			, `alarmStatus`
  			, `createdAt`
  		) VALUES (
  			#{userId }
+ 			, #{postId }
  			, #{loginId }
  			, #{wishListId }
+ 			, 'beforeCheck'
  			, now()
  		)
  	</insert>
+ 	
+ 	<select id="selectGiftAlarmByPostIdAlarmStatus" resultType="int">
+ 		SELECT 
+ 			count(*)
+ 		FROM 
+ 			`gift`
+ 		WHERE
+ 			`postId` = #{postId }
+ 			AND `alarmStatus` = 'beforeCheck'
+ 	</select>
+ 	
+ 	<update id="updateGiftAlarmStatus">
+ 		UPDATE 
+ 			`gift`
+ 		SET
+ 			`alarmStatus` = 'afterCheck'
+ 		WHERE
+ 			`id` = #{giftId }
+ 			AND `userId` = #{userId } 
+ 	</update>
  </mapper>

@@ -49,13 +49,16 @@
 							<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList }</label><br>	
 						<!-- 선물하기 링크 일단 숨겨놓음!  -->
 						<c:choose>
-							<c:when test="${empty wishListContent.url }" >
+							<c:when test="${empty wishListContent.url && post.loginId eq param.loginId }" >
 								<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
 									data-wishlist-id="${wishListContent.id }"><small>구매 좌표 추가!</small></a>
 							</c:when>
+							<!-- url이 empty이고 loginId가 일치하지 않으면 구매좌표추가가 사라지는 조건 추가해야함 
+								지금은 다 친구에게 선물하기로 바뀌어버림 -->
 							<c:otherwise>
 								<a href="#" class="gift-link text-info text-right" data-toggle="modal" data-target="#giftUrl"
-									data-wishlist-id="${wishListContent.id }" data-wishlist-url="${wishListContent.url }"><small>친구에게 선물하기!</small></a>
+									data-wishlist-id="${wishListContent.id }" data-wishlist-url="${wishListContent.url }" data-post-id="${wishListContent.postId }">
+									<small>친구에게 선물하기!</small></a>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -289,25 +292,29 @@
 			$(".gift-link").on("click", function(){
 				var wishListId = $(this).data("wishlist-id");
 				var wishListUrl = $(this).data("wishlist-url")
+				var postId = $(this).data("post-id");
 				$("#showGiftUrl").data("wishlist-id", wishListId);
 				$("#showGiftUrl").attr("href", wishListUrl);
 				
 				$("#sendGiftBtn").data("wishlist-id", wishListId);
+				$("#sendGiftBtn").data("post-id", postId);
 			});
 			
 			
 			// 친구에게 선물하기! modal에서 '선물 알림:)' 클릭시 insert 되는 클릭 이벤트
 			$("#sendGiftBtn").on("click", function(){
 				var wishListId = $("#sendGiftBtn").data("wishlist-id");
+				var postId = $("#sendGiftBtn").data("post-id"); 
 				
 				$.ajax({
 					type:"post",
 					url:"/post/create_gift",
-					data:{"wishListId":wishListId},
+					data:{"postId":postId, "wishListId":wishListId},
 					success:function(data) {
 						if(data.result == "success") {
 							alert("친구에게 선물 알림을 보냈어요~!:)")
 							location.reload();
+							
 						} else {
 							alert("선물알림 실패");
 						}

@@ -28,9 +28,9 @@
 				<!--<i class="bi bi-person-badge profile-icon"></i>-->
 				<div class="ml-3 mt-4">
 					<!-- userName -->
-					<c:if test="${not empty loginId }">
-						<h5 class="userName-box">${loginId }</h5>
-					</c:if>
+	
+						<h5 class="userName-box">${param.loginId }</h5>
+					
 					<div class="d-flex">
 						<!-- 칭찬 스티커 진행 상황 -->
 						<div class="text-success mr-5"><small><b>칭찬 스티커 진행중</b></small></div>
@@ -40,50 +40,64 @@
 				</div>
 			</div>
 			
+		
+			
 			<!-- 칭찬 스티커 미리보기 섹션 -->
 			<div class="preview-section d-flex mt-2">
 				<!-- 스티커판 메인 이미지 -->
 				<div class="preview-main mt-3 ml-5">
 					<c:choose>
-						<c:when test="${not empty stickerBoardImgForPreview[0]}">
+						<c:when test="${not empty postDetailForPreview[0]}">
 							<!-- 디테일뷰로 넘어갈 수 있게 해주는 a태그 -->
-							<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[0].post.id }">
-							<img src="${stickerBoardImgForPreview[0].stickerBoard.stickerBoardImgUrl }" alt="스티커보드 이미지 미리보기" class="stickerBoardImgPreview">
+							<a href="/post/compliment_detail_view?postId=${postDetailForPreview[0].post.id }">
+							<img src="${postDetailForPreview[0].stickerBoard.stickerBoardImgUrl }" alt="스티커보드 이미지 미리보기" class="stickerBoardImgPreview">
 							</a>
 						</c:when>
 						<c:otherwise>
 							<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
 						</c:otherwise>
 					</c:choose>
+					<!-- 선물 아이콘 -->
+					<c:if test="${postDetailForPreview[0].getGiftAlarmStatus >= 1}">
+						<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
+					</c:if>
 				</div>
 				
 				<div>
 					<!-- 스티커판 왼쪽 상단 작은 이미지 -->	
 					<div class="preview-aside ml-3">
 						<c:choose>
-							<c:when test="${not empty stickerBoardImgForPreview[1]}">
-								<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[1].post.id }">
-								<img src="${stickerBoardImgForPreview[1].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
+							<c:when test="${not empty postDetailForPreview[1]}">
+								<a href="/post/compliment_detail_view?postId=${postDetailForPreview[1].post.id }">
+								<img src="${postDetailForPreview[1].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
 							</c:when>
 							<c:otherwise>
 								<div class="preview-aside ml-3"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
 							</c:otherwise>
 						</c:choose>
+						<!-- 선물 아이콘 -->
+						<c:if test="${postDetailForPreview[1].getGiftAlarmStatus >= 1}">
+							<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
+						</c:if>
 					</div>
 							
 					<!-- 스티커판 왼쪽 하단 작은 이미지 -->
 					<div class="preview-aside ml-3 mt-3">
 						<c:choose>
-							<c:when test="${not empty stickerBoardImgForPreview[2] }">
-								<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[2].post.id }">
-								<img src="${stickerBoardImgForPreview[2].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
+							<c:when test="${not empty postDetailForPreview[2] }">
+								<a href="/post/compliment_detail_view?postId=${postDetailForPreview[2].post.id }">
+								<img src="${postDetailForPreview[2].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
 							</c:when>
 							<c:otherwise>
 								<div class="preview-aside ml-3 mt-3"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
 							</c:otherwise>
 						</c:choose>
+						<!-- 선물 아이콘 -->
+						<c:if test="${postDetailForPreview[2].getGiftAlarmStatus >= 1}">
+							<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
+						</c:if>
 					</div>	
 				</div>
 				
@@ -91,44 +105,63 @@
 					<!-- 스티커판 오른쪽 상단 작은 이미지 -->
 					<div class="preview-aside ml-3">
 						<c:choose>
-							<c:when test="${not empty stickerBoardImgForPreview[3] }">
-								<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[3].post.id }">
-								<img src="${stickerBoardImgForPreview[3].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
+							<c:when test="${not empty postDetailForPreview[3] }">
+								<a href="/post/compliment_detail_view?postId=${postDetailForPreview[3].post.id }">
+								<img src="${postDetailForPreview[3].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
 							</c:when>
 							<c:otherwise>
 								<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
 							</c:otherwise>
 						</c:choose>
+						<!-- 선물 아이콘 -->
+						<c:if test="${postDetailForPreview[3].getGiftAlarmStatus >= 1}">
+							<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
+						</c:if>
 					</div>
 							
 					<!-- 스티커판 오른쪽 하단 작은 이미지 -->
 					<div class="preview-aside ml-3 mt-3">
 						<c:choose>
-							<c:when test ="${not empty stickerBoardImgForPreview[4] }">
-								<a href="/post/compliment_detail_view?postId=${stickerBoardImgForPreview[4].post.id }">
-								<img src="${stickerBoardImgForPreview[4].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
+							<c:when test ="${not empty postDetailForPreview[4] }">
+								<a href="/post/compliment_detail_view?postId=${postDetailForPreview[4].post.id }">
+								<img src="${postDetailForPreview[4].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
 							</c:when>
 							<c:otherwise>
 								<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
 							</c:otherwise>
-						</c:choose>		
+						</c:choose>	
+						<!-- 선물 아이콘 -->
+						<c:if test="${postDetailForPreview[4].getGiftAlarmStatus >= 1}">
+							<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
+						</c:if>	
 					</div>		
 				</div>
 			</div>
 			
 			<!-- compliment_edit_view로 이동 -->
-			<div class="d-flex justify-content-end mr-4">
-				<div class="go-to-edit-view">
-					<a href="/post/compliment_edit_view" class="text-dark"><small>새로운 스티커판 만들러 가기:)</small></a>
+			<c:if test="${loginId eq param.loginId }">
+				<div class="d-flex justify-content-end mr-4">
+					<div class="go-to-edit-view">
+						<a href="/post/compliment_edit_view" class="text-dark"><small>새로운 스티커판 만들러 가기:)</small></a>
+					</div>
 				</div>
-			</div>
+			</c:if>
 		</section>
 	
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
 	
+	<script>
+		$(document).ready(function(){
+			$(".gift-icon").on("click", function(){
+				
+			});
+			
+			
+		});
+	</script>
 </body>
 </html>

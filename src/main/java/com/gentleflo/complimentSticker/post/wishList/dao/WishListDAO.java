@@ -14,8 +14,7 @@ public interface WishListDAO {
 			@Param("wishList") List<WishList> wishList);
 	
 	public List<WishList> selectWishListByUserIdPostId(
-			@Param("userId") int userId
-			, @Param("postId") int postId);
+			@Param("postId") int postId);
 	
 	public int updateUrl(
 			@Param("wishListId") int id

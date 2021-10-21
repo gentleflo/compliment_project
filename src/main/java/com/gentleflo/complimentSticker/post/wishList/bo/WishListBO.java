@@ -35,8 +35,8 @@ public class WishListBO {
 	}
 	
 	
-	public List<WishList> getWishList(int userId, int postId) {
-		return wishListDAO.selectWishListByUserIdPostId(userId, postId);
+	public List<WishList> getWishList(int postId) {
+		return wishListDAO.selectWishListByUserIdPostId(postId);
 	}
 	
 	

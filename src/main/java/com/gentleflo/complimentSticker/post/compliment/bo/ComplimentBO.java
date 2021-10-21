@@ -47,8 +47,8 @@ public class ComplimentBO {
 	
 	
 	// 칭찬리스트들과 댓글리스트를 가공해서 가져오기
-	public List<ComplimentDetail> getCompliment(int userId, int postId) {
-		List<Compliment> complimentList = complimentDAO.selectComplimentByUserIdPostId(userId, postId);
+	public List<ComplimentDetail> getCompliment(int postId) {
+		List<Compliment> complimentList = complimentDAO.selectComplimentByUserIdPostId(postId);
 		
 		List<ComplimentDetail> complimentDetailList = new ArrayList<>();
 		

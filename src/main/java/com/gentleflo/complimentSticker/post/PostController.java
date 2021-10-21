@@ -2,9 +2,6 @@ package com.gentleflo.complimentSticker.post;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,32 +48,24 @@ public class PostController {
 	@GetMapping("/compliment_preview")
 	public String complimentPreview(
 			@RequestParam("loginId") String loginId
-			, HttpServletRequest request
 			, Model model) {
 		
-	
-		List<PostDetail> stickerBoardImgForPreview = postBO.getStickerBoardImgForPreview(loginId);
-		model.addAttribute("stickerBoardImgForPreview", stickerBoardImgForPreview);
+		List<PostDetail> postDetailForPreview = postBO.getPostDetail(loginId);
+		model.addAttribute("postDetailForPreview", postDetailForPreview);
 		return "post/complimentPreview";
-		// 클래스 만들기(post, 스티커판정보, gift)
 	}
 	
 	
 	@GetMapping("/compliment_detail_view")
 	public String complimentDetailView(
-			HttpServletRequest request
-			, @RequestParam("postId") int postId
+			 @RequestParam("postId") int postId
 			, Model model) {
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
 		
-		
-		Post post = postBO.getPost(userId, postId);
+		Post post = postBO.getPost(postId);
 		StickerBoard stickerBoard = stickerBoardBO.getBoardImgIdStickerImgId(post.getStickerBoardId());
-		List<ComplimentDetail> complimentDetailList = complimentBO.getCompliment(userId, postId);
-		List<WishList> wishList = wishListBO.getWishList(userId, postId);
+		List<ComplimentDetail> complimentDetailList = complimentBO.getCompliment(postId);
+		List<WishList> wishList = wishListBO.getWishList(postId);
 		List<StickerNumber> stickerNumber = stickerNumberBO.getStickerNumber(postId);
-		
 		
 		// 스티커 보드, 스티커 이미지들 select해와서 모델에 저장
 		model.addAttribute("post", post);
@@ -84,6 +73,8 @@ public class PostController {
 		model.addAttribute("compliment", complimentDetailList);
 		model.addAttribute("wishList", wishList);
 		model.addAttribute("stickerNumber",stickerNumber);
+		
+		// wishListDetail 만들기
 		
 		return "post/complimentDetailView";
 	}

@@ -56,6 +56,9 @@ section {
 	width: 100%;
 	height: 100%;
 }
+.gift-icon {
+	font-size: 20px;
+}
 
 .go-to-edit-view {
 	font-family: Helvetica, Arial, sans-serif;

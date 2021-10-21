@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
 import com.gentleflo.complimentSticker.post.dao.PostDAO;
+import com.gentleflo.complimentSticker.post.gift.bo.GiftBO;
 import com.gentleflo.complimentSticker.post.model.Post;
 import com.gentleflo.complimentSticker.post.model.PostDetail;
 import com.gentleflo.complimentSticker.post.stickerBoard.bo.StickerBoardBO;
@@ -24,6 +25,8 @@ public class PostBO {
 	private WishListBO wishListBO;
 	@Autowired
 	private StickerBoardBO stickerBoardBO;
+	@Autowired
+	private GiftBO giftBO;
 
 	
 	// post insert
@@ -55,17 +58,20 @@ public class PostBO {
 	}
 	
 	
-	// compliment_preview 페이지에서 user가 선택해서 진행중이거나 종료한 스티커판 이미지를 보여주기 위해
-	public List<PostDetail> getStickerBoardImgForPreview(String loginId) {
+	// compliment_preview 페이지에서 user가 선택해서 진행중이거나 종료한 스티커판 이미지와 선물하기 알람의 상태를 보여주기 위해!
+	public List<PostDetail> getPostDetail(String loginId) {
 		List<Post> postList = postDAO.selectPostList(loginId);
 		
 		List<PostDetail> postDetailList = new ArrayList<>();
 		
+		// postId로 gift 테이블 조회 (확인안한 알람이 있는지 count쿼리 0,1)
 		for(Post post : postList) {
 			StickerBoard stickerBoard = stickerBoardBO.getBoardImgIdStickerImgId(post.getStickerBoardId());
+			int getGiftAlarmStatus = giftBO.getGiftAlarmStatus(post.getId());
 			PostDetail postDetail = new PostDetail();
 			postDetail.setPost(post);
 			postDetail.setStickerBoard(stickerBoard);
+			postDetail.setGetGiftAlarmStatus(getGiftAlarmStatus);
 			postDetailList.add(postDetail);
 		}
 		return postDetailList;
@@ -73,8 +79,8 @@ public class PostBO {
 	
 	
 	// compliment_detail_view 페이지
-	public Post getPost(int userId, int postId) {
-		return postDAO.selectPostByUserIdPostId(userId, postId);
+	public Post getPost(int postId) {
+		return postDAO.selectPostByUserIdPostId(postId);
 	}
 	
 

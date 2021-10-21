@@ -19,9 +19,23 @@
 <body>
 	<div id="wrap">
 		<header>
-			<div class="font-italic">give compliment on yourself!</div>
+			<h3 class="font-italic">Give compliment on yourself!</h3>
 		</header>
-		<section></section>
+		
+		<section>
+			<div class="d-flex">
+				<div class="service-intro">
+					<div class="title-box"></div>
+					<div class="introduce"></div>
+				</div>
+				<div class="main-img"></div>
+				<div class="user-box">
+					<!-- bootstrap overflow hidden -->
+					<div class="user-list"></div>
+					<div class="signIn-signUp"></div>
+				</div>
+			</div>
+		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
