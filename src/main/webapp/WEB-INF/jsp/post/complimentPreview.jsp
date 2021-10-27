@@ -23,19 +23,23 @@
 		
 		<section>
 			<!-- 프로필 -->
-			<div class="profile d-flex mt-4">
-				<i class="bi bi-person-square profile-icon"></i> 
-				<!--<i class="bi bi-person-badge profile-icon"></i>-->
-				<div class="ml-3 mt-4">
-					<!-- userName -->
-	
+			<div class="preview-header d-flex mt-3">
+				<div class="d-flex mt-1 mr-4">
+					<i class="bi bi-person-square profile-icon"></i> 
+					<div class="ml-3 mt-4">
+						<!-- loginId -->
 						<h5 class="userName-box">${param.loginId }</h5>
-					
-					<div class="d-flex">
 						<!-- 칭찬 스티커 진행 상황 -->
-						<div class="text-success mr-5"><small><b>칭찬 스티커 진행중</b></small></div>
-						<!-- 팔로우, 팔로잉 정보 -->
-						<div><small>칭찬친구 11명</small></div>
+						<div class="text-success mr-5">
+							<small class="mr-5"><b>칭찬 스티커 진행중</b></small>
+						</div>
+					</div>
+				</div>
+					<!-- 사용자 리스트 링크 modal -->
+				<div class="d-flex mt-4 ml-5">
+					<div class="mt-5 ml-5">
+						<a href="#" class="text-dark ml-5"><i class="bookmark-icon bi bi-bookmark-star-fill ml-5"></i>
+						<small><b>칭찬친구 보러가기</b></small></a>
 					</div>
 				</div>
 			</div>
@@ -73,7 +77,7 @@
 								</a>
 							</c:when>
 							<c:otherwise>
-								<div class="preview-aside ml-3"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
+								<div class="preview-aside"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
@@ -91,7 +95,7 @@
 								</a>
 							</c:when>
 							<c:otherwise>
-								<div class="preview-aside ml-3 mt-3"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
+								<div class="preview-aside"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
