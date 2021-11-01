@@ -6,7 +6,7 @@
 	<div class="d-flex align-items-end justify-content-between mt-3">
 		<div class="d-flex align-items-end">
 			<img src="/static/image/award_icon_22.png" width="45px" class="header-img mt-3 ml-4" alt="상단 칭찬 아이콘">
-			<div class="header-slogan ml-1">give compliments on yourself!</div>
+			<div class="header-slogan ml-1"><a href="/post/compliment_preview?loginId=${loginId }" class="text-dark">give compliments on yourself!</a></div>
 		</div>
 		<c:if test="${not empty userName }" >
 			<div>
