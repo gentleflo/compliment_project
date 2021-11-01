@@ -28,14 +28,18 @@
 					<i class="bi bi-person-circle profile-icon"></i>
 					<div class="ml-2 mt-3">
 						<div class="loginId-box"><h4>${post.loginId }</h4></div>
-						<div class="status text-success"><small><b>칭찬스티커 진행중</b></small></div>
+						<div class="d-flex justify-content-between">
+							<div class="status text-success"><small><b>칭찬스티커 진행중</b></small></div>
+							<!-- ?????????? -->
+							<div class="ml-4"><a href="/post/compliment_edit_view" class="go-to-edit text-secondary"><b>스티커판 추가</b></a></div>
+						</div>
 						<div class="date"><small>${post.startDate } ~ ${post.endDate }</small></div>
 					</div>
 				</div>
-				<div class="compliment-friend ml-3 mt-1">칭찬친구 11명</div>
+				<!-- <div class="compliment-friend ml-3 mt-1">칭찬친구 11명</div> -->
 				
 				<!-- 위시리스트 -->
-				<div class="d-flex ml-3 mt-4">
+				<div class="d-flex ml-3 mt-5">
 					<i class="bi bi-cart3 wishList-icon"></i>
 					<div class="mt-2">
 						<span class="ml-2"><b>스티커를 다 모으면</b></span><br>
@@ -46,18 +50,17 @@
 					<c:forEach var="wishListContent" items="${wishList }">
 					<div class="d-flex">
 						<input class="form-check-input" type="checkbox" value="" id="wishListCheck">
-							<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList }</label><br>	
+							<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList.wishList }</label><br>	
 						<!-- 선물하기 링크 일단 숨겨놓음!  -->
 						<c:choose>
-							<c:when test="${empty wishListContent.url && post.loginId eq param.loginId }" >
+							<c:when test="${empty wishListContent.wishList.url && post.loginId eq param.loginId }" >
 								<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
-									data-wishlist-id="${wishListContent.id }"><small>구매 좌표 추가!</small></a>
+									data-wishlist-id="${wishListContent.wishList.id }"><small>구매 좌표 추가!</small></a>
 							</c:when>
-							<!-- url이 empty이고 loginId가 일치하지 않으면 구매좌표추가가 사라지는 조건 추가해야함 
-								지금은 다 친구에게 선물하기로 바뀌어버림 -->
+							
 							<c:otherwise>
 								<a href="#" class="gift-link text-info text-right" data-toggle="modal" data-target="#giftUrl"
-									data-wishlist-id="${wishListContent.id }" data-wishlist-url="${wishListContent.url }" data-post-id="${wishListContent.postId }">
+									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
 									<small>친구에게 선물하기!</small></a>
 							</c:otherwise>
 						</c:choose>
@@ -106,19 +109,26 @@
 			    </div>
 			  </div>
 			</div>
-				
-				
-				
+
 			</div>
+			
 			
 			<!-- 우측 스티커보드와 칭찬리스트, 좋아요, 댓글 섹션 -->
 			<div class="stickerBoard-complimentList-section">
 				<!-- 스티커 보드 -->
 				<div class="d-flex align-items-end">
 					<div class="sticker-board mt-3"><img src="${stickerBoard.stickerBoardImgUrl }" id="stickerBoardImg" width="680px" class="stickerBoard-img"></div>
-					<i class="bi bi-hand-thumbs-up like-icon ml-1"></i>
-				</div>
-				<div class="text-right mr-2 compliment-count"><b>칭찬 11개</b></div>
+					<!-- 좋아요 -->
+					<c:choose>
+						<c:when test="${isLike }">
+							<a href="#" id="likeBtn" data-post-id="${post.id }"><i class="bi bi-hand-thumbs-up-fill like-icon ml-1"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a href="#" id="likeBtn" data-post-id="${post.id }"><i class="bi bi-hand-thumbs-up like-icon ml-1"></i></a>
+						</c:otherwise>
+					</c:choose>
+				</div>	
+				<div class="text-right mr-2 compliment-count"><b>칭찬 ${countLike }개</b></div>
 				<!-- 칭찬 리스트 -->
 				<c:forEach var="complimentContent" items="${compliment }" varStatus="status">
 					<div class="compliment-list mt-4">
@@ -322,6 +332,30 @@
 						alert(error);
 					}
 				});
+			});
+			
+			
+			// 좋아요 버튼
+			$("#likeBtn").on("click",function(e){
+				e.preventDefault();
+				
+				var likePostId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/like",
+					data:{"postId":likePostId},
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("칭찬 클릭 실패애...!");
+						}
+					} ,error:function(e) {
+						alert("error......");
+					}
+				});
+				
 			});
 		
 		});

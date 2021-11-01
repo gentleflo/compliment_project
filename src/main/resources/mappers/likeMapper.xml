@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.gentleflo.complimentSticker.post.like.dao.LikeDAO">
+ 	<insert id="insertLikeByUserIdPostId" parameterType="map">
+ 		INSERT INTO
+ 			`like`
+ 		(
+ 			`userId`
+ 			, `postId`
+ 			, `createdAt`
+ 		) VALUES (
+ 			#{userId }
+ 			, #{postId }
+ 			, now()
+ 		)
+ 	</insert>
+ 	
+ 	<select id="selectLikeListByUserIdPostId" resultType="int" parameterType="map">
+ 		SELECT 
+ 			count(*)
+ 		FROM
+ 			`like`
+ 		WHERE
+ 			`userId` = #{userId }
+ 			AND `postId` = #{postId }
+ 	</select>
+ 	
+ 	<delete id="deleteLikeByUserIdPostId" parameterType="int">
+ 		DELETE FROM
+ 			`like`
+ 		WHERE 
+ 			`userId` = #{userId }
+ 			AND `postId` = #{postId }
+ 	</delete>
+ 	
+ 	<select id="selectLikeForCountByPostId" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`like`
+ 		WHERE 
+ 			`postId` = #{postId }
+ 	</select>
+ 
+ </mapper>
