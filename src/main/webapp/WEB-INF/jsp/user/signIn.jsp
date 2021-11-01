@@ -87,7 +87,7 @@
 					data:{"loginId":loginId, "password":password},
 					success:function(data) {
 						if(data.result == "success") {
-							location.href="/post/compliment_edit_view";
+							location.href="/post/compliment_preview?loginId=" + loginId;
 						} else {
 							alert("아이디, 비밀번호를 확인해주세요");
 						}
