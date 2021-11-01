@@ -30,8 +30,10 @@
 						<div class="loginId-box"><h4><a href="/post/compliment_preview?loginId=${post.loginId }" class="text-dark">${post.loginId }</a></h4></div>
 						<div class="d-flex justify-content-between">
 							<div class="status text-success"><small><b>칭찬스티커 진행중</b></small></div>
-							<!-- ?????????? -->
-							<div class="ml-4"><a href="/post/compliment_edit_view" class="go-to-edit text-secondary"><b>스티커판 추가</b></a></div>
+							
+							<c:if test="${post.loginId eq loginId }">
+								<div class="ml-4"><a href="/post/compliment_edit_view" class="go-to-edit text-secondary"><b>스티커판 추가</b></a></div>
+							</c:if>
 						</div>
 						<div class="date"><small>${post.startDate } ~ ${post.endDate }</small></div>
 					</div>
@@ -49,15 +51,41 @@
 				<div class="form-check ml-3 mt-4">
 					<c:forEach var="wishListContent" items="${wishList }">
 					<div class="d-flex">
-						<input class="form-check-input" type="checkbox" value="" id="wishListCheck">
-							<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList.wishList }</label><br>	
-						<!-- 선물하기 링크 일단 숨겨놓음!  -->
 						<c:choose>
-							<c:when test="${empty wishListContent.wishList.url && post.loginId eq param.loginId }" >
-								<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
-									data-wishlist-id="${wishListContent.wishList.id }"><small>구매 좌표 추가!</small></a>
+							<c:when test="${not empty wishListContent.gift.id }">
+								<input class="form-check-input" type="checkbox" value="" id="wishListCheck" checked>
+									<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList.wishList }</label><br>
 							</c:when>
-							
+							<c:otherwise>
+								<input class="form-check-input" type="checkbox" value="" id="wishListCheck">
+									<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList.wishList }</label><br>
+							</c:otherwise>
+						</c:choose>
+				
+						<c:choose>
+							<c:when test="${empty wishListContent.wishList.url && post.loginId eq loginId }" >
+								<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
+									data-wishlist-id="${wishListContent.wishList.id }"><small>구매 좌표 <b>추가!</b></small></a>
+							</c:when>
+							<c:when test="${empty wishListContent.wishList.url && post.loginId ne loginId }">
+								<a href="#" class="gift-link text-info text-right d-none" data-toggle="modal" data-target="#giftUrl"
+									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
+									<small>친구에게 선물하기!</small></a>
+							</c:when>
+							<c:when test="${not empty wishListContent.wishList.url && post.loginId eq loginId }">
+								<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
+									data-wishlist-id="${wishListContent.wishList.id }"><small>구매 좌표 <b>수정</b></small></a>
+							</c:when>
+							<c:when test="${not empty wishListContent.gift.id && post.loginId ne loginId }">
+								<a href="#" class="gift-link text-info text-right d-none" data-toggle="modal" data-target="#giftUrl"
+									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
+									<small>친구에게 선물하기!</small></a>
+							</c:when>
+							<c:when test="${not empty wishListContent.wishList.url && post.loginId ne loginId }">
+								<a href="#" class="gift-link text-info text-right" data-toggle="modal" data-target="#giftUrl"
+									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
+									<small>친구에게 선물하기!</small></a>
+							</c:when>
 							<c:otherwise>
 								<a href="#" class="gift-link text-info text-right" data-toggle="modal" data-target="#giftUrl"
 									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
@@ -180,8 +208,8 @@
 				obj.text(i);
 				obj.css("display", "block");
 				obj.attr("src", "${stickerBoard.beforeClickStickerUrl }");
-				obj.css("width","27px");
-				obj.css("height", "32px");
+				obj.css("width","28px");
+				obj.css("height", "33px");
 				obj.css("position", "absolute");
 				obj.css("left", (leftPositions[i]) + "px");
 				obj.css("top", (topPositions[i]) + "px");
@@ -287,6 +315,7 @@
 					data:{"wishListId":wishListId, "url":url},
 					success:function(data) {
 						if(data.result == "success") {
+							alert("구매좌표 추가 완료!:)");
 							location.reload();
 						} else {
 							alert("url 저장 실패");

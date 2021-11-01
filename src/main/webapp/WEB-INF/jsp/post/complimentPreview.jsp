@@ -68,7 +68,7 @@
 			
 			
 			<!-- 칭찬 스티커 미리보기 섹션 -->
-			<div class="preview-section d-flex mt-2">
+			<div class="preview-section d-flex">
 				<!-- 스티커판 메인 이미지 -->
 				<div class="preview-main mt-3 ml-5">
 					<c:choose>
@@ -83,9 +83,14 @@
 						</c:otherwise>
 					</c:choose>
 					<!-- 선물 아이콘 -->
-					<c:if test="${postDetailForPreview[0].getGiftAlarmStatus >= 1}">
-						<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
-					</c:if>
+					<c:choose>
+						<c:when test="${postDetailForPreview[0].getGiftAlarmStatus >= 1}">
+							<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[0].post.id }"><i class="bi bi-gift text-danger"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[0].post.id }"><i class="bi bi-gift text-danger"></i></a>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				
 				<div>
@@ -102,9 +107,14 @@
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
-						<c:if test="${postDetailForPreview[1].getGiftAlarmStatus >= 1}">
-							<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
-						</c:if>
+						<c:choose>
+							<c:when test="${postDetailForPreview[1].getGiftAlarmStatus >= 1}">
+								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[1].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[1].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							</c:otherwise>
+						</c:choose>
 					</div>
 							
 					<!-- 스티커판 왼쪽 하단 작은 이미지 -->
@@ -120,9 +130,14 @@
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
-						<c:if test="${postDetailForPreview[2].getGiftAlarmStatus >= 1}">
-							<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
-						</c:if>
+						<c:choose>
+							<c:when test="${postDetailForPreview[2].getGiftAlarmStatus >= 1}">
+								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[2].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[2].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							</c:otherwise>
+						</c:choose>
 					</div>	
 				</div>
 				
@@ -140,9 +155,14 @@
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
-						<c:if test="${postDetailForPreview[3].getGiftAlarmStatus >= 1}">
-							<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
-						</c:if>
+						<c:choose>
+							<c:when test="${postDetailForPreview[3].getGiftAlarmStatus >= 1}">
+								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[3].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[3].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							</c:otherwise>
+						</c:choose>
 					</div>
 							
 					<!-- 스티커판 오른쪽 하단 작은 이미지 -->
@@ -158,9 +178,14 @@
 							</c:otherwise>
 						</c:choose>	
 						<!-- 선물 아이콘 -->
-						<c:if test="${postDetailForPreview[4].getGiftAlarmStatus >= 1}">
-							<a href="#"><i class="gift-icon bi bi-gift text-danger"></i></a>
-						</c:if>	
+						<c:choose>
+							<c:when test="${postDetailForPreview[4].getGiftAlarmStatus >= 1}">
+								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[4].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[4].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							</c:otherwise>
+						</c:choose>
 					</div>		
 				</div>
 			</div>
@@ -173,7 +198,32 @@
 					</div>
 				</div>
 			</c:if>
+			
+			
+			
+			<!-- 선물하기 아이콘 클릭시 뜨는 modal -->
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        ...
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 		</section>
+		
 	
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
@@ -181,7 +231,30 @@
 	
 	<script>
 		$(document).ready(function(){
-			
+			$(".gift-icon").on("click", function(e){
+				e.preventDefault();
+				
+				var postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"post",
+					url:"/post/update_gift_alarmStatus",
+					data:{"postId":postId},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("친구가 선물하기를 클릭했어요! 확인해볼까요?");
+							 $('.modal-body').html("로그인 성공");
+				             // Display Modal
+				            $('#empModal').modal('show'); 
+				         
+						} else {
+							alert("선물하기 알람상태 업데이트 실패");
+						}
+					}, error:function(e) {
+						alert("error...........");
+					}
+				});
+			});
 			
 			
 		});

@@ -57,7 +57,6 @@ public class WishListBO {
 			wishListDetailList.add(wishListDetail);
 		}
 		return wishListDetailList;
-		
 		//return wishListDAO.selectWishListByUserIdPostId(postId);
 	}
 	
