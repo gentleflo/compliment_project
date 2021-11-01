@@ -27,7 +27,7 @@
 				<div class="profile d-flex ml-3 mt-4">
 					<i class="bi bi-person-circle profile-icon"></i>
 					<div class="ml-2 mt-3">
-						<div class="loginId-box"><h4>${post.loginId }</h4></div>
+						<div class="loginId-box"><h4><a href="/post/compliment_preview?loginId=${post.loginId }" class="text-dark">${post.loginId }</a></h4></div>
 						<div class="d-flex justify-content-between">
 							<div class="status text-success"><small><b>칭찬스티커 진행중</b></small></div>
 							<!-- ?????????? -->
