@@ -1,5 +1,7 @@
 package com.gentleflo.complimentSticker.user.bo;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +47,11 @@ public class UserBO {
 	public User getUser(String loginId, String password) {
 		String encryptPassword = EncryptUtils.md5(password);
 		return userDAO.selectByLoginIdPassword(loginId, encryptPassword);
+	}
+	
+	
+	// 사용자 리스트 모두 긁어오기_preview 페이지에 뿌리기용
+	public List<User> getUserList() {
+		return userDAO.selectAllUserList();
 	}
 }

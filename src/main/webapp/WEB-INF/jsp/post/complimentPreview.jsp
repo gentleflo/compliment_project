@@ -35,16 +35,37 @@
 						</div>
 					</div>
 				</div>
-					<!-- 사용자 리스트 링크 modal -->
+				
+				<!-- 사용자 리스트 링크 modal -->
 				<div class="d-flex mt-4 ml-5">
 					<div class="mt-5 ml-5">
-						<a href="#" class="text-dark ml-5"><i class="bookmark-icon bi bi-bookmark-star-fill ml-5"></i>
+						<a href="#" class="text-dark ml-5" data-toggle="modal" data-target="#exampleModalCenter">
+						<i class="bookmark-icon bi bi-bookmark-star-fill ml-5"></i>
 						<small><b>칭찬친구 보러가기</b></small></a>
 					</div>
 				</div>
 			</div>
 			
-		
+			<!-- 사용자 리스트 링크 Modal -->
+			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <div class="modal-title" id="exampleModalLongTitle">친구들에게 칭찬하러 가볼까요?<b><i class="bi bi-emoji-wink ml-1 mb-3"></i></b></div>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body text-center">
+			     	<c:forEach var="userList" items="${userList }">
+			       		<a href="/post/compliment_preview?loginId=${userList.loginId }" class="text-dark text-center mb-3">${userList.loginId }</a><br>
+			        </c:forEach>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
+			
 			
 			<!-- 칭찬 스티커 미리보기 섹션 -->
 			<div class="preview-section d-flex mt-2">
@@ -160,9 +181,7 @@
 	
 	<script>
 		$(document).ready(function(){
-			$(".gift-icon").on("click", function(){
-				
-			});
+			
 			
 			
 		});

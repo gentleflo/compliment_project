@@ -1,5 +1,7 @@
 package com.gentleflo.complimentSticker.user.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -24,4 +26,8 @@ public interface UserDAO {
 	public User selectByLoginIdPassword(
 			@Param("loginId") String loginId
 			, @Param("password") String password);
+	
+	
+	// 사용자 리스트 모두 긁어오기_preview 페이지에 뿌리기용
+	public List<User> selectAllUserList();
 }

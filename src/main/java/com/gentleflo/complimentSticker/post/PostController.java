@@ -24,6 +24,8 @@ import com.gentleflo.complimentSticker.post.stickerNumber.bo.StickerNumberBO;
 import com.gentleflo.complimentSticker.post.stickerNumber.model.StickerNumber;
 import com.gentleflo.complimentSticker.post.wishList.bo.WishListBO;
 import com.gentleflo.complimentSticker.post.wishList.model.WishListDetail;
+import com.gentleflo.complimentSticker.user.bo.UserBO;
+import com.gentleflo.complimentSticker.user.model.User;
 
 @Controller
 @RequestMapping("/post")
@@ -40,7 +42,8 @@ public class PostController {
 	private StickerBoardBO stickerBoardBO;
 	@Autowired
 	private LikeBO likeBO;
-
+	@Autowired
+	private UserBO userBO;
 
 
 	
@@ -59,7 +62,10 @@ public class PostController {
 			, Model model) {
 		
 		List<PostDetail> postDetailForPreview = postBO.getPostDetail(loginId);
+		List<User> userList = userBO.getUserList();
+		
 		model.addAttribute("postDetailForPreview", postDetailForPreview);
+		model.addAttribute("userList", userList);
 		return "post/complimentPreview";
 	}
 	

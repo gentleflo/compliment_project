@@ -49,4 +49,17 @@
  			`loginId` = #{loginId }
  			AND `password` = #{password }
  	</select>
+ 	
+ 	<select id="selectAllUserList" resultType="com.gentleflo.complimentSticker.user.model.User">
+ 		SELECT
+ 			`id`
+ 			, `email`
+ 			, `loginId`
+ 			, `userName`
+ 			, `password`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`user`
+ 	</select>
  </mapper>
