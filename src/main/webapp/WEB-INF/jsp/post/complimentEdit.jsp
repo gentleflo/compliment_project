@@ -24,7 +24,7 @@
 		<section class="mt-4">
 			<!-- 프로필 -->
 			<div class="profile d-flex">
-				<i class="bi bi-person-square profile-icon"></i> 
+				<a href="/post/compliment_preview?loginId=${loginId }"><i class="bi bi-person-square profile-icon text-dark"></i></a>
 				<!--<i class="bi bi-person-badge profile-icon"></i>-->
 				<div class="ml-2 mt-4">
 					<!-- userName -->

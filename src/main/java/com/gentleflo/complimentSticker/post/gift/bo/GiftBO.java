@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gentleflo.complimentSticker.post.gift.dao.GiftDAO;
+import com.gentleflo.complimentSticker.post.gift.model.Gift;
 
 
 @Service 
@@ -27,6 +28,11 @@ public class GiftBO {
 	// preview 화면에서 아이콘 클릭시 gift의 alarmStatus 컬럼 내용 업데이트용
 	public int updateAlarmStatus(int giftId, int userId) {
 		return giftDAO.updateGiftAlarmStatus(giftId, userId);
+	}
+	
+	// detail_view에서 위시리스트에 해당하는 알람상태 가져오기
+	public Gift getGift(int wishListId){
+		return giftDAO.selectGiftByWishListId(wishListId);
 	}
 	
 }

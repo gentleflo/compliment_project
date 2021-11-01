@@ -51,7 +51,7 @@
  			`id` DESC			
  	</select>
  	
- 	<select id="selectPostByUserIdPostId" resultType="com.gentleflo.complimentSticker.post.model.Post">
+ 	<select id="selectPostByPostId" resultType="com.gentleflo.complimentSticker.post.model.Post">
  		SELECT 
  			`id`
  			,`userId`
@@ -67,6 +67,6 @@
  		WHERE
  			`id` = #{postId } 
  	</select>
- 
+ 	
  </mapper>
  

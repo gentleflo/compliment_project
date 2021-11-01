@@ -20,6 +20,8 @@ public interface PostDAO {
 
 	
 	// compliment_detail_view 페이지 - post 내용 싹 긁어오기
-	public Post selectPostByUserIdPostId(@Param("postId") int postId);
+	public Post selectPostByPostId(@Param("postId") int postId);
+	
+	
 
 }

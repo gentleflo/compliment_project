@@ -13,7 +13,7 @@ public interface WishListDAO {
 	public int insertWishList(
 			@Param("wishList") List<WishList> wishList);
 	
-	public List<WishList> selectWishListByUserIdPostId(
+	public List<WishList> selectWishListByPostId(
 			@Param("postId") int postId);
 	
 	public int updateUrl(

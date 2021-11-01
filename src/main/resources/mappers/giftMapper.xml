@@ -43,4 +43,19 @@
  			`id` = #{giftId }
  			AND `userId` = #{userId } 
  	</update>
+ 	
+ 	<select id="selectGiftByWishListId" resultType="com.gentleflo.complimentSticker.post.gift.model.Gift">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+ 			, `postId`
+ 			, `loginId`
+ 			, `wishListId`
+ 			, `alarmStatus`
+ 			, `createdAt`
+ 		FROM
+ 			`gift`
+ 		WHERE
+ 			`wishListId` = #{wishListId }
+ 	</select>
  </mapper>

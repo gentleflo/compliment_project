@@ -68,6 +68,7 @@ public class PostBO {
 		for(Post post : postList) {
 			StickerBoard stickerBoard = stickerBoardBO.getBoardImgIdStickerImgId(post.getStickerBoardId());
 			int getGiftAlarmStatus = giftBO.getGiftAlarmStatus(post.getId());
+			
 			PostDetail postDetail = new PostDetail();
 			postDetail.setPost(post);
 			postDetail.setStickerBoard(stickerBoard);
@@ -80,7 +81,7 @@ public class PostBO {
 	
 	// compliment_detail_view 페이지
 	public Post getPost(int postId) {
-		return postDAO.selectPostByUserIdPostId(postId);
+		return postDAO.selectPostByPostId(postId);
 	}
 	
 

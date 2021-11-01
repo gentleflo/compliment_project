@@ -7,7 +7,6 @@ public class PostDetail {
 	private StickerBoard stickerBoard;
 	private int getGiftAlarmStatus;
 	
-	
 	public Post getPost() {
 		return post;
 	}

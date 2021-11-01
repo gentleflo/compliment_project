@@ -4,6 +4,8 @@ package com.gentleflo.complimentSticker.post.gift.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.gentleflo.complimentSticker.post.gift.model.Gift;
+
 
 @Repository
 public interface GiftDAO {
@@ -25,5 +27,10 @@ public interface GiftDAO {
 	public int updateGiftAlarmStatus(
 			@Param("giftId") int giftId
 			, @Param("userId") int userId);
+
+	
+	// detail_view에서 위시리스트에 해당하는 알람상태 가져오기
+	public Gift selectGiftByWishListId(
+			@Param("wishListId") int wishListId);
 }
 
