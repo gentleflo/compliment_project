@@ -80,12 +80,13 @@
 							<!-- 게시물 삭제 아이콘 -->
 							<c:if test="${loginId eq param.loginId }">
 								<div class="delete-icon-position">
-									<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+									<a href="#" data-toggle="modal" data-target="#deleteModal" class="deleteModal" data-post-id="${postDetailForPreview[0].post.id }">
+										<b><i class="post-delete bi bi-x text-secondary"></i></b></a>
 								</div>
 							</c:if>
 						</c:when>
 						<c:otherwise>
-							<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
+							<img src="/static/image/Blank_img_2.png" alt="비어있는 이미지" class="stickerBoardImgPreview">
 						</c:otherwise>
 					</c:choose>
 					<!-- 선물 아이콘 -->
@@ -112,12 +113,13 @@
 								<!-- 게시물 삭제 아이콘 -->
 								<c:if test="${loginId eq param.loginId }">
 									<div class="delete-icon-sm-position">
-										<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+										<a href="#" data-toggle="modal" data-target="#deleteModal" class="deleteModal" data-post-id="${postDetailForPreview[1].post.id }">
+											<b><i class="post-delete bi bi-x text-secondary"></i></b></a>
 									</div>
 								</c:if>
 							</c:when>
 							<c:otherwise>
-								<div class="preview-aside"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
+								<div class="preview-aside"><img src="/static/image/Blank_img_2.png" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
@@ -143,12 +145,13 @@
 								<!-- 게시물 삭제 아이콘 -->
 								<c:if test="${loginId eq param.loginId }">
 									<div class="delete-icon-sm-position">
-										<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+										<a href="#"  data-toggle="modal" data-target="#deleteModal" class="deleteModal" data-post-id="${postDetailForPreview[2].post.id }">
+											<b><i class="post-delete bi bi-x text-secondary"></i></b></a>
 									</div>
 								</c:if>
 							</c:when>
 							<c:otherwise>
-								<div class="preview-aside"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
+								<div class="preview-aside"><img src="/static/image/Blank_img_2.png" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
@@ -176,12 +179,13 @@
 								<!-- 게시물 삭제 아이콘 -->
 								<c:if test="${loginId eq param.loginId }">
 									<div class="delete-icon-sm-position">
-										<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+										<a href="#"  data-toggle="modal" data-target="#deleteModal" class="deleteModal" data-post-id="${postDetailForPreview[3].post.id }">
+											<b><i class="post-delete bi bi-x text-secondary"></i></b></a>
 									</div>
 								</c:if>
 							</c:when>
 							<c:otherwise>
-								<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
+								<img src="/static/image/Blank_img_2.png" alt="비어있는 이미지" class="stickerBoardImgPreview">
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
@@ -207,12 +211,13 @@
 								<!-- 게시물 삭제 아이콘 -->
 								<c:if test="${loginId eq param.loginId }">
 									<div class="delete-icon-sm-position">
-										<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+										<a href="#"  data-toggle="modal" data-target="#deleteModal" class="deleteModal" data-post-id="${postDetailForPreview[4].post.id }">
+											<b><i class="post-delete bi bi-x text-secondary"></i></b></a>
 									</div>
 								</c:if>
 							</c:when>
 							<c:otherwise>
-								<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
+								<img src="/static/image/Blank_img_2.png" alt="비어있는 이미지" class="stickerBoardImgPreview">
 							</c:otherwise>
 						</c:choose>	
 						<!-- 선물 아이콘 -->
@@ -238,6 +243,17 @@
 					</div>
 				</div>
 			</c:if>
+			
+			<!-- 칭찬스티커판 삭제하기 Modal -->
+			<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-body text-center">
+			        <a href="#" class="text-dark" id="postDeleteBtn">'칭찬 스티커 삭제하기'</a>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 			
 			
 			
@@ -292,6 +308,36 @@
 					}
 				});
 			});
+		
+		
+			$(".deleteModal").on("click", function(e){
+				e.preventDefault();
+				
+				var postId = $(this).data("post-id");
+				$("#postDeleteBtn").data("post-id", postId);
+			});
+			
+			$("#postDeleteBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				var postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/delete",
+					data:{"postId":postId},
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("삭제 실패");
+						}
+					}, error:function(e) {
+						alert("error......");
+					}
+				});
+			});
+			
 			
 			
 		});

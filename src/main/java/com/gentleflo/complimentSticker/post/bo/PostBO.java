@@ -92,7 +92,7 @@ public class PostBO {
 	
 	
 	// compliment_preview 페이지에서 칭찬스티커 포스트 삭제하기
-	// post, stickerBoard(?), stickerNumber, wishList, gift, compliment, comment, like 싹 다 삭제해야함
+	// post, stickerNumber, wishList, gift, compliment, comment, like 싹 다 삭제해야함
 	public int deletePost(int postId) {
 		stickerNumberBO.deleteStickerNumber(postId);
 		wishListBO.deleteWishList(postId);
