@@ -178,8 +178,8 @@
 					"wishList":wishList, "stickerBoardId":stickerBoardCheck, "share":shareCheck},
 				success:function(data) {
 					if(data.result == "success") {
-						alert("칭찬 리스트 등록 성공!");
-						location.href="/post/compliment_preview";
+						alert("칭찬 리스트 등록 완료!");
+						location.href="/post/compliment_preview?loginId="+"${loginId}";
 					} else {
 						alert("저장 실패..........");
 					}
