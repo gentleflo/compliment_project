@@ -54,6 +54,12 @@ public class LikeBO {
 	public int getCountLikeByPostId(int postId) {
 		return likeDAO.selectLikeForCountByPostId(postId);
 	}
+	
+	
+	// preview 페이지에서 칭찬 포스트 삭제하기
+	public int deleteLike(int postId) {
+		return likeDAO.deleteLikeByPostId(postId);
+	}
 
 
 }

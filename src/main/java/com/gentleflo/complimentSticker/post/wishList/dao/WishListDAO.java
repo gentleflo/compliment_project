@@ -20,4 +20,6 @@ public interface WishListDAO {
 			@Param("wishListId") int id
 			, @Param("userId") int userId
 			, @Param("url") String url);
+	
+	public int deleteWishListByPostId(@Param("postId") int postId);
 }

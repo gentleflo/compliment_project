@@ -24,4 +24,7 @@ public interface LikeDAO {
 	// count like
 	public int selectLikeForCountByPostId(
 			@Param("postId") int postId);
+	
+	// preview 페이지에서 칭찬스티커 포스트 삭제하기
+	public int deleteLikeByPostId(@Param("postId") int postId);
 }

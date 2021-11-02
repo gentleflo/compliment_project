@@ -54,5 +54,12 @@
  			`userId` = #{userId }
  			AND `id` = #{wishListId }
  	</update>
+ 	
+ 	<delete id="deleteWishListByPostId" parameterType="map">
+ 		DELETE FROM
+ 			`wishList`
+ 		WHERE 
+ 			`postId` = #{postId }
+ 	</delete>
  
  </mapper>

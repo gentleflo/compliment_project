@@ -65,4 +65,10 @@ public class WishListBO {
 	public int addUrl(int id, int userId, String url) {
 		return wishListDAO.updateUrl(id, userId, url);
 	}
+	
+	
+	// preview 페이지에서 칭찬스티커 포스트 삭제하기
+	public int deleteWishList(int postId) {
+		return wishListDAO.deleteWishListByPostId(postId);
+	}
 }

@@ -25,7 +25,7 @@
 			<!-- 프로필 -->
 			<div class="preview-header d-flex mt-3">
 				<div class="d-flex mt-1 mr-4">
-					<i class="bi bi-person-square profile-icon"></i> 
+					<i class="bi bi-person-circle profile-icon"></i>
 					<div class="ml-3 mt-4">
 						<!-- loginId -->
 						<h5 class="userName-box">${param.loginId }</h5>
@@ -77,6 +77,12 @@
 							<a href="/post/compliment_detail_view?postId=${postDetailForPreview[0].post.id }">
 							<img src="${postDetailForPreview[0].stickerBoard.stickerBoardImgUrl }" alt="스티커보드 이미지 미리보기" class="stickerBoardImgPreview">
 							</a>
+							<!-- 게시물 삭제 아이콘 -->
+							<c:if test="${loginId eq param.loginId }">
+								<div class="delete-icon-position">
+									<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+								</div>
+							</c:if>
 						</c:when>
 						<c:otherwise>
 							<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
@@ -103,6 +109,12 @@
 								<a href="/post/compliment_detail_view?postId=${postDetailForPreview[1].post.id }">
 								<img src="${postDetailForPreview[1].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
+								<!-- 게시물 삭제 아이콘 -->
+								<c:if test="${loginId eq param.loginId }">
+									<div class="delete-icon-sm-position">
+										<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+									</div>
+								</c:if>
 							</c:when>
 							<c:otherwise>
 								<div class="preview-aside"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
@@ -128,6 +140,12 @@
 								<a href="/post/compliment_detail_view?postId=${postDetailForPreview[2].post.id }">
 								<img src="${postDetailForPreview[2].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
+								<!-- 게시물 삭제 아이콘 -->
+								<c:if test="${loginId eq param.loginId }">
+									<div class="delete-icon-sm-position">
+										<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+									</div>
+								</c:if>
 							</c:when>
 							<c:otherwise>
 								<div class="preview-aside"><img src="" alt="비어있는 이미지" class="stickerBoardImgPreview"></div>
@@ -155,6 +173,12 @@
 								<a href="/post/compliment_detail_view?postId=${postDetailForPreview[3].post.id }">
 								<img src="${postDetailForPreview[3].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
+								<!-- 게시물 삭제 아이콘 -->
+								<c:if test="${loginId eq param.loginId }">
+									<div class="delete-icon-sm-position">
+										<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+									</div>
+								</c:if>
 							</c:when>
 							<c:otherwise>
 								<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
@@ -180,6 +204,12 @@
 								<a href="/post/compliment_detail_view?postId=${postDetailForPreview[4].post.id }">
 								<img src="${postDetailForPreview[4].stickerBoard.stickerBoardImgUrl }" class="stickerBoardImgPreview">
 								</a>
+								<!-- 게시물 삭제 아이콘 -->
+								<c:if test="${loginId eq param.loginId }">
+									<div class="delete-icon-sm-position">
+										<a href="#"><b><i class="post-delete bi bi-x text-secondary"></i></b></a>
+									</div>
+								</c:if>
 							</c:when>
 							<c:otherwise>
 								<img src="" alt="비어있는 이미지" class="stickerBoardImgPreview">
@@ -250,6 +280,7 @@
 					success:function(data) {
 						if(data.result == "success") {
 							alert("친구가 선물을 보냈어요! 확인해볼까요?:)");
+							location.reload();
 							//$('.modal-body').html("로그인 성공");
 				            // Display Modal
 				            //$('#empModal').modal('show'); 

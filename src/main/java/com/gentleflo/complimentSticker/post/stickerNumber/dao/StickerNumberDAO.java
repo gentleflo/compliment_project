@@ -16,4 +16,6 @@ public interface StickerNumberDAO {
 	
 	public List<StickerNumber> selectStickerNumberByPostId(
 			@Param("postId") int postId);
+	
+	public int deleteStickerNumberByPostId(@Param("postId") int postId);
 }

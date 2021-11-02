@@ -32,5 +32,10 @@ public interface GiftDAO {
 	// detail_view에서 위시리스트에 해당하는 알람상태 가져오기
 	public Gift selectGiftByWishListId(
 			@Param("wishListId") int wishListId);
+	
+	
+	// preview에서 칭찬스티커 포스트 삭제하기
+	public int deleteGiftByPostId(
+			@Param("postId") int postId);
 }
 

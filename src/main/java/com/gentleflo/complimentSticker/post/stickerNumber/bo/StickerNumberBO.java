@@ -22,4 +22,9 @@ public class StickerNumberBO {
 		return stickerNumberDAO.selectStickerNumberByPostId(postId);	
 	}
 	
+	// preview 페이지에서 포스트 삭제
+	public int deleteStickerNumber(int postId) {
+		return stickerNumberDAO.deleteStickerNumberByPostId(postId);
+	}
+	
 }

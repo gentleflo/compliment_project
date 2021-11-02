@@ -68,5 +68,12 @@
  			`id` = #{postId } 
  	</select>
  	
+ 	<delete id="deletePostByPostId" parameterType="map">
+ 		DELETE FROM
+ 			`post`
+ 		WHERE
+ 			`id` = #{postId }
+ 	</delete>
+ 	
  </mapper>
  

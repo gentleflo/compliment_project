@@ -67,4 +67,10 @@ public class ComplimentBO {
 		return complimentDetailList;
 	}
 	
+	
+	// preview 페이지에서 칭찬스티커 포스트 지우기
+	public int deleteCompliment(int postId) {
+		return complimentDAO.deleteComplimentByPostId(postId);
+	}
+	
 }

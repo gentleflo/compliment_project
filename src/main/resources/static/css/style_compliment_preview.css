@@ -69,6 +69,16 @@ section {
 	left: 15px;
 	top: 5px;
 }
+.delete-icon-position {
+	position: absolute;
+	left: 205px;
+	top: 2px;
+}
+.delete-icon-sm-position {
+	position: absolute;
+	left: 128px;
+	top: 1px;
+}
 .preview-aside {
 	width: 150px;
 	height: 200px;

@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
 import com.gentleflo.complimentSticker.post.dao.PostDAO;
 import com.gentleflo.complimentSticker.post.gift.bo.GiftBO;
+import com.gentleflo.complimentSticker.post.like.bo.LikeBO;
 import com.gentleflo.complimentSticker.post.model.Post;
 import com.gentleflo.complimentSticker.post.model.PostDetail;
 import com.gentleflo.complimentSticker.post.stickerBoard.bo.StickerBoardBO;
 import com.gentleflo.complimentSticker.post.stickerBoard.model.StickerBoard;
+import com.gentleflo.complimentSticker.post.stickerNumber.bo.StickerNumberBO;
 import com.gentleflo.complimentSticker.post.wishList.bo.WishListBO;
 
 @Service
@@ -27,6 +29,10 @@ public class PostBO {
 	private StickerBoardBO stickerBoardBO;
 	@Autowired
 	private GiftBO giftBO;
+	@Autowired
+	private StickerNumberBO stickerNumberBO;
+	@Autowired
+	private LikeBO likeBO;
 
 	
 	// post insert
@@ -82,6 +88,21 @@ public class PostBO {
 	// compliment_detail_view 페이지
 	public Post getPost(int postId) {
 		return postDAO.selectPostByPostId(postId);
+	}
+	
+	
+	// compliment_preview 페이지에서 칭찬스티커 포스트 삭제하기
+	// post, stickerBoard(?), stickerNumber, wishList, gift, compliment, comment, like 싹 다 삭제해야함
+	public int deletePost(int postId) {
+		stickerNumberBO.deleteStickerNumber(postId);
+		wishListBO.deleteWishList(postId);
+		giftBO.deleteGift(postId);
+		complimentBO.deleteCompliment(postId);
+		likeBO.deleteLike(postId);
+		// comment 삭제가 빠짐 - comment에는 postId가 없음... 무엇을 기준으로 가져올 것인가.....
+		
+		
+		return postDAO.deletePostByPostId(postId);
 	}
 	
 

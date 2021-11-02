@@ -35,4 +35,9 @@ public class GiftBO {
 		return giftDAO.selectGiftByWishListId(wishListId);
 	}
 	
+	// priview에서 칭찬스티커 포스트 삭제하기
+	public int deleteGift(int postId) {
+		return giftDAO.deleteGiftByPostId(postId);
+	}
+	
 }

@@ -23,5 +23,6 @@ public interface PostDAO {
 	public Post selectPostByPostId(@Param("postId") int postId);
 	
 	
-
+	// compliment_preview 페이지에서 칭찬스티커 포스트 삭제하기
+	public int deletePostByPostId(@Param("postId") int postId);
 }

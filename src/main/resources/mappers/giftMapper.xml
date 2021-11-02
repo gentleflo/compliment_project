@@ -60,4 +60,11 @@
  		WHERE
  			`wishListId` = #{wishListId }
  	</select>
+ 	
+ 	<delete id="deleteGiftByPostId" parameterType="map">
+ 		DELETE FROM
+ 			`gift`
+ 		WHERE 
+ 			`postId` = #{postId }
+ 	</delete>
  </mapper>

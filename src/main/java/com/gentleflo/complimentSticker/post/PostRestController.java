@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -121,13 +122,14 @@ public class PostRestController {
 	public Map<String, String> createGift(
 			@RequestParam("postId") int postId
 			, @RequestParam("wishListId") int wishListId
+			, @RequestParam("wishList") String wishList
 			, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		String loginId = (String)session.getAttribute("loginId");
 		
-		int count = giftBO.addGift(userId, postId, loginId, wishListId);
+		int count = giftBO.addGift(userId, postId, loginId, wishListId, wishList);
 		Map<String, String> result = new HashMap<>();
 		if(count == 0) {
 			result.put("result", "fail");
@@ -145,6 +147,22 @@ public class PostRestController {
 		int count = giftBO.updateAlarmStatus(postId);
 		//int count = giftBO.updateAlarmStatus(giftId, userId);
 		
+		Map<String, String> result = new HashMap<>();
+		if(count == 0) {
+			result.put("result", "fail");
+		} else {
+			result.put("result", "success");
+		}
+		return result;
+	}
+	
+	
+	// compliment_preview 페이지에서 칭찬스티커 포스트 삭제하기
+	@GetMapping("/delete")
+	public Map<String, String> deletePost(
+			@RequestParam("postId") int postId) {
+		
+		int count = postBO.deletePost(postId);
 		Map<String, String> result = new HashMap<>();
 		if(count == 0) {
 			result.put("result", "fail");

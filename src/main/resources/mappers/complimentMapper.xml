@@ -42,6 +42,13 @@
  			`postId` = #{postId }
  	</select>
  	
+ 	<delete id="deleteComplimentByPostId" parameterType="map">
+ 		DELETE FROM
+ 			`compliment`
+ 		WHERE
+ 			`postId` = #{postId }
+ 	</delete>
+ 	
  </mapper>
  
  

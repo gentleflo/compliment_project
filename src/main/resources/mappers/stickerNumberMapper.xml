@@ -29,4 +29,11 @@
  		WHERE
  			`postId` = #{postId }
  	</select>
+ 	
+ 	<delete id="deleteStickerNumberByPostId" parameterType="map">
+ 		DELETE FROM 
+ 			`stickerNumber`
+ 		WHERE
+ 			`postId` = #{postId }
+ 	</delete>
  </mapper>
