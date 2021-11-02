@@ -83,14 +83,16 @@
 						</c:otherwise>
 					</c:choose>
 					<!-- 선물 아이콘 -->
-					<c:choose>
-						<c:when test="${postDetailForPreview[0].getGiftAlarmStatus >= 1}">
-							<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[0].post.id }"><i class="bi bi-gift text-danger"></i></a>
-						</c:when>
-						<c:otherwise>
-							<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[0].post.id }"><i class="bi bi-gift text-danger"></i></a>
-						</c:otherwise>
-					</c:choose>
+					<div class="gift-icon-position">
+						<c:choose>
+							<c:when test="${postDetailForPreview[0].getGiftAlarmStatus >= 1 && postDetailForPreview[0].post.loginId eq loginId}">
+								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[0].post.id }"><i class="bi bi-gift-fill text-danger"></i></a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[0].post.id }"><i class="bi bi-gift-fill text-danger"></i></a>
+							</c:otherwise>
+						</c:choose>
+					</div>
 				</div>
 				
 				<div>
@@ -107,14 +109,16 @@
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
+						<div class="gift-icon-position">
 						<c:choose>
-							<c:when test="${postDetailForPreview[1].getGiftAlarmStatus >= 1}">
-								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[1].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							<c:when test="${postDetailForPreview[1].getGiftAlarmStatus >= 1 && postDetailForPreview[1].post.loginId eq loginId}">
+								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[1].post.id }"><i class="small-gift-icon bi bi-gift-fill text-danger"></i></a>
 							</c:when>
 							<c:otherwise>
-								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[1].post.id }"><i class="bi bi-gift text-danger"></i></a>
+								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[1].post.id }"><i class="small-gift-icon bi bi-gift-fill text-danger"></i></a>
 							</c:otherwise>
 						</c:choose>
+						</div>
 					</div>
 							
 					<!-- 스티커판 왼쪽 하단 작은 이미지 -->
@@ -130,14 +134,16 @@
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
+						<div class="gift-icon-position">
 						<c:choose>
-							<c:when test="${postDetailForPreview[2].getGiftAlarmStatus >= 1}">
-								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[2].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							<c:when test="${postDetailForPreview[2].getGiftAlarmStatus >= 1 && postDetailForPreview[2].post.loginId eq loginId}">
+								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[2].post.id }"><i class="small-gift-icon bi bi-gift-fill text-danger"></i></a>
 							</c:when>
 							<c:otherwise>
-								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[2].post.id }"><i class="bi bi-gift text-danger"></i></a>
+								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[2].post.id }"><i class="small-gift-icon bi bi-gift-fill text-danger"></i></a>
 							</c:otherwise>
 						</c:choose>
+						</div>
 					</div>	
 				</div>
 				
@@ -155,14 +161,16 @@
 							</c:otherwise>
 						</c:choose>
 						<!-- 선물 아이콘 -->
+						<div class="gift-icon-position">
 						<c:choose>
-							<c:when test="${postDetailForPreview[3].getGiftAlarmStatus >= 1}">
-								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[3].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							<c:when test="${postDetailForPreview[3].getGiftAlarmStatus >= 1 && postDetailForPreview[3].post.loginId eq loginId}">
+								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[3].post.id }"><i class="small-gift-icon bi bi-gift-fill text-danger"></i></a>
 							</c:when>
 							<c:otherwise>
-								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[3].post.id }"><i class="bi bi-gift text-danger"></i></a>
+								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[3].post.id }"><i class="small-gift-icon bi bi-gift-fill text-danger"></i></a>
 							</c:otherwise>
 						</c:choose>
+						</div>
 					</div>
 							
 					<!-- 스티커판 오른쪽 하단 작은 이미지 -->
@@ -178,14 +186,16 @@
 							</c:otherwise>
 						</c:choose>	
 						<!-- 선물 아이콘 -->
+						<div class="gift-icon-position">
 						<c:choose>
-							<c:when test="${postDetailForPreview[4].getGiftAlarmStatus >= 1}">
-								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[4].post.id }"><i class="bi bi-gift text-danger"></i></a>
+							<c:when test="${postDetailForPreview[4].getGiftAlarmStatus >= 1 && postDetailForPreview[4].post.loginId eq loginId}">
+								<a href="#" class="gift-icon" data-post-id="${postDetailForPreview[4].post.id }"><i class="small-gift-icon bi bi-gift-fill text-danger"></i></a>
 							</c:when>
 							<c:otherwise>
-								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[4].post.id }"><i class="bi bi-gift text-danger"></i></a>
+								<a href="#" class="gift-icon d-none" data-post-id="${postDetailForPreview[4].post.id }"><i class="small-gift-icon bi bi-gift-fill text-danger"></i></a>
 							</c:otherwise>
 						</c:choose>
+						</div>
 					</div>		
 				</div>
 			</div>
@@ -203,28 +213,25 @@
 			
 			<!-- 선물하기 아이콘 클릭시 뜨는 modal -->
 			<!-- Modal -->
-			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-			  <div class="modal-dialog modal-dialog-centered" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			      </div>
-			      <div class="modal-body">
-			        ...
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
-			      </div>
+		    <!-- <div class="modal fade" id="empModal" role="dialog">
+			    <div class="modal-dialog">
+				    <div class="modal-content">
+					    <div class="modal-header">
+						    <h4 class="modal-title">친구가 선물을 했어요!</h4>
+						    <button type="button" class="close" data-dismiss="modal">&times;</button>
+					    </div>
+					    <div class="modal-body">
+					 	'선물하기를 누른 사용자의 loginId'님께서 '선물알람을 누른 위시리스트 항목'에 선물 알람을 눌렀어요~!
+					    </div>
+					    <div class="modal-footer">
+					   		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					    </div>
+				    </div>
 			    </div>
-			  </div>
-			</div>
+		    </div>  -->
+		   
 		</section>
 		
-	
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
@@ -242,11 +249,10 @@
 					data:{"postId":postId},
 					success:function(data) {
 						if(data.result == "success") {
-							alert("친구가 선물하기를 클릭했어요! 확인해볼까요?");
-							 $('.modal-body').html("로그인 성공");
-				             // Display Modal
-				            $('#empModal').modal('show'); 
-				         
+							alert("친구가 선물을 보냈어요! 확인해볼까요?:)");
+							//$('.modal-body').html("로그인 성공");
+				            // Display Modal
+				            //$('#empModal').modal('show'); 
 						} else {
 							alert("선물하기 알람상태 업데이트 실패");
 						}

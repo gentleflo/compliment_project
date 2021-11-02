@@ -62,12 +62,19 @@ section {
 	height: 370px;
 	border: solid 1px #E5E5E5;
 	border-radius: 10px;
+	position: relative;
+}
+.gift-icon-position {
+	position: absolute;
+	left: 15px;
+	top: 5px;
 }
 .preview-aside {
 	width: 150px;
 	height: 200px;
 	border: solid 1px #E5E5E5;
 	border-radius: 12px;
+	position: relative;
 }
 .stickerBoardImgPreview {
 	object-fit: cover;
@@ -75,7 +82,10 @@ section {
 	height: 100%;
 }
 .gift-icon {
-	font-size: 20px;
+	font-size: 21px;
+}
+.small-gift-icon {
+	font-size: 17px;
 }
 
 .go-to-edit-view {
