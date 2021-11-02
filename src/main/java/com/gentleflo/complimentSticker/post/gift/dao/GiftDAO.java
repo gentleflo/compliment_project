@@ -15,7 +15,8 @@ public interface GiftDAO {
 			@Param("userId") int userId
 			, @Param("postId") int postId
 			, @Param("loginId") String loginId
-			, @Param("wishListId") int wishListId);
+			, @Param("wishListId") int wishListId
+			, @Param("wishList") String wishList);
 	
 	
 	// preview에서 post별로 확인하지 않은 알람이 있는지 조회하기용

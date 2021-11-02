@@ -14,8 +14,8 @@ public class GiftBO {
 	private GiftDAO giftDAO;
 	
 	// detail_view에서 '선물알림:)' 버튼 클릭시 gift table에 insert하기용
-	public int addGift(int userId, int postId, String loginId, int wishListId) {
-		return giftDAO.insertGift(userId, postId, loginId, wishListId);
+	public int addGift(int userId, int postId, String loginId, int wishListId, String wishList) {
+		return giftDAO.insertGift(userId, postId, loginId, wishListId, wishList);
 	}
 	
 	

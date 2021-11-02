@@ -12,6 +12,7 @@
  			, `postId`
  			, `loginId`
  			, `wishListId`
+ 			, `wishList`
  			, `alarmStatus`
  			, `createdAt`
  		) VALUES (
@@ -19,6 +20,7 @@
  			, #{postId }
  			, #{loginId }
  			, #{wishListId }
+ 			, #{wishList }
  			, 'beforeCheck'
  			, now()
  		)
@@ -50,6 +52,7 @@
  			, `postId`
  			, `loginId`
  			, `wishListId`
+ 			, `wishList`
  			, `alarmStatus`
  			, `createdAt`
  		FROM
