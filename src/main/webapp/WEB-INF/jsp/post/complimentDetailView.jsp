@@ -51,44 +51,55 @@
 				<div class="form-check ml-3 mt-4">
 					<c:forEach var="wishListContent" items="${wishList }">
 					<div class="d-flex">
+						<!-- 위시리스트 체크박스와 내용 -->
 						<c:choose>
 							<c:when test="${not empty wishListContent.gift.id }">
-								<input class="form-check-input" type="checkbox" value="" id="wishListCheck" checked>
+								<input class="form-check-input" type="checkbox" value="" id="wishListCheck" checked disabled>
 									<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList.wishList }</label><br>
 							</c:when>
 							<c:otherwise>
-								<input class="form-check-input" type="checkbox" value="" id="wishListCheck">
+								<input class="form-check-input" type="checkbox" value="" id="wishListCheck" disabled>
 									<label class="form-check-label wishList-content ml-1 mr-4">${wishListContent.wishList.wishList }</label><br>
 							</c:otherwise>
 						</c:choose>
-				
+						
+						
+						<!-- 구매좌표 추가/수정, 스스로에게 선물, 친구에게 선물 -->
 						<c:choose>
 							<c:when test="${empty wishListContent.wishList.url && post.loginId eq loginId }" >
 								<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
 									data-wishlist-id="${wishListContent.wishList.id }"><small>구매 좌표 <b>추가!</b></small></a>
 							</c:when>
 							<c:when test="${empty wishListContent.wishList.url && post.loginId ne loginId }">
-								<a href="#" class="gift-link text-info text-right d-none" data-toggle="modal" data-target="#giftUrl"
-									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
+								<a href="#" class="gift-link text-info text-right d-none" data-toggle="modal" data-target="#giftUrl" data-gift-person="friend"
+									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-wishlist="${wishListContent.wishList.wishList }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
 									<small>친구에게 선물하기!</small></a>
 							</c:when>
+							<c:when test="${not empty wishListContent.gift.id && post.loginId eq loginId }">
+								<span></span>
+							</c:when>
 							<c:when test="${not empty wishListContent.wishList.url && post.loginId eq loginId }">
-								<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
-									data-wishlist-id="${wishListContent.wishList.id }"><small>구매 좌표 <b>수정</b></small></a>
+								<div class="d-flex">
+									<a href="#" class="add-url text-secondary text-right" data-toggle="modal" data-target="#updateUrl" 
+										data-wishlist-id="${wishListContent.wishList.id }"><small>구매 좌표 <b>수정 </b></small></a>
+									<a href="#" class="gift-link text-secondary text-right" data-toggle="modal" data-target="#giftUrl" data-gift-person="me"
+										data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-wishlist="${wishListContent.wishList.wishList }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
+										<small>/ 나에게 <b>선물</b>하기</small></a>
+								</div>
 							</c:when>
 							<c:when test="${not empty wishListContent.gift.id && post.loginId ne loginId }">
-								<a href="#" class="gift-link text-info text-right d-none" data-toggle="modal" data-target="#giftUrl"
-									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
+								<a href="#" class="gift-link text-info text-right d-none" data-toggle="modal" data-target="#giftUrl" data-gift-person="friend"
+									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-wishlist="${wishListContent.wishList.wishList }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
 									<small>친구에게 선물하기!</small></a>
 							</c:when>
 							<c:when test="${not empty wishListContent.wishList.url && post.loginId ne loginId }">
-								<a href="#" class="gift-link text-info text-right" data-toggle="modal" data-target="#giftUrl"
-									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
+								<a href="#" class="gift-link text-info text-right" data-toggle="modal" data-target="#giftUrl" data-gift-person="friend"
+									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-wishlist="${wishListContent.wishList.wishList }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
 									<small>친구에게 선물하기!</small></a>
 							</c:when>
 							<c:otherwise>
-								<a href="#" class="gift-link text-info text-right" data-toggle="modal" data-target="#giftUrl"
-									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
+								<a href="#" class="gift-link text-info text-right" data-toggle="modal" data-target="#giftUrl" data-gift-person="friend"
+									data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-wishlist="${wishListContent.wishList.wishList }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
 									<small>친구에게 선물하기!</small></a>
 							</c:otherwise>
 						</c:choose>
@@ -101,7 +112,7 @@
 			  <div class="modal-dialog modal-dialog-centered" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <div class="modal-title" id="exampleModalLongTitle"><i class="wink-icon bi bi-emoji-wink mr-1"></i>구매 좌표 추가</div>
+			        <div class="modal-title"><i class="wink-icon bi bi-emoji-wink mr-1"></i>구매 좌표 추가</div>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
@@ -117,12 +128,14 @@
 			  </div>
 			</div>
 			
-			<!-- 선물하기용 Modal -->
+			
+			
+			<!-- 나에게 선물하기용 + 다른 사용자가 친구에게 선물하기용 Modal -->
 			<div class="modal fade" id="giftUrl" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-centered" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <div class="modal-title" id="exampleModalLongTitle"><i class="heart-eyes bi bi-emoji-heart-eyes mr-1"></i>친구에게 선물하기!</div>
+			        <div class="modal-title"><i class="heart-eyes bi bi-emoji-heart-eyes mr-1"></i><span id="modalHeader">친구에게 선물하기!</span></div>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
@@ -132,7 +145,7 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal"><b>닫기</b></button>
-			        <button type="button" class="btn btn-outline-info btn-sm" id="sendGiftBtn"><b>선물 알림 :)</b></button>
+			        <button type="button" class="btn btn-outline-info btn-sm" id="sendGiftBtn"><b><span id="sendGiftAlarm">선물 알림 :)</span></b></button>
 			      </div>
 			    </div>
 			  </div>
@@ -330,30 +343,42 @@
 			// 디테일뷰에서 '선물하기' 링크가 클릭되었을때 wishListId를 부여해주기 위한 클릭 이벤트
 			$(".gift-link").on("click", function(){
 				var wishListId = $(this).data("wishlist-id");
+				var wishList = $(this).data("wishlist-wishlist");
 				var wishListUrl = $(this).data("wishlist-url")
 				var postId = $(this).data("post-id");
+				var giftFrom = $(this).data("gift-person");
 				$("#showGiftUrl").data("wishlist-id", wishListId);
 				$("#showGiftUrl").attr("href", wishListUrl);
 				
+				$("#sendGiftBtn").data("wishlist-wishlist", wishList);
 				$("#sendGiftBtn").data("wishlist-id", wishListId);
 				$("#sendGiftBtn").data("post-id", postId);
+				
+				if(giftFrom == "me") {
+					$("#modalHeader").text("나에게 선물하기");
+					$("#sendGiftAlarm").text("선물 완료:)");
+				} 
 			});
 			
 			
 			// 친구에게 선물하기! modal에서 '선물 알림:)' 클릭시 insert 되는 클릭 이벤트
 			$("#sendGiftBtn").on("click", function(){
 				var wishListId = $("#sendGiftBtn").data("wishlist-id");
+				var wishList = $("#sendGiftBtn").data("wishlist-wishlist");
 				var postId = $("#sendGiftBtn").data("post-id"); 
+				var giftFrom = $(".gift-link").data("gift-person");
 				
 				$.ajax({
 					type:"post",
 					url:"/post/create_gift",
-					data:{"postId":postId, "wishListId":wishListId},
+					data:{"postId":postId, "wishList":wishList, "wishListId":wishListId},
 					success:function(data) {
-						if(data.result == "success") {
+						if(data.result == "success" && giftFrom == "friend") {
 							alert("친구에게 선물 알림을 보냈어요~!:)")
 							location.reload();
-							
+						} else if(data.result == "success" && giftFrom == "me") {
+							alert("스스로에게 칭찬 선물 완료! :^)")
+							location.reload();
 						} else {
 							alert("선물알림 실패");
 						}
