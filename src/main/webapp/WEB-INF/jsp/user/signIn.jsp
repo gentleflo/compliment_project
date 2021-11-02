@@ -46,7 +46,7 @@
 					<div class="ml-2 mr-2">/</div>
 					<a href="#" class="text-secondary"><small>비밀번호 찾기</small></a>
 					<div class="ml-2 mr-2">/</div>
-					<a href="#" class="text-success"><small><b>회원가입</b></small></a>			
+					<a href="/user/signup_view" class="text-success"><small><b>회원가입</b></small></a>			
 				</div>
 				
 				<div class="d-flex justify-content-center mt-4">
