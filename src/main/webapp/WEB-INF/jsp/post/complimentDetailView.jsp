@@ -237,7 +237,7 @@
 					}
 				}
 				
-				
+				<c:if test="${post.loginId eq loginId}">
 				obj.on("click", function(){
 					$(this).attr("src", "${stickerBoard.afterClickStickerUrl }");
 					var postId = ${post.id };
@@ -257,6 +257,7 @@
 						}
 					});
 				});
+				</c:if>
 			}
 			
 			
