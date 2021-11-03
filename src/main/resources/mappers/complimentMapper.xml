@@ -42,12 +42,27 @@
  			`postId` = #{postId }
  	</select>
  	
- 	<delete id="deleteComplimentByPostId" parameterType="map">
+ 	<delete id="deleteComplimentByComplimentId" parameterType="map">
  		DELETE FROM
  			`compliment`
  		WHERE
- 			`postId` = #{postId }
+ 			`id` = #{complimentId }
  	</delete>
+ 	
+ 	<select id="selectComplimentByPostId" resultType="com.gentleflo.complimentSticker.post.compliment.model.Compliment">
+ 		SELECT 
+ 			`id`
+ 			, `userId`
+ 			, `loginId`
+ 			, `postId`
+ 			, `compliment`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`compliment`
+ 		WHERE 
+ 			`postId` = #{postId }
+ 	</select>
  	
  </mapper>
  

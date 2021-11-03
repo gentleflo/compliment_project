@@ -42,4 +42,12 @@
  		ORDER BY 
  			`id` DESC
  	</select>
+ 	
+ 	
+ 	<delete id="deleteCommentByComplimentListId" parameterType="map">
+ 		DELETE FROM
+ 			`comment`
+ 		WHERE 
+ 			`complimentListId` = #{complimentListId }
+ 	</delete>
  </mapper>

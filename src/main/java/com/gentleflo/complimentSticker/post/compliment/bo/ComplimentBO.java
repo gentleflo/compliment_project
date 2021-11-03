@@ -68,9 +68,16 @@ public class ComplimentBO {
 	}
 	
 	
+	// preview 페이지에서 칭찬스티커 포스트 지우기 위한 complimentId 리스트 가져오기
+	public List<Compliment> getComplimentId(int postId) {
+		return complimentDAO.selectComplimentByPostId(postId);
+	}
+	
+	
 	// preview 페이지에서 칭찬스티커 포스트 지우기
-	public int deleteCompliment(int postId) {
-		return complimentDAO.deleteComplimentByPostId(postId);
+	public int deleteCompliment(int complimentId) {
+		commentBO.deleteComment(complimentId);
+		return complimentDAO.deleteComplimentByComplimentId(complimentId);
 	}
 	
 }

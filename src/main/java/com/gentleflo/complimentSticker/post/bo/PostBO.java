@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
+import com.gentleflo.complimentSticker.post.compliment.model.Compliment;
 import com.gentleflo.complimentSticker.post.dao.PostDAO;
 import com.gentleflo.complimentSticker.post.gift.bo.GiftBO;
 import com.gentleflo.complimentSticker.post.like.bo.LikeBO;
@@ -97,10 +98,12 @@ public class PostBO {
 		stickerNumberBO.deleteStickerNumber(postId);
 		wishListBO.deleteWishList(postId);
 		giftBO.deleteGift(postId);
-		complimentBO.deleteCompliment(postId);
 		likeBO.deleteLike(postId);
-		// comment 삭제가 빠짐 - comment에는 postId가 없음... 무엇을 기준으로 가져올 것인가.....
 		
+		List<Compliment> complimentIdList = complimentBO.getComplimentId(postId);
+		for(Compliment compliment : complimentIdList) {
+			complimentBO.deleteCompliment(compliment.getId());
+		}
 		
 		return postDAO.deletePostByPostId(postId);
 	}

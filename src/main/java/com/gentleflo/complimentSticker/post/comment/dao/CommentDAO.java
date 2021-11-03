@@ -20,4 +20,9 @@ public interface CommentDAO {
 	// 칭찬리스트아이디에 해당하는 댓글 가져오기
 	public List<Comment> selectCommentByComplimentListId(
 			@Param("complimentListId") int complimentListId);
+	
+	
+	// 칭찬리스트아이디에 해당하는 댓글 삭제하기
+	public int deleteCommentByComplimentListId(
+			@Param("complimentListId") int complimentListId);
 }

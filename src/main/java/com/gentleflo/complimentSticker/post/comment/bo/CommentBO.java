@@ -22,4 +22,9 @@ public class CommentBO {
 	public List<Comment> getCommentList(int complimentListId) {
 		return commentDAO.selectCommentByComplimentListId(complimentListId);
 	}
+	
+	// comment 지우기
+	public int deleteComment(int complimentListId) {
+		return commentDAO.deleteCommentByComplimentListId(complimentListId);
+	}
 }
