@@ -329,7 +329,6 @@
 					data:{"wishListId":wishListId, "url":url},
 					success:function(data) {
 						if(data.result == "success") {
-							alert("구매좌표 추가 완료!:)");
 							location.reload();
 						} else {
 							alert("url 저장 실패");

@@ -1,6 +1,8 @@
 package com.gentleflo.complimentSticker.post.gift.bo;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +21,13 @@ public class GiftBO {
 	}
 	
 	
-	// preview에서 post별로 확인하지 않은 알람이 있는지 조회하기용
-	public int getGiftAlarmStatus(int postId) {
-		return giftDAO.selectGiftAlarmByPostIdAlarmStatus(postId);
+	// preview에서 post별로 확인하지 않은 알람이 있는지 조회하기하고 gift 정보 모두 긁어오기용
+	public List<Gift> getGiftAlarmStatus(int postId) {
+		return giftDAO.selectGiftAlarmByPostId(postId);
+	}
+	// preview에서 post별로 확인하지 않은 알람이 몇개가 있는지 count하기용
+	public int getAlaramStatusCount(int postId) {
+		return giftDAO.selectAlarmStatusCountByPostId(postId);
 	}
 	
 	

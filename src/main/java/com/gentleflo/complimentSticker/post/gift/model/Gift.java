@@ -8,6 +8,7 @@ public class Gift {
 	private int postId;
 	private String loginId;
 	private int wishListId;
+	private String wishList;
 	private String alarmStatus;
 	private Date createdAt;
 	
@@ -41,6 +42,12 @@ public class Gift {
 	public void setWishListId(int wishListId) {
 		this.wishListId = wishListId;
 	}
+	public String getWishList() {
+		return wishList;
+	}
+	public void setWishList(String wishList) {
+		this.wishList = wishList;
+	}
 	public String getAlarmStatus() {
 		return alarmStatus;
 	}
@@ -53,5 +60,4 @@ public class Gift {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-
 }

@@ -10,6 +10,7 @@ import com.gentleflo.complimentSticker.post.compliment.bo.ComplimentBO;
 import com.gentleflo.complimentSticker.post.compliment.model.Compliment;
 import com.gentleflo.complimentSticker.post.dao.PostDAO;
 import com.gentleflo.complimentSticker.post.gift.bo.GiftBO;
+import com.gentleflo.complimentSticker.post.gift.model.Gift;
 import com.gentleflo.complimentSticker.post.like.bo.LikeBO;
 import com.gentleflo.complimentSticker.post.model.Post;
 import com.gentleflo.complimentSticker.post.model.PostDetail;
@@ -74,12 +75,14 @@ public class PostBO {
 		// postId로 gift 테이블 조회 (확인안한 알람이 있는지 count쿼리 0,1)
 		for(Post post : postList) {
 			StickerBoard stickerBoard = stickerBoardBO.getBoardImgIdStickerImgId(post.getStickerBoardId());
-			int getGiftAlarmStatus = giftBO.getGiftAlarmStatus(post.getId());
+			List<Gift> getGiftAlarmStatus = giftBO.getGiftAlarmStatus(post.getId());
+			int getAlarmStatusCount = giftBO.getAlaramStatusCount(post.getId());
 			
 			PostDetail postDetail = new PostDetail();
 			postDetail.setPost(post);
 			postDetail.setStickerBoard(stickerBoard);
-			postDetail.setGetGiftAlarmStatus(getGiftAlarmStatus);
+			postDetail.setGift(getGiftAlarmStatus);
+			postDetail.setGetAlarmStatusCount(getAlarmStatusCount);
 			postDetailList.add(postDetail);
 		}
 		return postDetailList;

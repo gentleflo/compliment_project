@@ -26,15 +26,34 @@
  		)
  	</insert>
  	
- 	<select id="selectGiftAlarmByPostIdAlarmStatus" resultType="int">
+ 	
+ 	<select id="selectGiftAlarmByPostId" resultType="com.gentleflo.complimentSticker.post.gift.model.Gift">
  		SELECT 
- 			count(*)
+ 			`id`
+ 			, `userId`
+ 			, `postId`
+ 			, `loginId`
+ 			, `wishListId`
+ 			, `wishList`
+ 			, `alarmStatus`
+ 			, `createdAt`
  		FROM 
  			`gift`
  		WHERE
  			`postId` = #{postId }
  			AND `alarmStatus` = 'beforeCheck'
  	</select>
+ 	
+ 	<select id="selectAlarmStatusCountByPostId" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`gift`
+ 		WHERE
+ 			`postId` = #{postId }
+ 			AND `alarmStatus` = 'beforeCheck'
+ 	</select>
+ 	
  	
  	<update id="updateGiftAlarmStatus">
  		UPDATE 
@@ -44,6 +63,7 @@
  		WHERE
  			`postId` = #{postId }
  	</update>
+ 	
  	
  	<select id="selectGiftByWishListId" resultType="com.gentleflo.complimentSticker.post.gift.model.Gift">
  		SELECT
@@ -60,6 +80,7 @@
  		WHERE
  			`wishListId` = #{wishListId }
  	</select>
+ 	
  	
  	<delete id="deleteGiftByPostId" parameterType="map">
  		DELETE FROM

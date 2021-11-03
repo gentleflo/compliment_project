@@ -1,11 +1,15 @@
 package com.gentleflo.complimentSticker.post.model;
 
+import java.util.List;
+
+import com.gentleflo.complimentSticker.post.gift.model.Gift;
 import com.gentleflo.complimentSticker.post.stickerBoard.model.StickerBoard;
 
 public class PostDetail {
 	private Post post;
 	private StickerBoard stickerBoard;
-	private int getGiftAlarmStatus;
+	private List<Gift> gift;
+	private int getAlarmStatusCount;
 	
 	public Post getPost() {
 		return post;
@@ -19,10 +23,16 @@ public class PostDetail {
 	public void setStickerBoard(StickerBoard stickerBoard) {
 		this.stickerBoard = stickerBoard;
 	}
-	public int getGetGiftAlarmStatus() {
-		return getGiftAlarmStatus;
+	public List<Gift> getGift() {
+		return gift;
 	}
-	public void setGetGiftAlarmStatus(int getGiftAlarmStatus) {
-		this.getGiftAlarmStatus = getGiftAlarmStatus;
+	public void setGift(List<Gift> gift) {
+		this.gift = gift;
+	}
+	public int getGetAlarmStatusCount() {
+		return getAlarmStatusCount;
+	}
+	public void setGetAlarmStatusCount(int getAlarmStatusCount) {
+		this.getAlarmStatusCount = getAlarmStatusCount;
 	}
 }
