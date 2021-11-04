@@ -142,9 +142,13 @@ public class PostRestController {
 	
 	@PostMapping("/update_gift_alarmStatus")
 	public Map<String, String> updateGiftAlarmStatus(
-			@RequestParam("postId") int postId) {
+			@RequestParam("postId") int postId
+			, HttpServletRequest request) {
 	
-		int count = giftBO.updateAlarmStatus(postId);
+		HttpSession session = request.getSession();
+		String loginId = (String)session.getAttribute("loginId");
+		
+		int count = giftBO.updateAlarmStatus(postId, loginId);
 		//int count = giftBO.updateAlarmStatus(giftId, userId);
 		
 		Map<String, String> result = new HashMap<>();

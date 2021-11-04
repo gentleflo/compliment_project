@@ -84,7 +84,7 @@
 										data-wishlist-id="${wishListContent.wishList.id }"><small>구매 좌표 <b>수정 </b></small></a>
 									<a href="#" class="gift-link text-secondary text-right" data-toggle="modal" data-target="#giftUrl" data-gift-person="me"
 										data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-wishlist="${wishListContent.wishList.wishList }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
-										<small>/ 나에게 <b>선물</b>하기</small></a>
+										<small>| 나에게 <b>선물</b>하기</small></a>
 								</div>
 							</c:when>
 							<c:when test="${not empty wishListContent.gift.id && post.loginId ne loginId }">

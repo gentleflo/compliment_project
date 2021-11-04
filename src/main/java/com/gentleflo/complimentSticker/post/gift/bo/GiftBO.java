@@ -32,8 +32,8 @@ public class GiftBO {
 	
 	
 	// preview 화면에서 아이콘 클릭시 gift의 alarmStatus 컬럼 내용 업데이트용
-	public int updateAlarmStatus(int postId) {
-		return giftDAO.updateGiftAlarmStatus(postId);
+	public int updateAlarmStatus(int postId, String loginId) {
+		return giftDAO.updateGiftAlarmStatus(postId, loginId);
 	}
 	
 	// detail_view에서 위시리스트에 해당하는 알람상태 가져오기

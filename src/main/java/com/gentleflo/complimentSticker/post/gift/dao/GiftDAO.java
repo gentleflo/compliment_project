@@ -31,7 +31,8 @@ public interface GiftDAO {
 	
 	// preview 화면에서 아이콘 클릭시 gift의 alarmStatus 컬럼 내용 업데이트용
 	public int updateGiftAlarmStatus(
-			@Param("postId") int postId);
+			@Param("postId") int postId
+			, @Param("loginId") String loginId);
 
 	
 	// detail_view에서 위시리스트에 해당하는 알람상태 가져오기

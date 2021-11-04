@@ -50,10 +50,10 @@ section {
 }
 .giftAlarm-modal-title {
 	font-size: 19px;
-	width: 260px;
+	width: 270px;
     height: 21px;
     background-color: white; 
-    box-shadow: inset 0 -7px #BAF0D5;
+    box-shadow: inset 0 -8px #BAF0D5;
 }
 .bi-emoji-wink {
 	font-size: 22px;
