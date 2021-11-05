@@ -42,6 +42,7 @@
  		WHERE
  			`postId` = #{postId }
  			AND `alarmStatus` = 'beforeCheck'
+ 			AND `loginId` != #{loginId }
  	</select>
  	
  	<select id="selectAlarmStatusCountByPostId" resultType="int">
@@ -62,7 +63,6 @@
  			`alarmStatus` = 'afterCheck'
  		WHERE
  			`postId` = #{postId }
- 			AND `loginId` != #{loginId }
  	</update>
  	
  	

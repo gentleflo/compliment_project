@@ -22,8 +22,8 @@ public class GiftBO {
 	
 	
 	// preview에서 post별로 확인하지 않은 알람이 있는지 조회하기하고 gift 정보 모두 긁어오기용
-	public List<Gift> getGiftAlarmStatus(int postId) {
-		return giftDAO.selectGiftAlarmByPostId(postId);
+	public List<Gift> getGiftAlarmStatus(int postId, String loginId) {
+		return giftDAO.selectGiftAlarmByPostId(postId, loginId);
 	}
 	// preview에서 post별로 확인하지 않은 알람이 몇개가 있는지 count하기용
 	public int getAlaramStatusCount(int postId) {
@@ -32,8 +32,8 @@ public class GiftBO {
 	
 	
 	// preview 화면에서 아이콘 클릭시 gift의 alarmStatus 컬럼 내용 업데이트용
-	public int updateAlarmStatus(int postId, String loginId) {
-		return giftDAO.updateGiftAlarmStatus(postId, loginId);
+	public int updateAlarmStatus(int postId) {
+		return giftDAO.updateGiftAlarmStatus(postId);
 	}
 	
 	// detail_view에서 위시리스트에 해당하는 알람상태 가져오기
