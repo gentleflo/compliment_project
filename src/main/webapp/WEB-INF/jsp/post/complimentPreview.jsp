@@ -102,8 +102,35 @@
 						</c:choose>
 								
 						<!-- 선물하기 아이콘 클릭시 뜨는 modal -->
-						<c:forEach var="gift" items="${postDetailForPreview[0].gift }" varStatus="">
-							<div class="modal fade" id="giftAlarmModal${status.index }" role="dialog" >
+						<c:forEach var="gift" items="${postDetailForPreview[0].gift }" varStatus="status">
+							<c:choose>
+							<c:when test="${status.index eq 0 }">
+								<div class="modal fade" id="giftAlarmModal" role="dialog" >
+								<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<i class="bi bi-emoji-heart-eyes ml-1"></i><h4 class="giftAlarm-modal-title">친구가 선물알람을 보냈어요</h4>
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+									<div class="modal-body">
+										<span class="gift-alarm"><b>${gift.loginId }</b>님께서 <b>${gift.wishList }</b> 선물하셨어요 :)</span>
+									</div>
+									<div class="modal-footer">
+										<c:choose>
+										<c:when test="${status.last }">
+											<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">확인</button>
+										</c:when>
+										<c:otherwise>
+											<button type="button" class="btn btn-sm btn-default" data-target="#giftAlarmModal${status.count }">다음</button>
+										</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+								</div>
+							</div>
+							</c:when>
+							<c:otherwise>
+								<div class="modal fade" id="giftAlarmModal${status.index }" role="dialog" >
 								<div class="modal-dialog modal-dialog-centered" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -114,13 +141,20 @@
 										<span class="gift-alarm"><b>${gift.loginId }</b>님께서 <b>${gift.wishList }</b> 선물하셨어요 :)</span>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-sm btn-default" data-dismiss="modal" data-target="#giftAlarmModal${status.count }">다음</button>
-										<!-- status가 end인지 확인하고 end이면 확인버튼을 보여주고 끝내도록 설계 -->
-										<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">확인</button>
+										<c:choose>
+										<c:when test="${status.last }">
+											<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">확인</button>
+										</c:when>
+										<c:otherwise>
+											<button type="button" class="btn btn-sm btn-default" data-dismiss="modal" data-target="#giftAlarmModal${status.count }">다음</button>
+										</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 								</div>
 							</div>
+							</c:otherwise>
+							</c:choose>
 						</c:forEach>
 							
 					</div>

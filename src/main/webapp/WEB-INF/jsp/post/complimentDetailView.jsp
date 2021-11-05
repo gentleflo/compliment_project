@@ -319,7 +319,7 @@
 				var url = $("#urlAddressInput").val();
 				
 				if(url == null || url == "") {
-				 	alert("");
+				 	alert("구매좌표를 입력해주세요");
 				 	return;
 				}
 				
