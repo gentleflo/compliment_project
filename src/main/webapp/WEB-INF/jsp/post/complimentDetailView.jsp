@@ -84,7 +84,7 @@
 										data-wishlist-id="${wishListContent.wishList.id }"><small>구매 좌표 <b>수정 </b></small></a>
 									<a href="#" class="gift-link text-secondary text-right" data-toggle="modal" data-target="#giftUrl" data-gift-person="me"
 										data-wishlist-id="${wishListContent.wishList.id }" data-wishlist-wishlist="${wishListContent.wishList.wishList }" data-wishlist-url="${wishListContent.wishList.url }" data-post-id="${wishListContent.wishList.postId }">
-										<small>/ 나에게 <b>선물</b>하기</small></a>
+										<small>| 나에게 <b>선물</b>하기</small></a>
 								</div>
 							</c:when>
 							<c:when test="${not empty wishListContent.gift.id && post.loginId ne loginId }">
@@ -319,7 +319,7 @@
 				var url = $("#urlAddressInput").val();
 				
 				if(url == null || url == "") {
-				 	alert("");
+				 	alert("구매좌표를 입력해주세요");
 				 	return;
 				}
 				
@@ -329,7 +329,6 @@
 					data:{"wishListId":wishListId, "url":url},
 					success:function(data) {
 						if(data.result == "success") {
-							alert("구매좌표 추가 완료!:)");
 							location.reload();
 						} else {
 							alert("url 저장 실패");
