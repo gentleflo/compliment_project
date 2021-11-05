@@ -6,5 +6,5 @@ spring:
       suffix: .jsp
   datasource:    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/compliment_sticker?serverTimezone=UTC&characterEncoding=UTF-8
-    username: admin
-    password: admin
+    username: root
+    password: root
