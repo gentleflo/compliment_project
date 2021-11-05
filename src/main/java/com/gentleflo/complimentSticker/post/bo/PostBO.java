@@ -75,7 +75,7 @@ public class PostBO {
 		// postId로 gift 테이블 조회 (확인안한 알람이 있는지 count쿼리 0,1)
 		for(Post post : postList) {
 			StickerBoard stickerBoard = stickerBoardBO.getBoardImgIdStickerImgId(post.getStickerBoardId());
-			List<Gift> getGiftAlarmStatus = giftBO.getGiftAlarmStatus(post.getId(), loginId);
+			List<Gift> getGiftAlarmStatus = giftBO.getGiftAlarmStatus(post.getId(), post.getLoginId());
 			int getAlarmStatusCount = giftBO.getAlaramStatusCount(post.getId());
 			
 			PostDetail postDetail = new PostDetail();
@@ -86,7 +86,7 @@ public class PostBO {
 			postDetailList.add(postDetail);
 		}
 		return postDetailList;
-	}
+	}	
 	
 	
 	// compliment_detail_view 페이지
