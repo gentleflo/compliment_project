@@ -59,56 +59,49 @@
   ### :pushpin: 주요기능 
   > * __회원가입 / 로그인__          
     - package : [com.gentleflo.complimentSticker.user.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/user)     
-    - view : [/webapp/WEB-INF/jsp/user/*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/webapp/WEB-INF/jsp/user)        
-               
+    - view : [/webapp/WEB-INF/jsp/user/*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/webapp/WEB-INF/jsp/user)                       
   > * __칭찬스티커 플랜 포스트 입력__            
     - package : [com.gentleflo.complimentSticker.post.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/post)       
-    - view : [/webapp/WEB-INF/jsp/post/complimentEdit.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentEdit.jsp) 
-    
+    - view : [/webapp/WEB-INF/jsp/post/complimentEdit.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentEdit.jsp)      
   > * __타 사용사 페이지 방문__           
     - package : [com.gentleflo.complimentSticker.post.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/post)    
-    - view : [webapp/WEB-INF/jsp/post/complimentPreview.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentPreview.jsp)    
-      
+    - view : [webapp/WEB-INF/jsp/post/complimentPreview.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentPreview.jsp)         
   > * __선물알람 확인__      
     - package : [com.gentleflo.complimentSticker.post.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/post)       
-    - view : [webapp/WEB-INF/jsp/post/complimentPreview.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentPreview.jsp)  
- 
+    - view : [webapp/WEB-INF/jsp/post/complimentPreview.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentPreview.jsp)     
   > * __칭찬플랜 삭제__       
-    - package : [com.gentleflo.complimentSticker.post.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/post)         
-    - view : [webapp/WEB-INF/jsp/post/complimentPreview.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentPreview.jsp)  
-  
+    - package : [com.gentleflo.complimentSticker.post.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/post)       
+    - view : [webapp/WEB-INF/jsp/post/complimentPreview.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentPreview.jsp)   
   > * __칭찬스티커판 스티커 클릭 이벤트__     
     - package : [com.gentleflo.complimentSticker.post.stickerNumber.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/post/stickerNumber)      
-    - view : [webapp/WEB-INF/jsp/post/complimentDetailView.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentDetailView.jsp) 
-  
+    - view : [webapp/WEB-INF/jsp/post/complimentDetailView.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentDetailView.jsp)       
   > * __구매좌표추가, 나에게 선물하기__    
     - package : [com.gentleflo.complimentSticker.post.wishList.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/post/wishList)     
     - package : [com.gentleflo.complimentSticker.post.gift.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/post/gift)       
-    - view : [webapp/WEB-INF/jsp/post/complimentDetailView.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentDetailView.jsp)
-
+    - view : [webapp/WEB-INF/jsp/post/complimentDetailView.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentDetailView.jsp)       
   > * __친구에게 선물하기__     
     - package : [com.gentleflo.complimentSticker.post.gift.*](https://github.com/gentleflo/compliment_project/tree/develops/src/main/java/com/gentleflo/complimentSticker/post/gift)       
-    - view : [webapp/WEB-INF/jsp/post/complimentDetailView.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentDetailView.jsp) 
+    - view : [webapp/WEB-INF/jsp/post/complimentDetailView.jsp](https://github.com/gentleflo/compliment_project/blob/develops/src/main/webapp/WEB-INF/jsp/post/complimentDetailView.jsp)   
  
 
-  ### :heavy_check_mark: 외부 라이브러리 라이센스
-  * Tomcat [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) 
-  * Mysql [GPLv2 or proprietary](https://www.gnu.org/licenses/gpl-3.0.html)
-  * Spring framework [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)  
-  * Mybatis [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
-  * Bootstrap [MIT License](https://opensource.org/licenses/MIT)
-  * jQuery [MIT License](https://opensource.org/licenses/MIT)        
+ ### :heavy_check_mark: 외부 라이브러리 라이센스
+ > * Tomcat [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)   
+ > * Mysql [GPLv2 or proprietary](https://www.gnu.org/licenses/gpl-3.0.html)   
+ > * Spring framework [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)     
+ > * Mybatis [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)    
+ > * Bootstrap [MIT License](https://opensource.org/licenses/MIT)    
+ > * jQuery [MIT License](https://opensource.org/licenses/MIT)             
   
        
-  ### :memo: 향후 계획
-  * 보안 향상을 위해 spring security 구현
-  * 스티커 클릭 취소 이벤트
-  * 프로필 이미지 넣기 기능
-  * 공개 비공개 관련 기능
-  * preview 화면에 스티커 진행상황 보이기
-  * 칭찬리스트 내용 수정 기능
-  * 칭찬리스트 삭제 기능
-  * 댓글 삭제 기능
+ ### :memo: 향후 계획
+ > * 보안 향상을 위해 spring security 구현    
+ > * 스티커 클릭 취소 이벤트    
+ > * 프로필 이미지 넣기 기능    
+ > * 공개 비공개 관련 기능    
+ > * preview 화면에 스티커 진행상황 보이기    
+ > * 칭찬리스트 내용 수정 기능    
+ > * 칭찬리스트 삭제 기능    
+ > * 댓글 삭제 기능    
   
    
   
