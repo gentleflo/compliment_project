@@ -22,8 +22,8 @@
   주요 기능은 **플랜입력, 칭찬스티커 클릭 이벤트, 위시리스트 구매좌표 추가, 선물하기 그리고 선물알람 기능**이다.               
 
   ### :two_hearts: 프로젝트 url
-  > [칭찬스티커홈페이지](http://3.35.141.139:8080/user/signin_view) 
-  > loginID : test
+  > [칭찬스티커홈페이지](http://3.35.141.139:8080/user/signin_view)     
+  > loginID : test      
   > password : 0000
 
   ### :notebook: 포트폴리오
