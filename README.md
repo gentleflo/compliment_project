@@ -23,6 +23,8 @@
 
   ### :two_hearts: 프로젝트 url
   > [칭찬스티커홈페이지](http://3.35.141.139:8080/user/signin_view) 
+  > loginID : test
+  > password : 0000
 
   ### :notebook: 포트폴리오
   > [포트폴리오](portfoglio/칭찬스티커-프로젝트.pdf)
