@@ -12,7 +12,7 @@ header {
 }
 
 .header-slogan {
-	font-size: 18px;
+	font-size: 20px;
 	font-family: Lucida Console, Courier, monospace;
 }
 
@@ -28,6 +28,8 @@ section {
 }
 .profile-icon {
 	font-size:58px;
+	color:#333;
+	font-weight:300;
 }
 .userName-box {
 	width: 88px;
@@ -42,11 +44,12 @@ section {
 	width: 370px;
 }
 .modal-title {
+	text-align: center;
 	font-size: 19px;
-	width: 295px;
+	width: 285px;
     height: 25px;
     background-color: white; 
-    box-shadow: inset 0 -7px #BAF0D5;
+    border-bottom:8px solid #BAF0D5;
 }
 .giftAlarm-modal-title {
 	font-size: 18px;
@@ -109,7 +112,7 @@ section {
 
 .go-to-edit-view {
 	font-family: Helvetica, Arial, sans-serif;
-	width: 179px;
+	width: 157px;
     height: 24px;
     background-color: white; 
     box-shadow: inset 0 -8px #BAF0D5; 
